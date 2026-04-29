@@ -1,10 +1,6 @@
 #Konungskóðinn
 
 import time
-from motor import forwards, backwards, stop
+import motor as m
 
-forwards(100)
-
-time.sleep(3)
-
-stop()
+m.dance()
