@@ -25,9 +25,15 @@ import skynjarar as s
 #m.stop()
 #intak = input('continue')
 
-while True:
-    if s.searching():
-        m.stop()    
-    else:
-        m.forwards(100)
+# while True:
+#     if s.searching():
+#         m.stop()    
+#     else:
+#         m.forwards(100)
 
+try:
+    m.forwards(170)
+    while True:
+        time.sleep(0.1)
+except KeyboardInterrupt:
+    m.stop()
