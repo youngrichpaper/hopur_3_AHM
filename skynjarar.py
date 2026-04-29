@@ -30,7 +30,7 @@ def searching():
 
         time.sleep(0.1)  # Sleep for some
 
-        if current_value1 <= 40 or current_value2 <= 40:
+        if 0 < current_value1 <= 40 or 0 < current_value2 <= 40:
             print('Stoppa róbot!: snúa við')
             hindrun = True
         else:
