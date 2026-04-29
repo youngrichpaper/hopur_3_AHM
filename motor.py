@@ -41,28 +41,28 @@ def dance():
     for i in range(1,11):
         speed = i*20
         forwards(speed)
-        time.sleep(0.2)
+        time.sleep(0.5)
     stop()
     time.sleep(1)
 
     for i in range(1,11):
         speed = i*20
         backwards(speed)
-        time.sleep(0.2)
+        time.sleep(0.5)
     stop()
     time.sleep(1)
 
     for i in range(1,11):
         speed = i*20
         rotate_CW(speed)
-        time.sleep(0.2)
+        time.sleep(1)
     stop()
     time.sleep(1)
 
     for i in range(1,11):
         speed = i*20
         rotate_CCW(speed)
-        time.sleep(0.2)
+        time.sleep(1)
     stop()
     time.sleep(1)
 
