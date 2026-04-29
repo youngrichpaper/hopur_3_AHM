@@ -29,7 +29,7 @@ def searching():
         print(current_value1,current_value2)
 
         if 0 < current_value1 <= 40 or 0 < current_value2 <= 40:
-            print('Stoppa róbot!: snúa við')
+
             hindrun = True
         else:
             hindrun = False
