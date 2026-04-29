@@ -1,12 +1,10 @@
 #Konungskóðinn
-#blabla
 
-#jsjsjsjsd
+import time
+import motor as m
 
-#prufa 2
+m.forward(100)
 
-#prufa 3
-from motor import prufa
+time.sleep(3)
 
-prufa()
-
+m.stop()
