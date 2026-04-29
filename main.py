@@ -26,5 +26,5 @@ import skynjarar as s
 # intak = input('continue')
 
 m.forwards(180)
-time.sleep(3)
+time.sleep(5)
 m.stop()
