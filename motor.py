@@ -9,7 +9,7 @@ def forwards(speed):
     if speed > 255 or speed<0:
         print('Invalid speed')
     else:
-        data = [int(speed*1.1), 0, speed, 1]
+        data = [int(speed*1.1)  , 0, speed, 1]
     bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
 
 def backwards(speed):
