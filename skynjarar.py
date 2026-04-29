@@ -28,13 +28,13 @@ def searching():
 
         print(current_value1,current_value2)
 
-        time.sleep(0.1)  # Sleep for some
-
         if 0 < current_value1 <= 40 or 0 < current_value2 <= 40:
             print('Stoppa róbot!: snúa við')
             hindrun = True
         else:
             hindrun = False
+        
+        time.sleep(0.1)  # Sleep for some
 
         return hindrun
 
