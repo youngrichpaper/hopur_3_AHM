@@ -9,7 +9,7 @@ def forward(speed):
     if speed > 255 or speed<0:
         print('Invalid speed')
     else:
-        data = [speed, 0, speed, 1]
+        data = [speed, 0, speed, 0]
     bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
 
 def stop():
