@@ -3,4 +3,7 @@
 import time
 import motor as m
 
-m.dance()
+try:
+    m.dance()
+except KeyboardInterrupt:
+    m.stop()
