@@ -144,11 +144,11 @@ class MyController(SilencedPyPS4Controller):
         Controller.__init__(self, **kwargs)
 
     def on_up_arrow_press(self):
-        motor.forwards(180)
+        motor.forwards(230)
         print('Út fyrir endamörk alheimsins!')
 
     def on_down_arrow_press(self):
-        motor.backwards(180)
+        motor.backwards(230)
         print('Bakk bakk')
 
     def on_up_down_arrow_release(self):
