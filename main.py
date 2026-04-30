@@ -39,7 +39,7 @@ try:
         #     m.forwards(100)
         
         # time.sleep(0.2)
-        m.rotate_by_CCW(180)
+        m.rotate_by_CW(180)
         time.sleep(1)
         m.rotate_by_CW(180)
         time.sleep(1)
