@@ -39,11 +39,10 @@ def rotate_CCW(speed):
 
 def rotate_by_CW(theta, v=100):
     pi = 3.141592
-    x = 0.135
+    x = 0.12
     k = pi * 1/(360*x)
     l = 17.21
     t = k*theta*l/v
-    print(f'will rotate for {t} seconds to turn {theta}° clockwise')
     rotate_CW(v)
     time.sleep(t)
     stop()
@@ -53,7 +52,6 @@ def rotate_by_CCW(theta, v=100):
     k = 25*pi/1251
     l = 17.21
     t = k*theta*l/v
-    print(f'will rotate for {t} seconds to turn {theta}° counterclockwise')
     rotate_CCW(v)
     time.sleep(t)
     stop()
