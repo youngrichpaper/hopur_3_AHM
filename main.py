@@ -44,7 +44,9 @@ try:
         #time.sleep(1)
         #m.rotate_by_CW(180)
         #time.sleep(1)
-        v.testservo_1()
+        v.rotate_s1(180)
+        time.sleep(5)
+        v.rotate_s2(180)
 
 
 except KeyboardInterrupt:
