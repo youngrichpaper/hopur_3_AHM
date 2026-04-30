@@ -8,7 +8,7 @@ i2c_address1 = 0x71
 i2c_address2 = 0x70
 
 
-def searching():
+def searching(): #Leitar af hindrun
     while 1:
         i2c_bus.write_byte_data(i2c_address1, 0, 0x51)  # Tell sensor to scan in mm
         high1 = i2c_bus.read_byte_data(i2c_address1, 2)  # Read the high byte of the value

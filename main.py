@@ -41,6 +41,8 @@ try:
             m.stop()
         else:
             m.forwards(100)
-            
+        
+        time.sleep(0.2)
+
 except KeyboardInterrupt:
     m.stop()
