@@ -138,7 +138,7 @@ import motor
 #         pass
 
 
-class MyController():
+class MyController(Controller):
 
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
