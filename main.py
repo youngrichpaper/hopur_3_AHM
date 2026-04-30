@@ -3,6 +3,7 @@
 import time
 import motor as m
 import skynjarar as s
+import servo as v
 
 #m.forwards(50)
 #time.sleep(2)
@@ -39,10 +40,11 @@ try:
         #     m.forwards(100)
         
         # time.sleep(0.2)
-        m.rotate_by_CW(180)
-        time.sleep(1)
-        m.rotate_by_CW(180)
-        time.sleep(1)
+        #m.rotate_by_CW(180)
+        #time.sleep(1)
+        #m.rotate_by_CW(180)
+        #time.sleep(1)
+        v.testservo_1()
 
 
 except KeyboardInterrupt:
