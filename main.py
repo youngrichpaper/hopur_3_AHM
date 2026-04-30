@@ -40,7 +40,9 @@ try:
         
         # time.sleep(0.2)
         m.rotate_by_CCW(180)
+        time.sleep(1)
         m.rotate_by_CW(180)
+        time.sleep(1)
 
 
 except KeyboardInterrupt:
