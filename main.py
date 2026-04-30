@@ -49,5 +49,6 @@ try:
     p.testservo_1()
 
 except KeyboardInterrupt:
-    
+    m.stop()
+
 
