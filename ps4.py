@@ -147,31 +147,24 @@ class MyController(SilencedPyPS4Controller):
         motor.forwards(180)
         print('Út fyrir endamörk alheimsins!')
 
-    def on_up_arrow_release(self):
-        motor.stop()
-        print('STOP!!!!!')
-
     def on_down_arrow_press(self):
         motor.backwards(180)
         print('Bakk bakk')
 
-    def on_down_arrow_release(self):
+    def on_up_down_arrow_release(self):
         motor.stop()
         print('STOP!!!!!')
 
+   
     def on_right_arrow_press(self):
         motor.rotate_CW(100)
         print('Hægri')
-
-    def on_right_arrow_release(self):
-        motor.stop()
-        print('STOP!!!!!')
 
     def on_left_arrow_press(self):
         motor.rotate_CCW(100)
         print('Hitt hægri')
 
-    def on_left_arrow_release(self):
+    def on_left_right_arrow_release(self):
         motor.stop()
         print('STOP!!!!!')
     
