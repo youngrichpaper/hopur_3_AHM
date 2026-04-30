@@ -32,8 +32,15 @@ import skynjarar as s
 #         m.forwards(100)
 
 try:
-    m.forwards(170)
     while True:
-        time.sleep(0.1)
+        if s.searching():
+            m.stop()
+            time.sleep(1)
+            m.rotate_CCW(50)
+            time.sleep(2)
+            m.stop()
+        else:
+            m.forwards(100)
+            
 except KeyboardInterrupt:
     m.stop()
