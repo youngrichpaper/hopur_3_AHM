@@ -45,8 +45,14 @@ try:
         #m.rotate_by_CW(180)
         #time.sleep(1)
         v.rotate_s1(180)
-        time.sleep(5)
         v.rotate_s2(180)
+        time.sleep(1)
+        v.rotate_s1(-90)
+        v.rotate_s2(-90)
+        time.sleep(2)
+        v.rotate_s1(90)
+        v.rotate_s2(90)
+
 
 
 except KeyboardInterrupt:
