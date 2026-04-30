@@ -138,7 +138,7 @@ import motor
 #         pass
 
 
-class MyController(SilencedPyPS4Controller):
+class MyController():
 
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
