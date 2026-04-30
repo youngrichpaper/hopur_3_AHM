@@ -1,10 +1,7 @@
 from pyPS4Controller.controller import Controller
 import motor
-import smbus
-import time
 
-I2C_ADDRESS = 0x50
-bus = smbus.SMBus(1)
+
     
 class MyController(Controller):
 
