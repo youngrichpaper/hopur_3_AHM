@@ -29,7 +29,7 @@ def searching(): #Leitar af hindrun
         print(current_value1,current_value2)
 
         
-        if 0 < current_value1 <= 40 or 0 < current_value2 <= 40: 
+        if 0 < current_value1 <= 40: #or 0 < current_value2 <= 40: 
             hindrun = True
         else:
             hindrun = False
