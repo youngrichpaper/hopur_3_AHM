@@ -1,5 +1,5 @@
 #Konungskóðinn
-import pyPS4Controller
+#import pyPS4Controller
 import time
 import motor as m
 import skynjarar as s
