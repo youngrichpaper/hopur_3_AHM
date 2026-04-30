@@ -37,22 +37,21 @@ def rotate_CCW(speed):
         data = [speed, 0, int(speed*0.86), 0]
     bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
 
-def rotate_by_CW(theta, v=200):
+def rotate_by_CW(theta, v=100):
     pi = 3.141592
-    k = 25*pi/1251
+    x = 0.125
+    k = pi * 1/(360*x)
     l = 17.21
     t = k*theta*l/v
-    print(f'will rotate for {t} seconds to turn {theta}° clockwise')
     rotate_CW(v)
     time.sleep(t)
     stop()
 
-def rotate_by_CCW(theta, v=200):
+def rotate_by_CCW(theta, v=100):
     pi = 3.141592
     k = 25*pi/1251
     l = 17.21
     t = k*theta*l/v
-    print(f'will rotate for {t} seconds to turn {theta}° counterclockwise')
     rotate_CCW(v)
     time.sleep(t)
     stop()
