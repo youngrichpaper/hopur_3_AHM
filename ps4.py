@@ -138,7 +138,7 @@ class SilencedPyPS4Controller(Controller):
         pass
 
 
-class MyController(Controller):
+class MyController(SilencedPyPS4Controller):
 
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
