@@ -39,7 +39,7 @@ def rotate_CCW(speed):
 
 def rotate_by_CW(theta, v=100):
     pi = 3.141592
-    x = 0.125
+    x = 0.123
     k = pi * 1/(360*x)
     l = 17.21
     t = k*theta*l/v
