@@ -1,9 +1,9 @@
 #servo
 
-import ServoKit as s
+import ServoKit as p
 import time
 
-kit = s(channels=8)
+kit = p(channels=8)
 
 def testservo_1():
     kit.servo[0].angle = 180
