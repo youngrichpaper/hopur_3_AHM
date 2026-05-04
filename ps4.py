@@ -184,12 +184,6 @@ class MyController(SilencedPyPS4Controller):
     # def on_R3_right(self, value):
     #     print(f'HÆGRI: {value}')
 
-    def on_L3_y_at_rest(self):
-        print(f'Y REST')
-
-    def on_L3_x_at_rest(self):
-        print(f'X REST')
-
     def on_R3_press(self):
         print(f'ÝTA')
 

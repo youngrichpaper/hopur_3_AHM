@@ -56,6 +56,14 @@ def rotate_by_CCW(theta, v=100):
     time.sleep(t)
     stop()
 
+def turn(speed, curve, right):
+    speed1 = speed
+    speed2 = int(speed*curve/100)
+    if right == True:
+        data = [speed1, 0, speed2, 1]
+    else: 
+        data = [speed2, 0, speed1, 1]
+
 
 def dance():
     for i in range(1,11):
