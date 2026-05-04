@@ -15,11 +15,17 @@ skanna = threading.Thread(target=v.servo_rotate)
 auto = threading.Thread(target=s.skynja)
 
 try:
-     skanna.start()
-     auto.start()
+     while True:
+          skanna.start()
+          auto.start()
+
+          skanna.join()
+          auto.join()
 
 except KeyboardInterrupt:
+     print('Stoppar keyrslu')
      m.stop()
+
     
 
 
