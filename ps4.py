@@ -226,8 +226,7 @@ class MyController(SilencedPyPS4Controller):
                 curve = 0
                 direction = 0
                 turning_left = False
-        print(value)
-        print(curve)
+        print(value, curve)
 
     def on_L3_right(self, value):
         global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction
