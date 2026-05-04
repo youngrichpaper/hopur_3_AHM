@@ -192,14 +192,14 @@ class MyController(SilencedPyPS4Controller):
 
     def on_L3_down(self, value):
         global stopped
-        if value< -8000:
+        if value> 8000:
             speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             print(f'Afturábak {speed}')
             motor.backwards(speed)
             time.sleep(0.01)
             stopped = False
 
-        elif value> -2000 and not(stopped):
+        elif value< 2000 and not(stopped):
             print('Stopp')
             motor.stop()
             time.sleep(0.01)
