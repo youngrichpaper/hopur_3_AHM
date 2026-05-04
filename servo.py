@@ -20,7 +20,7 @@ try:
     while True:
         rotate_s1(20) 
         rotate_s2(160)
-        time.sleep(0.5)
+        time.sleep(1)
         rotate_s1(90) 
         rotate_s2(90)
 
