@@ -4,9 +4,7 @@ import smbus
 import motor as m
 import time
 import speaker as s
-import threading
 
-yhbaby = threading.Thread(target=s.baby, daemon=True)
 
 i2c_bus = smbus.SMBus(1)
 i2c_address1 = 0x71
@@ -64,7 +62,5 @@ def skynja():
             time.sleep(0.1)
         else:
             m.forwards(150)
-            yhbaby.start()
-            yhbaby.join()
             time.sleep(0.1)
 
