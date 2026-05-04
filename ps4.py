@@ -95,17 +95,17 @@ class SilencedPyPS4Controller(Controller):
     def on_L3_release(self):
         pass
 
-    # def on_R3_up(self, value):
-    #     pass
+    def on_R3_up(self, value):
+        pass
 
-    # def on_R3_down(self, value):
-    #     pass
+    def on_R3_down(self, value):
+        pass
 
-    # def on_R3_left(self, value):
-    #     pass
+    def on_R3_left(self, value):
+        pass
 
-    # def on_R3_right(self, value):
-    #     pass
+    def on_R3_right(self, value):
+        pass
 
     def on_R3_y_at_rest(self):
         pass
