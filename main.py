@@ -1,6 +1,7 @@
 #Konungskóðinn
 # import pyPS4Controller
 import time
+import threading
 import motor as m
 import skynjarar as s
 import servo as v
@@ -10,7 +11,11 @@ import servo as v
 # # you can start listening before controller is paired, as long as you pair it within the timeout window
 # controller.listen(timeout=60)
 
+skanna = threading.Thread(target=v.servo_rotate, args=("A",))
+
+
 try:
+     skanna.start()
      while True:
           hindrun_vinstri, hindrun_haegri = s.searching()
           # #Skynjar hindranir
