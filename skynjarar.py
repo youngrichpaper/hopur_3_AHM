@@ -51,6 +51,7 @@ def skynja():
         if hindrun_vinstri or hindrun_haegri:
             m.stop()
             m.rotate_by_CW(60)
+            time.sleep(1)
         # elif hindrun_haegri:
         #     m.stop()
         #     m.rotate_by_CCW(60)
