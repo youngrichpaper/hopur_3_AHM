@@ -8,7 +8,10 @@ stopped = False
 going_forward = False
 going_backwards = False
 turning_right = False
-speed = 0
+turning_left = False
+y_speed = 0
+x_speed = 0
+curve = 0
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
@@ -181,34 +184,29 @@ class MyController(SilencedPyPS4Controller):
         print('STOP!!!!!')
 
     def on_L3_up(self, value):
-        global stopped
+        global stopped, going_forward, y_speed
         if value< -8000:
-            speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
+            y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             print(f'Áfram {speed}')
-            motor.forwards(speed)
+            going_forward = True
             stopped = False
 
         elif value> -2000 and not(stopped):
             print('Stopp')
             motor.stop()
             stopped = True
-        print(value)
 
     def on_L3_down(self, value):
-        global stopped
-        global speed
+        global stopped, going_backwards, y_speed
         if value> 8000:
-            speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
+            y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             print(f'Afturábak {speed}')
-            motor.backwards(speed)
             going_forward =True
             stopped = False
 
         elif value< 2000 and not(stopped):
             print('Stopp')
-            motor.stop()
             stopped = True
-        print(value)
     # def on_R3_left(self, value):
     #     print(f'VINSTRI: {value}')
 
@@ -231,5 +229,16 @@ controll = threading.Thread(target=keyrsla)
 controll.start()
 
 while True:
-    print('++++++++++++++++++++++++++++++++++++')
-    time.sleep(7)
+    if going_forward:
+        motor.forwards(y_speed)
+    elif going_backwards:
+        motor.backwards(speed)
+    elif turning_right:
+        motor.rotate_CCW(speed)
+    elif turning_left:
+        motor.rotate_CCW(speed)
+    elif turning_right and going_forward:
+        motor.turn(speed, curve, True)
+    elif turning_left and going_forward:
+        motor.turn(speed, curve, False)
+    
