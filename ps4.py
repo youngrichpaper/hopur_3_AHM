@@ -1,6 +1,7 @@
 from pyPS4Controller.controller import Controller
 import motor
 import numpy
+import time
 
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
@@ -178,6 +179,8 @@ class MyController(SilencedPyPS4Controller):
             speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             print(f'Áfram {speed}')
             motor.forwards(speed)
+            time.sleep(0.1)
+
         # elif value> -8000:
         #     print('Stopp')
         #     motor.stop()
