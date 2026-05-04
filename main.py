@@ -31,15 +31,17 @@ from ps4 import MyController
 
 try:
     while True:
-        #Skynjar hindranir
-         if s.searching():
-             m.stop()
-             time.sleep(1)
-             m.rotate_CCW(50)
-             time.sleep(2)
-             m.stop()
-         else:
-             m.forwards(100)
+        #Keyrsla með ps4
+        if 
+    #     #Skynjar hindranir
+    #      if s.searching():
+    #          m.stop()
+    #          time.sleep(1)
+    #          m.rotate_CCW(50)
+    #          time.sleep(2)
+    #          m.stop()
+    #      else:
+    #          m.forwards(100)
         
         #Snúningur
         # time.sleep(0.2)
