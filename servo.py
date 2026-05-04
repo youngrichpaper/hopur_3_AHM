@@ -33,16 +33,16 @@ def servo_rotate():
     while True:
         rotate_s1(90)
         rotate_s2(90)
-        time.sleep(0.3)
-        rotate_s1(60)
-        rotate_s2(120)
-        time.sleep(0.3)
-        rotate_s1(30)
-        rotate_s2(160)
-        time.sleep(0.3)
-        rotate_s1(60)
-        rotate_s2(120)
-        time.sleep(0.3)
+        time.sleep(0.2)
+        rotate_s1(50)
+        rotate_s2(130)
+        time.sleep(0.2)
+        rotate_s1(25)
+        rotate_s2(165)
+        time.sleep(0.2)
+        rotate_s1(50)
+        rotate_s2(130)
+        time.sleep(0.2)
 
 
 
