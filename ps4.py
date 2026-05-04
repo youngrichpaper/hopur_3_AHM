@@ -252,7 +252,7 @@ def keyrsla():
 
 controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
 # you can start listening before controller is paired, as long as you pair it within the timeout window
-controll = threading.Thread(target=keyrsla)
+controll = threading.Thread(target=keyrsla, daemon=True)
 # controller.listen(timeout=60)
 controll.start()
 
