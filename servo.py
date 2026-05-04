@@ -20,9 +20,11 @@ try:
     while True:
         rotate_s1(20) 
         rotate_s2(160)
-        time.sleep(1)
+        time.sleep(3)
         rotate_s1(90) 
         rotate_s2(90)
+        time.sleep(3)
+
 
 except KeyboardInterrupt:
     pass
