@@ -85,5 +85,3 @@ def dance():
         time.sleep(1)
     stop()
     time.sleep(1)
-
-    
