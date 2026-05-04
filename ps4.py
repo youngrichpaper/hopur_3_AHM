@@ -228,3 +228,7 @@ controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=Fa
 controll = threading.Thread(target=controller.listen())
 # controller.listen(timeout=60)
 controll.start()
+
+while True:
+    print('blalbal')
+    time.sleep(20)
