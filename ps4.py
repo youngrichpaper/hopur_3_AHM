@@ -234,4 +234,4 @@ controll.start()
 
 while True:
     print('blalbal')
-    time.sleep(20)
+    time.sleep(5)
