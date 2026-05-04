@@ -233,5 +233,5 @@ controll = threading.Thread(target=keyrsla)
 controll.start()
 
 while True:
-    print('blalbal')
+    print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
     time.sleep(5)
