@@ -11,35 +11,18 @@ import servo as v
 # # you can start listening before controller is paired, as long as you pair it within the timeout window
 # controller.listen(timeout=60)
 
-skanna = threading.Thread(target=v.servo_rotate, args=("A",))
-
+skanna = threading.Thread(target=v.servo_rotate, args=(1,))
+auto = threading.Thread(target=s.skynja, args=(2,))
 
 try:
      skanna.start()
-     while True:
-          hindrun_vinstri, hindrun_haegri = s.searching()
-          # #Skynjar hindranir
-          # if s.searching():
-          #     m.stop()
-          #     time.sleep(1)
-          #     m.rotate_CCW(50)
-          #     time.sleep(2)
-          #     m.stop()
-          # else:
-          #     m.forwards(100)
-          if hindrun_vinstri:
-               m.stop()
-               m.rotate_by_CW(60)
-               time.sleep(1)
-          elif hindrun_haegri:
-               m.stop()
-               m.rotate_by_CCW(60)
-               time.sleep(1)
-          else:
-               m.forwards(150)
+     auto.start()
+
 
 except KeyboardInterrupt:
      m.stop()
+     skanna.join()
+     auto.join()
     
 
 
