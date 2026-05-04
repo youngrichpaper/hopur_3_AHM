@@ -223,6 +223,8 @@ class MyController(SilencedPyPS4Controller):
                 direction = 2
 
             elif value> -2000 and not(stopped):
+                curve = 0
+                direction = 0
                 turning_left = False
 
     def on_L3_right(self, value):
@@ -235,6 +237,8 @@ class MyController(SilencedPyPS4Controller):
                 direction = 2
 
             elif value> -2000 and not(stopped):
+                curve = 0
+                direction = 0
                 turning_right = False
 
     def on_R3_press(self):
