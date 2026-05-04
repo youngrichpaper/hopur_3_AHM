@@ -183,7 +183,7 @@ class MyController(SilencedPyPS4Controller):
             time.sleep(0.01)
             stopped = False
 
-        elif value> -800 and not(stopped):
+        elif value> -2000 and not(stopped):
             print('Stopp')
             motor.stop()
             time.sleep(0.01)
