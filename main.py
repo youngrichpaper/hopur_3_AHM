@@ -10,63 +10,31 @@ controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=Fa
 # you can start listening before controller is paired, as long as you pair it within the timeout window
 controller.listen(timeout=60)
 
-#m.forwards(50)
-#time.sleep(2)
-#m.stop()
-#intak = input('continue')
-#m.forwards(100)
-#time.sleep(2)
-#m.stop()
-#intak = input('continue')
-#m.forwards(150)
-#time.sleep(2)
-#m.stop()
-#intak = input('continue')
-#m.forwards(200)
-#time.sleep(2)
-#m.stop()
-#intak = input('continue')
-#m.forwards(250)
-#time.sleep(2)
-#m.stop()
-#intak = input('continue')
-
-
+hindrun_vinstri, hindrun_haegri = s.searching()
 
 try:
     while True:
-        #Keyrsla með ps4
-
-        #Skynjar hindranir
-        if s.searching():
-            m.stop()
-            time.sleep(1)
-            m.rotate_CCW(50)
-            time.sleep(2)
-            m.stop()
-        else:
-            m.forwards(100)
+        m.forwards(150)
+        # #Skynjar hindranir
+        # if s.searching():
+        #     m.stop()
+        #     time.sleep(1)
+        #     m.rotate_CCW(50)
+        #     time.sleep(2)
+        #     m.stop()
+        # else:
+        #     m.forwards(100)
+        if hindrun_vinstri:
+             m.stop()
+             m.rotate_by_CW(60)
+             time.sleep(1)
         
-        #Snúningur
-        # time.sleep(0.2)
-        #m.rotate_by_CW(180)
-        #time.sleep(1)
-        #m.rotate_by_CW(180)
-        #time.sleep(1)
-
-        #Servoar
-        #v.rotate_s1(180)
-        #v.rotate_s2(180)
-        #time.sleep(1)
-        #v.rotate_s1(0)
-        #v.rotate_s2(0)
-        #time.sleep(2)
-        #v.rotate_s1(90)
-        #v.rotate_s2(90)
-
-
-
-    #except controller.on_L1_press:
+        if hindrun_haegri:
+             m.stop()
+             m.rotate_by_CCW(60)
+             time.sleep(1)
+             
+        
     
 except KeyboardInterrupt:
         m.stop()
