@@ -4,6 +4,7 @@ import time
 import motor as m
 import skynjarar as s
 import servo as v
+from ps4 import MyController
 
 #m.forwards(50)
 #time.sleep(2)
