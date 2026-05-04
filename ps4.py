@@ -95,29 +95,29 @@ class SilencedPyPS4Controller(Controller):
     def on_L3_release(self):
         pass
 
-    # def on_R3_up(self, value):
-    #     pass
+    def on_R3_up(self, value):
+        pass
 
-    # def on_R3_down(self, value):
-    #     pass
+    def on_R3_down(self, value):
+        pass
 
-    # def on_R3_left(self, value):
-    #     pass
+    def on_R3_left(self, value):
+        pass
 
-    # def on_R3_right(self, value):
-    #     pass
+    def on_R3_right(self, value):
+        pass
 
-    # def on_R3_y_at_rest(self):
-    #     pass
+    def on_R3_y_at_rest(self):
+        pass
 
-    # def on_R3_x_at_rest(self):
-    #     pass
+    def on_R3_x_at_rest(self):
+        pass
 
-    # def on_R3_press(self):
-    #     pass
+    def on_R3_press(self):
+        pass
 
-    # def on_R3_release(self):
-    #     pass
+    def on_R3_release(self):
+        pass
 
     def on_options_press(self):
         pass
@@ -171,6 +171,30 @@ class MyController(SilencedPyPS4Controller):
     def on_circle_press(self):
         motor.stop()
         print('STOP!!!!!')
+
+    def on_L3_up(self, value):
+        print(f'UPP: {value}')
+
+    def on_L3_down(self, value):
+        print(f'NIÐUR: {value}')
+
+    # def on_R3_left(self, value):
+    #     print(f'VINSTRI: {value}')
+
+    # def on_R3_right(self, value):
+    #     print(f'HÆGRI: {value}')
+
+    def on_L3_y_at_rest(self):
+        print(f'Y REST')
+
+    def on_L3_x_at_rest(self):
+        print(f'X REST')
+
+    def on_R3_press(self):
+        print(f'ÝTA')
+
+    def on_R3_release(self):
+        print(f'SLEPPA')
 
 controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
 # you can start listening before controller is paired, as long as you pair it within the timeout window
