@@ -32,9 +32,7 @@ try:
                time.sleep(1)
           else:
                m.forwards(150)
-
-          
-    
+             
 except KeyboardInterrupt:
      m.stop()
     
