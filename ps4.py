@@ -180,8 +180,8 @@ class MyController(SilencedPyPS4Controller):
             print(f'Áfram {speed}')
             motor.forwards(speed)
         elif value> -8000:
-            print('Stopp')
-            # motor.stop()
+            # print('Stopp')
+            motor.stop()
 
     def on_L3_down(self, value):
         print(f'NIÐUR: {value}')
