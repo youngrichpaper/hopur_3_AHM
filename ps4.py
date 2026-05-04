@@ -171,7 +171,12 @@ class MyController(SilencedPyPS4Controller):
     def on_circle_press(self):
         motor.stop()
         print('STOP!!!!!')
+    
+    def on_R1_press(self):
+        return True
 
+    def on_L2_press(self):
+        return True
 controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
 # you can start listening before controller is paired, as long as you pair it within the timeout window
 controller.listen(timeout=60)
