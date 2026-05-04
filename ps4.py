@@ -188,7 +188,7 @@ class MyController(SilencedPyPS4Controller):
         global stopped, going_forward, y_speed
         if value< -8000:
             y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
-            print(f'Áfram {y_speed}')
+            # print(f'Áfram {y_speed}')
             motor.forwards(y_speed, curve, direction)
             going_forward = True
             stopped = False
@@ -203,7 +203,7 @@ class MyController(SilencedPyPS4Controller):
         global stopped, going_backwards, y_speed
         if value> 8000:
             y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
-            print(f'Afturábak {y_speed}')
+            # print(f'Afturábak {y_speed}')
             motor.backwards(y_speed, curve, direction)
             going_backwards =True
             stopped = False
