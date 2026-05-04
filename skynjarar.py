@@ -40,3 +40,4 @@ def searching(): #Leitar af hindrun
 
 
 
+
