@@ -172,10 +172,10 @@ class MyController(SilencedPyPS4Controller):
         motor.stop()
         print('STOP!!!!!')
 
-    def on_R3_up(self, value):
+    def on_L3_up(self, value):
         print(f'UPP: {value}')
 
-    def on_R3_down(self, value):
+    def on_L3_down(self, value):
         print(f'NIÐUR: {value}')
 
     # def on_R3_left(self, value):
@@ -184,10 +184,10 @@ class MyController(SilencedPyPS4Controller):
     # def on_R3_right(self, value):
     #     print(f'HÆGRI: {value}')
 
-    def on_R3_y_at_rest(self):
+    def on_L3_y_at_rest(self):
         print(f'Y REST')
 
-    def on_R3_x_at_rest(self):
+    def on_L3_x_at_rest(self):
         print(f'X REST')
 
     def on_R3_press(self):
