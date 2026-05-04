@@ -2,7 +2,7 @@ import skynjarar as s
 import motor as m
 
 try:
-    while True
+    while True:
         if not s.searching():
             m.forwards(150)
         else:
