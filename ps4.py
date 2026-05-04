@@ -251,4 +251,6 @@ while True:
         motor.turn(y_speed, curve, True)
     elif turning_left and going_forward:
         motor.turn(y_speed, curve, False)
+    elif stopped:
+        motor.stop()
     
