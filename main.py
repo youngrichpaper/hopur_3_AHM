@@ -20,9 +20,9 @@ try:
 
 
 except KeyboardInterrupt:
-     m.stop()
      skanna.join()
      auto.join()
+     m.stop()
     
 
 
