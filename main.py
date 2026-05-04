@@ -32,44 +32,44 @@ controller.listen(timeout=60)
 #intak = input('continue')
 
 
-if controller.on_R1_press:
-    try:
-        while True:
-            #Keyrsla með ps4
 
-            #Skynjar hindranir
-            if s.searching():
-                m.stop()
-                time.sleep(1)
-                m.rotate_CCW(50)
-                time.sleep(2)
-                m.stop()
-            else:
-                m.forwards(100)
-            
-            #Snúningur
-            # time.sleep(0.2)
-            #m.rotate_by_CW(180)
-            #time.sleep(1)
-            #m.rotate_by_CW(180)
-            #time.sleep(1)
+try:
+    while True:
+        #Keyrsla með ps4
 
-            #Servoar
-            #v.rotate_s1(180)
-            #v.rotate_s2(180)
-            #time.sleep(1)
-            #v.rotate_s1(0)
-            #v.rotate_s2(0)
-            #time.sleep(2)
-            #v.rotate_s1(90)
-            #v.rotate_s2(90)
-
-
-
-    except controller.on_L1_press:
+        #Skynjar hindranir
+        if s.searching():
+            m.stop()
+            time.sleep(1)
+            m.rotate_CCW(50)
+            time.sleep(2)
+            m.stop()
+        else:
+            m.forwards(100)
         
-    # except KeyboardInterrupt:
-    #     m.stop()
+        #Snúningur
+        # time.sleep(0.2)
+        #m.rotate_by_CW(180)
+        #time.sleep(1)
+        #m.rotate_by_CW(180)
+        #time.sleep(1)
+
+        #Servoar
+        #v.rotate_s1(180)
+        #v.rotate_s2(180)
+        #time.sleep(1)
+        #v.rotate_s1(0)
+        #v.rotate_s2(0)
+        #time.sleep(2)
+        #v.rotate_s1(90)
+        #v.rotate_s2(90)
+
+
+
+    #except controller.on_L1_press:
+    
+except KeyboardInterrupt:
+        m.stop()
     
 
 
