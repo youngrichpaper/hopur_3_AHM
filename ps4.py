@@ -179,11 +179,11 @@ class MyController(SilencedPyPS4Controller):
             speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             print(f'Áfram {speed}')
             motor.forwards(speed)
-            time.sleep(0.1)
+            time.sleep(0.01)
 
-        # elif value> -8000:
-        #     print('Stopp')
-        #     motor.stop()
+        elif value> -8000:
+            print('Stopp')
+            motor.stop()
 
     def on_L3_down(self, value):
         print(f'NIÐUR: {value}')
