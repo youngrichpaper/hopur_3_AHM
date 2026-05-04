@@ -1,9 +1,14 @@
 from pyPS4Controller.controller import Controller
+import threading
 import motor
 import numpy
 import time
 
 stopped = False
+going_forward = False
+going_backwards = False
+turning_right = False
+
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
@@ -220,4 +225,10 @@ class MyController(SilencedPyPS4Controller):
 
 controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
 # you can start listening before controller is paired, as long as you pair it within the timeout window
-controller.listen(timeout=60)
+controll = threading.Thread(target=controller.listen())
+# controller.listen(timeout=60)
+controll.start()
+
+while True:
+    print('blalbal')
+    time.sleep(20)
