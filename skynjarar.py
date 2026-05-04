@@ -48,16 +48,17 @@ def searching(): #Leitar af hindrun
 def skynja():
     while True:
         hindrun_vinstri, hindrun_haegri = searching()
+        time.sleep(0.1)
         if hindrun_vinstri == 1:
             m.stop()
             time.sleep(0.01)
             m.rotate_by_CW(60)
-            time.sleep(1)
+            time.sleep(0.1)
         elif hindrun_haegri == 1:
             m.stop()
             time.sleep(0.01)
             m.rotate_by_CCW(60)
-            time.sleep(1)
+            time.sleep(0.1)
         else:
             m.forwards(150)
-            time.sleep(0.01)
+            time.sleep(0.1)
