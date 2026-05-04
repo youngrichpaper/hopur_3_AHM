@@ -31,14 +31,14 @@ def searching(): #Leitar af hindrun
 
     
     if 0 < current_value1 <= 40:
-        hindrun_vinstri = True
+        hindrun_vinstri = 1
     else:
-        hindrun_vinstri = False
+        hindrun_vinstri = 0
     
     if 0 < current_value2 <= 40:
-        hindrun_haegri = True
+        hindrun_haegri = 1
     else:
-        hindrun_haegri = False
+        hindrun_haegri = 0
     
     time.sleep(0.1)  # Sleep for some
 
@@ -46,15 +46,15 @@ def searching(): #Leitar af hindrun
 
 
 def skynja():
-
-    hindrun_vinstri, hindrun_haegri = searching()
-    if hindrun_vinstri or hindrun_haegri:
-        m.stop()
-        m.rotate_by_CW(60)
-        time.sleep(1)
-    # elif hindrun_haegri:
-    #     m.stop()
-    #     m.rotate_by_CCW(60)
-    #     time.sleep(1)
-    else:
-        m.forwards(150)
+    while True:
+        hindrun_vinstri, hindrun_haegri = searching()
+        if hindrun_vinstri == 1:
+            m.stop()
+            m.rotate_by_CW(60)
+            time.sleep(1)
+        elif hindrun_haegri == 1:
+            m.stop()
+            m.rotate_by_CCW(60)
+            time.sleep(1)
+        else:
+            m.forwards(150)
