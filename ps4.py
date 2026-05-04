@@ -178,11 +178,11 @@ class MyController(SilencedPyPS4Controller):
     def on_R3_down(self, value):
         print(f'NIÐUR: {value}')
 
-    def on_R3_left(self, value):
-        print(f'VINSTRI: {value}')
+    # def on_R3_left(self, value):
+    #     print(f'VINSTRI: {value}')
 
-    def on_R3_right(self, value):
-        print(f'HÆGRI: {value}')
+    # def on_R3_right(self, value):
+    #     print(f'HÆGRI: {value}')
 
     def on_R3_y_at_rest(self):
         print(f'Y REST')
