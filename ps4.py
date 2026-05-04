@@ -178,7 +178,7 @@ class MyController(SilencedPyPS4Controller):
             
             speed = int(numpy.interp(abs(value), [8000, 32767], [0,255]))
             print(f'Áfram {speed}')
-            motor.forwards(speed)
+            # motor.forwards(speed)
         # elif value> -8000:
         #     motor.stop()
 
