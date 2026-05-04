@@ -29,19 +29,19 @@ def searching(): #Leitar af hindrun
     print(current_value1,current_value2)
 
     
-    if 0 < current_value1 <= 30 or 0 < current_value2 <= 30:
-        hindrun = True
+    if 0 < current_value1 <= 30:
+        hindrun_vinstri = True
     else:
-        hindrun = False
+        hindrun_vinstri = False
+    
+    if 0 < current_value2 <= 30:
+        hindrun_haegri = True
+    else:
+        hindrun_haegri = False
     
     time.sleep(0.1)  # Sleep for some
 
-    return hindrun
+    return hindrun_vinstri, hindrun_haegri
 
 
-try:
-    while True:
-        searching()
 
-except KeyboardInterrupt:
-    pass
