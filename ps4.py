@@ -223,9 +223,12 @@ class MyController(SilencedPyPS4Controller):
     def on_R3_release(self):
         print(f'SLEPPA')
 
+def keyrsla():
+    controller.listen()
+
 controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
 # you can start listening before controller is paired, as long as you pair it within the timeout window
-controll = threading.Thread(target=controller.listen())
+controll = threading.Thread(target=keyrsla)
 # controller.listen(timeout=60)
 controll.start()
 
