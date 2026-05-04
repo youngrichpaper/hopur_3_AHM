@@ -42,4 +42,5 @@ try:
     while True:
         searching()
 except KeyboardInterrupt:
+    pass
 
