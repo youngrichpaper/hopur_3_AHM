@@ -186,13 +186,11 @@ class MyController(SilencedPyPS4Controller):
             speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             print(f'Áfram {speed}')
             motor.forwards(speed)
-            time.sleep(0.01)
             stopped = False
 
         elif value> -2000 and not(stopped):
             print('Stopp')
             motor.stop()
-            time.sleep(0.01)
             stopped = True
         print(value)
 
@@ -203,14 +201,12 @@ class MyController(SilencedPyPS4Controller):
             speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             print(f'Afturábak {speed}')
             motor.backwards(speed)
-            time.sleep(0.01)
             going_forward =True
             stopped = False
 
         elif value< 2000 and not(stopped):
             print('Stopp')
             motor.stop()
-            time.sleep(0.01)
             stopped = True
         print(value)
     # def on_R3_left(self, value):
@@ -225,15 +221,15 @@ class MyController(SilencedPyPS4Controller):
     def on_R3_release(self):
         print(f'SLEPPA')
 
-# def keyrsla():
-#     controller.listen()
+def keyrsla():
+    controller.listen()
 
 controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
 # you can start listening before controller is paired, as long as you pair it within the timeout window
-# controll = threading.Thread(target=keyrsla)
-# # controller.listen(timeout=60)
-# controll.start()
-controller.listen()
+controll = threading.Thread(target=keyrsla)
+# controller.listen(timeout=60)
+controll.start()
+
 while True:
-    print('+++++++++++++++++++++++++++++++++++++++++++++++++')
-    time.sleep(5)
+    print('++++++++++++++++++++++++++++++++++++')
+    time.sleep(7)
