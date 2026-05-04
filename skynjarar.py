@@ -38,5 +38,5 @@ def searching(): #Leitar af hindrun
 
     return hindrun
 
-searching()
+
 
