@@ -18,10 +18,9 @@ try:
      skanna.start()
      auto.start()
 
-
-except KeyboardInterrupt:
      skanna.join()
      auto.join()
+except KeyboardInterrupt:
      m.stop()
     
 
