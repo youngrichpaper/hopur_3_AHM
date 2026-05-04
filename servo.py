@@ -16,14 +16,28 @@ def rotate_s2(degree=90):
 # time.sleep(4)
 # rotate_s2(90) #setja í 180 til að horfa til hliðar
 
+# try:
+#     while True:
+#         if rotate_s1(90) and rotate_s2(90):
+#             rotate_s1(20) 
+#             rotate_s2(160)
+#         if rotate_s1(20) and rotate_s2(160):
+#             rotate_s1(90) 
+#             rotate_s2(90)
+
+
+# except KeyboardInterrupt:
+#     pass
+
 try:
     while True:
-        if rotate_s1(90) and rotate_s2(90):
-            rotate_s1(20) 
-            rotate_s2(160)
-        if rotate_s1(20) and rotate_s2(160):
-            rotate_s1(90) 
-            rotate_s2(90)
+        rotate_s1(20)
+        rotate_s2(160)
+        time.sleep(0.5)
+        rotate_s1(90)
+        rotate_s2(90)
+        time.sleep(0.5)
+
 
 
 except KeyboardInterrupt:
