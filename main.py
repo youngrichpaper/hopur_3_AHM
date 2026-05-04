@@ -28,7 +28,8 @@ try:
              m.rotate_by_CW(60)
              time.sleep(1)
         
-        if hindrun_haegri:
+        if hindrun_haegri
+        :
              m.stop()
              m.rotate_by_CCW(60)
              time.sleep(1)
