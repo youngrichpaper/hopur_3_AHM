@@ -6,6 +6,10 @@ import skynjarar as s
 import servo as v
 from ps4 import MyController
 
+controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
+# you can start listening before controller is paired, as long as you pair it within the timeout window
+controller.listen(timeout=60)
+
 #m.forwards(50)
 #time.sleep(2)
 #m.stop()
@@ -28,42 +32,45 @@ from ps4 import MyController
 #intak = input('continue')
 
 
+if controller.on_R1_press:
+    try:
+        while True:
+            #Keyrsla með ps4
 
-try:
-    while True:
-        #Keyrsla með ps4
-        if 
-    #     #Skynjar hindranir
-    #      if s.searching():
-    #          m.stop()
-    #          time.sleep(1)
-    #          m.rotate_CCW(50)
-    #          time.sleep(2)
-    #          m.stop()
-    #      else:
-    #          m.forwards(100)
+            #Skynjar hindranir
+            if s.searching():
+                m.stop()
+                time.sleep(1)
+                m.rotate_CCW(50)
+                time.sleep(2)
+                m.stop()
+            else:
+                m.forwards(100)
+            
+            #Snúningur
+            # time.sleep(0.2)
+            #m.rotate_by_CW(180)
+            #time.sleep(1)
+            #m.rotate_by_CW(180)
+            #time.sleep(1)
+
+            #Servoar
+            #v.rotate_s1(180)
+            #v.rotate_s2(180)
+            #time.sleep(1)
+            #v.rotate_s1(0)
+            #v.rotate_s2(0)
+            #time.sleep(2)
+            #v.rotate_s1(90)
+            #v.rotate_s2(90)
+
+
+
+    except controller.on_L1_press:
         
-        #Snúningur
-        # time.sleep(0.2)
-        #m.rotate_by_CW(180)
-        #time.sleep(1)
-        #m.rotate_by_CW(180)
-        #time.sleep(1)
-
-        #Servoar
-        #v.rotate_s1(180)
-        #v.rotate_s2(180)
-        #time.sleep(1)
-        #v.rotate_s1(0)
-        #v.rotate_s2(0)
-        #time.sleep(2)
-        #v.rotate_s1(90)
-        #v.rotate_s2(90)
-
-
-
-except KeyboardInterrupt:
-    m.stop()
+    # except KeyboardInterrupt:
+    #     m.stop()
+    
 
 
 
