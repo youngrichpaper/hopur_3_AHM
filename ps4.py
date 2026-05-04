@@ -175,8 +175,9 @@ class MyController(SilencedPyPS4Controller):
 
     def on_L3_up(self, value):
         if value< -8000:
-            print(f'Áfram {value}')
-            # speed = numpy.interp(abs(value), [8000, 37], [0,100])
+            
+            speed = numpy.interp(abs(value), [8000, 37676], [0,100])
+            print(f'Áfram {speed}')
             # motor.forwards(speed)
         if value> -8000:
             print(f'(stopp {value})')
