@@ -1,6 +1,7 @@
 from pyPS4Controller.controller import Controller
 import motor
 import numpy
+import time
 
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
@@ -181,6 +182,7 @@ class MyController(SilencedPyPS4Controller):
         # elif value> -8000:
         #     print('Stopp')
         #     motor.stop()
+        time.sleep(0.1)
 
     def on_L3_down(self, value):
         print(f'NIÐUR: {value}')
