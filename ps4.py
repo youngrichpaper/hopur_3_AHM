@@ -226,6 +226,7 @@ class MyController(SilencedPyPS4Controller):
                 curve = 0
                 direction = 0
                 turning_left = False
+        curve =1- (x_speed/255)
         print(value, curve)
 
     def on_L3_right(self, value):
