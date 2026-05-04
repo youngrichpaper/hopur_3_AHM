@@ -15,10 +15,14 @@ def searching(): #Leitar af hindrun
     high1 = i2c_bus.read_byte_data(i2c_address1, 2)  # Read the high byte of the value
     #print(high) # print the value of High byte
     
+    time.sleep(0.01)
+
     low1 = i2c_bus.read_byte_data(i2c_address1, 3)  # Read the low byte of the value
     #print(low) # print the value of low byte
     current_value1 = high1 * 256 + low1
     i2c_bus.write_byte_data(i2c_address2, 0, 0x51)
+
+    time.sleep(0.01)
 
     high2 = i2c_bus.read_byte_data(i2c_address2, 2)
     
