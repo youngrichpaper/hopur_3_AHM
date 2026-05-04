@@ -8,7 +8,7 @@ stopped = False
 going_forward = False
 going_backwards = False
 turning_right = False
-
+speed = 0
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
@@ -198,11 +198,13 @@ class MyController(SilencedPyPS4Controller):
 
     def on_L3_down(self, value):
         global stopped
+        global speed
         if value> 8000:
             speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             print(f'Afturábak {speed}')
             motor.backwards(speed)
             time.sleep(0.01)
+            going_forward =True
             stopped = False
 
         elif value< 2000 and not(stopped):
@@ -223,15 +225,15 @@ class MyController(SilencedPyPS4Controller):
     def on_R3_release(self):
         print(f'SLEPPA')
 
-def keyrsla():
-    controller.listen()
+# def keyrsla():
+#     controller.listen()
 
 controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
 # you can start listening before controller is paired, as long as you pair it within the timeout window
-controll = threading.Thread(target=keyrsla)
-# controller.listen(timeout=60)
-controll.start()
-
+# controll = threading.Thread(target=keyrsla)
+# # controller.listen(timeout=60)
+# controll.start()
+controller.listen()
 while True:
-    print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+    print('+++++++++++++++++++++++++++++++++++++++++++++++++')
     time.sleep(5)

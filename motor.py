@@ -11,6 +11,7 @@ def forwards(speed):
     else:
         data = [speed  , 0, int(speed*0.9), 1]
     bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
+    time.sleep(0.01)
 
 def backwards(speed):
     if speed > 255 or speed<0:
@@ -18,10 +19,12 @@ def backwards(speed):
     else:
         data = [speed, 1, int(speed*0.86), 0]
     bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
+    time.sleep(0.01)
 
 def stop():
     data = [0, 0, 0, 0]
     bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
+    time.sleep(0.01)
 
 def rotate_CW(speed):
     if speed > 255 or speed<0:
@@ -29,14 +32,15 @@ def rotate_CW(speed):
     else:
         data = [speed, 0, int(speed*0.86), 0]
     bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
-
+    time.sleep(0.01)
 def rotate_CCW(speed):
     if speed > 255 or speed<0:
         print('Invalid speed')
     else:
         data = [speed, 1, int(speed*0.86), 1]
     bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
-
+    time.sleep(0.01)
+    
 def rotate_by_CW(theta, v=100):
     pi = 3.141592
     x = 0.123
