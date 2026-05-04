@@ -6,25 +6,24 @@ from adafruit_servokit import ServoKit
 kit = ServoKit(channels=8)
 
 
-def testservo_1(): 
-    kit.servo[0].angle = 180
-    time.sleep(3)
-    kit.servo[1].angle = 180
-    time.sleep(5)
-    kit.servo[1].angle = 0
-    time.sleep(5)
-    kit.servo[1].angle = 0
-
 def rotate_s1(degree=90):
     kit.servo[0].angle = degree
 
 def rotate_s2(degree=90):
     kit.servo[1].angle = degree
 
-rotate_s1(90)
-time.sleep(4)
-rotate_s2(90)
+# rotate_s1(90) #setja í 0 til að horfa til hliðar
+# time.sleep(4)
+# rotate_s2(90) #setja í 180 til að horfa til hliðar
 
+try:
+    while True:
+        rotate_s1(20) 
+        rotate_s2(160)
+        time.sleep(0.5)
+        rotate_s1(90) 
+        rotate_s2(90)
 
-
+except KeyboardInterrupt:
+    pass
 
