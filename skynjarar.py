@@ -38,5 +38,8 @@ def searching(): #Leitar af hindrun
 
     return hindrun
 
-searching()
+try:
+    while True:
+        searching()
+except KeyboardInterrupt:
 
