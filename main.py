@@ -11,32 +11,32 @@ import servo as v
 # controller.listen(timeout=60)
 
 try:
-    while True:
-        hindrun_vinstri, hindrun_haegri = s.searching()
-        m.forwards(150)
-        # #Skynjar hindranir
-        # if s.searching():
-        #     m.stop()
-        #     time.sleep(1)
-        #     m.rotate_CCW(50)
-        #     time.sleep(2)
-        #     m.stop()
-        # else:
-        #     m.forwards(100)
-        if hindrun_vinstri:
-             m.stop()
-             m.rotate_by_CW(60)
-             time.sleep(1)
-        
-        if hindrun_haegri:
-             m.stop()
-             m.rotate_by_CCW(60)
-             time.sleep(1)
-             
-        
+     while True:
+          hindrun_vinstri, hindrun_haegri = s.searching()
+          # #Skynjar hindranir
+          # if s.searching():
+          #     m.stop()
+          #     time.sleep(1)
+          #     m.rotate_CCW(50)
+          #     time.sleep(2)
+          #     m.stop()
+          # else:
+          #     m.forwards(100)
+          if hindrun_vinstri:
+               m.stop()
+               m.rotate_by_CW(60)
+               time.sleep(1)
+          elif hindrun_haegri:
+               m.stop()
+               m.rotate_by_CCW(60)
+               time.sleep(1)
+          else:
+               m.forwards(150)
+
+          
     
 except KeyboardInterrupt:
-        m.stop()
+     m.stop()
     
 
 
