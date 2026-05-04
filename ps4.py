@@ -3,6 +3,7 @@ import motor
 import numpy
 import time
 
+stopped = False
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
@@ -175,7 +176,7 @@ class MyController(SilencedPyPS4Controller):
         print('STOP!!!!!')
 
     def on_L3_up(self, value):
-        stopped = True
+        global stopped
         if value< -8000:
             speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             print(f'Áfram {speed}')
