@@ -189,6 +189,7 @@ class MyController(SilencedPyPS4Controller):
             motor.stop()
             time.sleep(0.01)
             stopped = True
+        print(value)
 
     def on_L3_down(self, value):
         global stopped
