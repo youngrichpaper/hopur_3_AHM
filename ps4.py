@@ -207,9 +207,19 @@ class MyController(SilencedPyPS4Controller):
         elif value< 2000 and not(stopped):
             print('Stopp')
             stopped = True
-    # def on_R3_left(self, value):
-    #     print(f'VINSTRI: {value}')
 
+    # def on_R3_left(self, value):
+    #     global stopped, turning_right, x_speed
+    #     if value< -8000:
+    #         y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
+    #         print(f'Áfram {y_speed}')
+    #         going_forward = True
+    #         stopped = False
+
+    #     elif value> -2000 and not(stopped):
+    #         print('Stopp')
+    #         motor.stop()
+    #         stopped = True
     # def on_R3_right(self, value):
     #     print(f'HÆGRI: {value}')
 
@@ -232,13 +242,13 @@ while True:
     if going_forward:
         motor.forwards(y_speed)
     elif going_backwards:
-        motor.backwards(speed)
+        motor.backwards(y_speed)
     elif turning_right:
-        motor.rotate_CCW(speed)
+        motor.rotate_CCW(x_speed)
     elif turning_left:
-        motor.rotate_CCW(speed)
+        motor.rotate_CCW(x_speed)
     elif turning_right and going_forward:
-        motor.turn(speed, curve, True)
+        motor.turn(y_speed, curve, True)
     elif turning_left and going_forward:
-        motor.turn(speed, curve, False)
+        motor.turn(y_speed, curve, False)
     
