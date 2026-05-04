@@ -50,11 +50,14 @@ def skynja():
         hindrun_vinstri, hindrun_haegri = searching()
         if hindrun_vinstri == 1:
             m.stop()
+            time.sleep(0.01)
             m.rotate_by_CW(60)
             time.sleep(1)
         elif hindrun_haegri == 1:
             m.stop()
+            time.sleep(0.01)
             m.rotate_by_CCW(60)
             time.sleep(1)
         else:
             m.forwards(150)
+            time.sleep(0.01)
