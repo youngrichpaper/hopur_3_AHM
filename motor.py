@@ -4,20 +4,31 @@ import time
 I2C_ADDRESS = 0x50
 bus = smbus.SMBus(1)
 
-def forwards(speed):
+def forwards(speed, curve = 0, direction = 0):
+    if direction == 0:
+        if speed > 255 or speed<0:
+            print('Invalid speed')
+        else:
+            data = [speed  , 0, int(speed*0.9), 1]
+    elif direction == 1:
+        data = [speed, 0, int(speed*curve),1]
+    elif direction == 2:
+        data = [int(speed*curve), 0, speed, 1]
     
-    if speed > 255 or speed<0:
-        print('Invalid speed')
-    else:
-        data = [speed  , 0, int(speed*0.9), 1]
     bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
     time.sleep(0.01)
 
-def backwards(speed):
-    if speed > 255 or speed<0:
-        print('Invalid speed')
-    else:
-        data = [speed, 1, int(speed*0.86), 0]
+def backwards(speed, curve = 0, direction = 0):
+    if direction == 0:
+        if speed > 255 or speed<0:
+            print('Invalid speed')
+        else:
+            data = [speed  , 1, int(speed*0.9), 0]
+    elif direction == 1:
+        data = [speed, 1, int(speed*curve),0]
+    elif direction == 2:
+        data = [int(speed*curve), 1, speed, 0]
+
     bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
     time.sleep(0.01)
 

@@ -12,6 +12,7 @@ turning_left = False
 y_speed = 0
 x_speed = 0
 curve = 0
+direction = 0
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
@@ -188,12 +189,14 @@ class MyController(SilencedPyPS4Controller):
         if value< -8000:
             y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             print(f'Áfram {y_speed}')
+            motor.forwards(y_speed, curve, direction)
             going_forward = True
             stopped = False
 
         elif value> -2000 and not(stopped):
             print('Stopp')
             motor.stop()
+            going_forward = False
             stopped = True
 
     def on_L3_down(self, value):
@@ -201,27 +204,38 @@ class MyController(SilencedPyPS4Controller):
         if value> 8000:
             y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             print(f'Afturábak {y_speed}')
-            going_forward =True
+            motor.backwards(y_speed, curve, direction)
+            going_backwards =True
             stopped = False
 
         elif value< 2000 and not(stopped):
             print('Stopp')
+            going_backwards = False
             stopped = True
 
-    # def on_R3_left(self, value):
-    #     global stopped, turning_right, x_speed
-    #     if value< -8000:
-    #         y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
-    #         print(f'Áfram {y_speed}')
-    #         going_forward = True
-    #         stopped = False
+    def on_L3_left(self, value):
+        global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction
+        if going_forward:
+            if value< -8000:
+                x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
+                curve =x_speed/255
+                turning_left = True
+                direction = 2
 
-    #     elif value> -2000 and not(stopped):
-    #         print('Stopp')
-    #         motor.stop()
-    #         stopped = True
-    # def on_R3_right(self, value):
-    #     print(f'HÆGRI: {value}')
+            elif value> -2000 and not(stopped):
+                turning_left = False
+
+    def on_L3_right(self, value):
+        global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction
+        if going_forward:
+            if value< -8000:
+                x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
+                curve =x_speed/255
+                turning_right = True
+                direction = 2
+
+            elif value> -2000 and not(stopped):
+                turning_right = False
 
     def on_R3_press(self):
         print(f'ÝTA')
@@ -239,18 +253,4 @@ controll = threading.Thread(target=keyrsla)
 controll.start()
 
 while True:
-    if going_forward:
-        motor.forwards(y_speed)
-    elif going_backwards:
-        motor.backwards(y_speed)
-    elif turning_right:
-        motor.rotate_CCW(x_speed)
-    elif turning_left:
-        motor.rotate_CCW(x_speed)
-    elif turning_right and going_forward:
-        motor.turn(y_speed, curve, True)
-    elif turning_left and going_forward:
-        motor.turn(y_speed, curve, False)
-    elif stopped:
-        motor.stop()
-    
+    pass
