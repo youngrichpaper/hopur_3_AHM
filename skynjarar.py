@@ -1,6 +1,7 @@
 #skynjarar
 
 import smbus
+import motor as m
 import time
 
 i2c_bus = smbus.SMBus(1)
@@ -44,4 +45,15 @@ def searching(): #Leitar af hindrun
     return hindrun_vinstri, hindrun_haegri
 
 
-
+def skynja():
+    hindrun_vinstri, hindrun_haegri = searching()
+    if hindrun_vinstri:
+        m.stop()
+        m.rotate_by_CW(60)
+        time.sleep(1)
+    elif hindrun_haegri:
+        m.stop()
+        m.rotate_by_CCW(60)
+        time.sleep(1)
+    else:
+        m.forwards(150)
