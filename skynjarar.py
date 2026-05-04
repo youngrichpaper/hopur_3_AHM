@@ -30,12 +30,12 @@ def searching(): #Leitar af hindrun
     print(current_value1,current_value2)
 
     
-    if 0 < current_value1 <= 30:
+    if 0 < current_value1 <= 40:
         hindrun_vinstri = True
     else:
         hindrun_vinstri = False
     
-    if 0 < current_value2 <= 30:
+    if 0 < current_value2 <= 40:
         hindrun_haegri = True
     else:
         hindrun_haegri = False
