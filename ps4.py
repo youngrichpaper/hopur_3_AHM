@@ -227,6 +227,7 @@ class MyController(SilencedPyPS4Controller):
                 direction = 0
                 turning_left = False
         print(value)
+        print(curve)
 
     def on_L3_right(self, value):
         global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction
@@ -235,7 +236,7 @@ class MyController(SilencedPyPS4Controller):
                 x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
                 curve =x_speed/255
                 turning_right = True
-                direction = 2
+                direction = 1
 
             elif value< 2000 and not(stopped):
                 curve = 0
