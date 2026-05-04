@@ -12,18 +12,18 @@ def rotate_s1(degree=90):
 def rotate_s2(degree=90):
     kit.servo[1].angle = degree
 
-rotate_s1(90) #setja í 0 til að horfa til hliðar
-time.sleep(4)
-rotate_s2(90) #setja í 180 til að horfa til hliðar
+# rotate_s1(90) #setja í 0 til að horfa til hliðar
+# time.sleep(4)
+# rotate_s2(90) #setja í 180 til að horfa til hliðar
 
-# try:
-#     while True:
-#         rotate_s1(20) 
-#         rotate_s2(160)
-#         time.sleep(0.5)
-#         rotate_s1(90) 
-#         rotate_s2(90)
+try:
+    while True:
+        rotate_s1(20) 
+        rotate_s2(160)
+        time.sleep(1)
+        rotate_s1(90) 
+        rotate_s2(90)
 
-# except KeyboardInterrupt:
-#     pass
+except KeyboardInterrupt:
+    pass
 
