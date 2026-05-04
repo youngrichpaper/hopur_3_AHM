@@ -1,5 +1,6 @@
 from pyPS4Controller.controller import Controller
 import motor
+import numpy
 
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
@@ -173,7 +174,11 @@ class MyController(SilencedPyPS4Controller):
         print('STOP!!!!!')
 
     def on_L3_up(self, value):
-        print(f'UPP: {value}')
+        if value< -8000:
+            speed = numpy.interp(abs(value), [8000, 37], [0,100])
+            motor.forwards(speed)
+        if value> -8000:
+            motor.stop()
 
     def on_L3_down(self, value):
         print(f'NIÐUR: {value}')
