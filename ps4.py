@@ -184,6 +184,7 @@ class MyController(SilencedPyPS4Controller):
         elif value> -8000:
             print('Stopp')
             motor.stop()
+            time.sleep(0.01)
 
     def on_L3_down(self, value):
         print(f'NIÐUR: {value}')
