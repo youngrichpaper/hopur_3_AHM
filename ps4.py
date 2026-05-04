@@ -204,11 +204,12 @@ class MyController(SilencedPyPS4Controller):
             motor.stop()
             time.sleep(0.01)
             stopped = True
-    # def on_R3_left(self, value):
-    #     print(f'VINSTRI: {value}')
+        print(value)
+    def on_R3_left(self, value):
+        print(f'VINSTRI: {value}')
 
-    # def on_R3_right(self, value):
-    #     print(f'HÆGRI: {value}')
+    def on_R3_right(self, value):
+        print(f'HÆGRI: {value}')
 
     def on_R3_press(self):
         print(f'ÝTA')
