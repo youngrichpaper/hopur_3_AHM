@@ -181,7 +181,7 @@ class MyController(SilencedPyPS4Controller):
             motor.forwards(speed)
             time.sleep(0.01)
 
-        elif value> -8000:
+        elif value> -500:
             print('Stopp')
             motor.stop()
             time.sleep(0.01)
