@@ -29,15 +29,13 @@ def rotate_s2(degree=90):
 # except KeyboardInterrupt:
 #     pass
 
-# try:
-#     while True:
-#         rotate_s1(90)
-#         rotate_s2(90)
-#         time.sleep(0.5)
-#         rotate_s1(20)
-#         rotate_s2(160)
-#         time.sleep(0.5)
+def servo_rotate():
+    rotate_s1(90)
+    rotate_s2(90)
+    time.sleep(0.5)
+    rotate_s1(20)
+    rotate_s2(160)
+    time.sleep(0.5)
 
-# except KeyboardInterrupt:
-#     pass
+
 
