@@ -3,6 +3,7 @@
 import smbus
 import motor as m
 import time
+import speaker as s
 
 i2c_bus = smbus.SMBus(1)
 i2c_address1 = 0x71
@@ -15,7 +16,7 @@ def searching(): #Leitar af hindrun
     i2c_bus.write_byte_data(i2c_address2, 0, 0x51)  # Tell sensor to scan in mm
 
     time.sleep(0.1)
-    
+
     high1 = i2c_bus.read_byte_data(i2c_address1, 2)  # Read the high byte of the value
     #print(high) # print the value of High byte
     low1 = i2c_bus.read_byte_data(i2c_address1, 3)  # Read the low byte of the value
@@ -60,4 +61,5 @@ def skynja():
             time.sleep(0.1)
         else:
             m.forwards(150)
+            s.baby()
             time.sleep(0.1)
