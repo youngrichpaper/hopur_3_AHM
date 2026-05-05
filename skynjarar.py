@@ -10,7 +10,7 @@ i2c_bus = smbus.SMBus(1)
 
 i2c_address1 = 0x71
 i2c_address2 = 0x70
-i2c_address3 = 0x73
+i2c_address3 = 0x72
 
 
 def searching(): #Leitar af hindrun
