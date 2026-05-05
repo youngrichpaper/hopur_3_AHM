@@ -33,7 +33,7 @@ def searching(): #Leitar af hindrun
 
     high3 = i2c_bus.read_byte_data(i2c_address3, 2)
     low3 = i2c_bus.read_byte_data(i2c_address3, 3)
-    current_value3 = high3 * 256 * low1
+    current_value3 = high3 * 256 * low3
 
     print(current_value1,current_value2, current_value3)
 
@@ -57,18 +57,18 @@ def searching(): #Leitar af hindrun
     
     time.sleep(0.1)  # Sleep for some
 
-    return hindrun_vinstri, hindrun_midja, hindrun_haegri
+    return hindrun_vinstri, hindrun_midja, hindrun_haegri, current_value1, current_value2, current_value3
 
 
 def skynja():
     while True:
-        hindrun_vinstri, hindrun_midja, hindrun_haegri = searching()
+        hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri = searching()
         time.sleep(0.1)
         if hindrun_midja == 1:
             m.stop()
             time.sleep(0.01)
-            e.not_important
-            if hindrun_vinstri <= hindrun_haegri:
+            e.not_important()
+            if vinstri <= haegri:
                 m.rotate_by_CW(60)
             else:
                 m.rotate_by_CCW(60)
