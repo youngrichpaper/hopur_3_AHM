@@ -278,7 +278,7 @@ class MyController(SilencedPyPS4Controller):
         # print(value, x_speed)
 
     def on_L3_right(self, value):
-        global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction, turning turning_left
+        global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction, turning, turning_left
         # if going_forward:
         if value> 2000:
             x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
