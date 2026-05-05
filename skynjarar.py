@@ -10,12 +10,14 @@ i2c_bus = smbus.SMBus(1)
 
 i2c_address1 = 0x71
 i2c_address2 = 0x70
+i2c_address3 = 0x73
 
 
 def searching(): #Leitar af hindrun
 
     i2c_bus.write_byte_data(i2c_address1, 0, 0x51)
     i2c_bus.write_byte_data(i2c_address2, 0, 0x51)  # Tell sensor to scan in mm
+    i2c_bus.write_byte_data(i2c_address3, 0, 0x51)
 
     time.sleep(0.1)
 
@@ -29,7 +31,11 @@ def searching(): #Leitar af hindrun
     low2 = i2c_bus.read_byte_data(i2c_address2, 3)
     current_value2 = high2 * 256 + low2 
 
-    print(current_value1,current_value2)
+    high3 = i2c_bus.read_byte_data(i2c_address3, 2)
+    low3 = i2c_bus.read_byte_data(i2c_address3, 3)
+    current_value3 = high3 * 256 * low1
+
+    print(current_value1,current_value2, current_value3)
 
     if 400 < current_value1 < 500 and 400 < current_value2 < 500:
         e.baby()
