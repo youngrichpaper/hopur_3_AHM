@@ -80,6 +80,17 @@ def turn(speed, curve, right):
         data = [speed2, 0, speed1, 1]
 
 
+def drive(y_speed, x_speed):
+    curve = 1 - abs(x_speed)/250
+    if x_speed<0: turn = 2
+    elif x_speed>0: turn = 1
+    else: turn = 0
+    if y_speed>0:
+        forwards(y_speed, curve, turn)
+    elif y_speed<0:
+        backwards(abs(y_speed), curve, turn)
+    
+
 def dance():
     for i in range(1,11):
         speed = i*20

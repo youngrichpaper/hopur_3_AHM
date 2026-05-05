@@ -244,7 +244,7 @@ class MyController(SilencedPyPS4Controller):
     def on_L3_down(self, value):
         global stopped, going_backwards, y_speed, direction
         if value> 4000:
-            y_speed = int(numpy.interp(abs(value), [8000, 32767], [0,250]))
+            y_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,250]))
             direction = 2
             # print(f'Afturábak {y_speed}')
             # motor.backwards(y_speed, curve, direction)
@@ -264,12 +264,12 @@ class MyController(SilencedPyPS4Controller):
         global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction, turning, turning_right, turn
         # if going_forward:
         if value< -2000:
-            x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,250]))
+            x_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,250]))
             curve =1- (x_speed/255)
             turning_left = True
             turning = True
             turning_right = False
-            turn = 1
+            turn = 2
             # direction = 2
 
         elif value> -2000 and turning:
@@ -291,7 +291,7 @@ class MyController(SilencedPyPS4Controller):
             turning_right = True
             turning = True
             turning_left =False
-            turn = 2
+            turn = 1
             # direction = 1
 
         elif value< 2000 and turning:
@@ -319,15 +319,4 @@ controll = threading.Thread(target=keyrsla, daemon=True)
 controll.start()
 
 while True:
-    print(y_speed,x_speed, end='')
-    if direction == 1: 
-        
-        motor.forwards(y_speed,curve, turn)
-    elif direction == 2:
-        motor.backwards(y_speed,curve, turn)
-    else:
-        motor.stop()
-    if turning_left: print('Vinstri', end='')
-    if turning_right: print('Hægri', end='')
-    print('')
-    time.sleep(0.1)
+    motor.drive(y_speed, x_speed)
