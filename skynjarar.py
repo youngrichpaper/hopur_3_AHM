@@ -57,7 +57,7 @@ def searching(): #Leitar af hindrun
     
     time.sleep(0.1)  # Sleep for some
 
-    return hindrun_vinstri, hindrun_midja, hindrun_haegri, current_value1, current_value2, current_value3
+    return hindrun_vinstri, hindrun_midja, hindrun_haegri, current_value1, current_value3
 
 
 def skynja():
