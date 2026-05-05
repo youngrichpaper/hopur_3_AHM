@@ -3,7 +3,7 @@
 import smbus
 import motor as m
 import time
-import speaker as s
+import speaker as e
 
 
 i2c_bus = smbus.SMBus(1)
@@ -30,6 +30,8 @@ def searching(): #Leitar af hindrun
 
     print(current_value1,current_value2)
 
+    if 400 < current_value1 < 500 and 400 < current_value2 < 500:
+        e.baby()
     
     if 0 < current_value1 <= 30:
         hindrun_vinstri = 1
@@ -53,14 +55,16 @@ def skynja():
         if hindrun_vinstri == 1:
             m.stop()
             time.sleep(0.01)
+            e.not_important()
             m.rotate_by_CW(60)
             time.sleep(0.1)
         elif hindrun_haegri == 1:
             m.stop()
             time.sleep(0.01)
+            e.not_important()
             m.rotate_by_CCW(60)
             time.sleep(0.1)
         else:
-            m.forwards(150)
+            m.forwards(200)
             time.sleep(0.1)
 

@@ -6,6 +6,7 @@ import os
 import motor as m
 import skynjarar as s
 import servo as v
+import speaker as e
 # from ps4 import MyController
 
 # controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
@@ -30,14 +31,7 @@ except KeyboardInterrupt:
      m.stop()
 ########################################
 
-# try:
-#     if os.path.exists("ussr_anthem.mp3"):
-#         os.system("mpg123 ussr_anthem.mp3")
-#     else:
-#         print("Finn ekki lag.mp3 í þessari möppu")
 
-# except KeyboardInterrupt:
-#     print("Stoppað")
 
 
 
