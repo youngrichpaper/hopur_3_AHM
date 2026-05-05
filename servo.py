@@ -40,3 +40,4 @@ def servo_rotate():
 
 
 
+rotate_s2()
