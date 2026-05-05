@@ -17,10 +17,11 @@ skanna = threading.Thread(target=v.servo_rotate, daemon=True)
 auto = threading.Thread(target=s.skynja, daemon=True)
 
 
-##################################
+#--------------------------------------------
+#Autonomous keyrsla
 try:
 
-     #skanna.start()
+     #skanna.start() #Fyrir servo (hreyfing)
      auto.start()
 
      #skanna.join()
@@ -29,7 +30,7 @@ try:
 except KeyboardInterrupt:
      print('Stoppar keyrslu')
      m.stop()
-########################################
+#--------------------------------------------
 
 
 
