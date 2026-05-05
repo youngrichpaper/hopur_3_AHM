@@ -303,5 +303,10 @@ controll = threading.Thread(target=keyrsla, daemon=True)
 controll.start()
 
 while True:
-    print(y_speed,x_speed)
+    print(y_speed,x_speed, end='')
+    if going_forward: print('Áfram', end='')
+    if going_backwards: print('Bakka', end='')
+    if turning_left: print('Vinstri', end='')
+    if turning_right: print('Hægri', end='')
+    print('')
     time.sleep(0.1)
