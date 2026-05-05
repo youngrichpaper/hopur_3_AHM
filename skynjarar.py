@@ -35,7 +35,7 @@ def searching(): #Leitar af hindrun
     low3 = i2c_bus.read_byte_data(i2c_address3, 3)
     current_value3 = high3 * 256 + low3
 
-    print('Vinstri:',current_value1,'Hægri:'current_value2,'Vinstri', current_value3)
+    print('Vinstri:',current_value1,'Hægri:',current_value2,'Vinstri', current_value3)
 
     if 400 < current_value1 < 500 and 400 < current_value2 < 500:
         e.baby()
