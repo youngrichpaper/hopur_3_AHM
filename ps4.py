@@ -275,23 +275,24 @@ class MyController(SilencedPyPS4Controller):
 
     def on_R2_press(self, value):
         global y_speed, driving, going_backwards, going_forward
-        if value > -27000 and not(going_backwards):
+        if value > -25000 and not(going_backwards):
             y_speed = int(numpy.interp(value, [-27000, 32767], [0,250]))
             going_forward = True
         else: 
             y_speed = 0
             going_forward = False
-            
+        time.sleep(0.001)    
 
     def on_L2_press(self, value):
         global y_speed, driving, going_backwards, going_forward
-        if value > -27000 and not(going_forward):
+        if value > -25000 and not(going_forward):
             y_speed = -int(numpy.interp(value, [-27000, 32767], [0,250]))
             going_backwards = True
             print('HALLÓ??? BAKKA!!!!!')
-        else: 
+        else:
             y_speed = 0
             going_backwards = False
+        time.sleep(0.001)
 def keyrsla():
     controller.listen()
 
@@ -303,3 +304,4 @@ controll.start()
 
 while True:
     motor.drive(y_speed, x_speed)
+    print(f'Hraði: {y_speed}, Áfram? {going_forward}, Afturábak? {going_backwards}')
