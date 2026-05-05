@@ -42,10 +42,8 @@ def test():
     print(getJS())
     time.sleep(0.5)
 
-stopped = False
 going_forward = False
 going_backwards = False
-turning_right = False
 turning_left = False
 y_speed = 0
 x_speed = 0
@@ -55,8 +53,7 @@ turn = 0
 turning = False
 driving= False
 
-auto_mode = False
-stop_program = False
+
 
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
@@ -249,13 +246,12 @@ class MyController(SilencedPyPS4Controller):
 
     
     def on_L3_left(self, value):
-        global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction, turning, turning_right, turn
+        global turning_left, y_speed, x_speed, curve, direction, turning, turn
         if value< -2000:
             x_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,255]))
             curve =1- (x_speed/255)
             turning_left = True
             turning = True
-            turning_right = False
             turn = 2
             # direction = 2
 
@@ -269,12 +265,10 @@ class MyController(SilencedPyPS4Controller):
         # print(value, x_speed)
 
     def on_L3_right(self, value):
-        global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction, turning, turning_left, turn
-        # if going_forward:
+        global y_speed, x_speed, curve, direction, turning, turning_left, turn
         if value> 2000:
             x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,255]))
             curve =1 - (x_speed/255)
-            turning_right = True
             turning = True
             # direction = 1
 
@@ -282,7 +276,6 @@ class MyController(SilencedPyPS4Controller):
             curve = 0
             x_speed = 0
             # direction = 0
-            turning_right = False
             turning = False
             turn = 0
         # print(value, x_speed)
@@ -310,15 +303,13 @@ class MyController(SilencedPyPS4Controller):
         if going_backwards:
             y_speed = 0
             going_backwards = False
-def keyrsla():
-    controller.listen()
 
-controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
-# you can start listening before controller is paired, as long as you pair it within the timeout window
-controll = threading.Thread(target=keyrsla, daemon=True)
-# controller.listen(timeout=60)
-controll.start()
+# controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
+# # you can start listening before controller is paired, as long as you pair it within the timeout window
+# controll = threading.Thread(target=keyrsla, daemon=True)
+# # controller.listen(timeout=60)
+# controll.start()
 
-while True:
-    motor.drive(y_speed, x_speed)
-    print(f'Hraði: {y_speed}, Áfram? {going_forward}, Afturábak? {going_backwards}')
+# while True:
+#     motor.drive(y_speed, x_speed)
+#     print(f'Hraði: {y_speed}, Áfram? {going_forward}, Afturábak? {going_backwards}')
