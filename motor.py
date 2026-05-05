@@ -93,7 +93,7 @@ def drive(y_speed, x_speed):
         print(f'Áfram {y_speed}, beygja {curve}, í {turn}')
     else: 
         stop()
-        print('stopp')
+        # print('stopp')
     
 
 def dance():
