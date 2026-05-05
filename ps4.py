@@ -191,7 +191,7 @@ class SilencedPyPS4Controller(Controller):
 
 class MyController(SilencedPyPS4Controller):
 
-    def __init__(self, **kwargs):
+    def __init__(self, auto_event, **kwargs):
         Controller.__init__(self, **kwargs)
         self.auto_event = auto_event
 
