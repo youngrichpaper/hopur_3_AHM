@@ -16,28 +16,28 @@ skanna = threading.Thread(target=v.servo_rotate, daemon=True)
 auto = threading.Thread(target=s.skynja, daemon=True)
 
 
-##################################
-try:
-
-     skanna.start()
-     auto.start()
-
-     skanna.join()
-     auto.join()
-
-except KeyboardInterrupt:
-     print('Stoppar keyrslu')
-     m.stop()
-########################################
-
+# ##################################
 # try:
-#     if os.path.exists("ussr_anthem.mp3"):
-#         os.system("mpg123 ussr_anthem.mp3")
-#     else:
-#         print("Finn ekki lag.mp3 í þessari möppu")
+
+#      skanna.start()
+#      auto.start()
+
+#      skanna.join()
+#      auto.join()
 
 # except KeyboardInterrupt:
-#     print("Stoppað")
+#      print('Stoppar keyrslu')
+#      m.stop()
+# ########################################
+
+try:
+    if os.path.exists("ussr_anthem.mp3"):
+        os.system("mpg123 ussr_anthem.mp3")
+    else:
+        print("Finn ekki lag.mp3 í þessari möppu")
+
+except KeyboardInterrupt:
+    print("Stoppað")
 
 
 
