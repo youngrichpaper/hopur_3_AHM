@@ -223,7 +223,12 @@ class MyController(SilencedPyPS4Controller):
     def on_circle_press(self):
         motor.stop()
         print('STOP!!!!!')
+
+    def on_x_press(self):
+        return True
     
+    def on_circle_release(self):
+        return True
     
     def on_L3_left(self, value):
         global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction, turning, turning_right, turn

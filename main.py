@@ -15,23 +15,27 @@ from ps4 import MyController
 
 # skanna = threading.Thread(target=v.servo_rotate, daemon=True)
 
-auto_event = threading.Event()
+x_press = MyController.on_x_press
+c_press = MyController.on_circle_press
 
-auto = threading.Thread(target=s.skynja, args=(auto_event,), daemon=True)
+auto = threading.Thread(target=s.skynja, daemon=True)
 
-controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False, auto_event=auto_event)
 
 #--------------------------------------------
 #Autonomous keyrsla
 try:
+     while True:
+          if x_press:
+               #skanna.start() #Fyrir servo (hreyfing)
+               auto.start()
 
-     #skanna.start() #Fyrir servo (hreyfing)
-     auto.start()
+               #skanna.join()
+               auto.join()
+          if c_press:
+               x_press = False
+          
 
-     #skanna.join()
-     #auto.join()
-
-     controller.listen(timeout=60)
+         
 
 except KeyboardInterrupt:
      print('Stoppar keyrslu')
