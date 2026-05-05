@@ -30,7 +30,7 @@ def getJS(name=''):
                     if event.button == x:buttons[key]=0
     buttons['axis1'],buttons['axis2'],buttons['axis3'],buttons['axis4'] = [axiss[0],axiss[1],axiss[3],axiss[4]]
     if name == '':
-        return
+        return buttons
     else:
         return buttons[name]
 
