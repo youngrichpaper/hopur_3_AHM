@@ -13,7 +13,7 @@ buttons = {'x':0, 'o':0, 't':0, 's':0,
            'share':0, 'options':0,
            'axis1':0., 'axis2':0., 'axis3':0., 'axis4':0.,
            'axis5':0., 'axis6':0., 'axis7':0., 'axis8':0.}
-axiss = [0., 0., 0., 0., 0., 0.,0.,0.]
+axiss = [0., 0., 0., 0., 0., 0., 0., 0.]
 
 def getJS(name=''):
 
