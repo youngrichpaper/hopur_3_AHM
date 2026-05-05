@@ -15,7 +15,7 @@ import speaker as e
 
 skanna = threading.Thread(target=v.servo_rotate, daemon=True)
 auto = threading.Thread(target=s.skynja, daemon=True)
-# sound = threading.Thread(target=e.baby, daemon=True)
+
 
 ##################################
 try:
