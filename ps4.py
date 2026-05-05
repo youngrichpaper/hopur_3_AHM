@@ -221,33 +221,41 @@ class MyController(SilencedPyPS4Controller):
         print('STOP!!!!!')
 
     def on_L3_up(self, value):
-        global stopped, going_forward, y_speed
+        global stopped, going_forward, y_speed, direction
         if value< -4000:
             y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             # print(f'Áfram {y_speed}')
-            motor.forwards(y_speed, curve, direction)
+            # motor.forwards(y_speed, curve, direction)
             going_forward = True
             stopped = False
+            # direction = 1
 
         elif value> -2000 and not(stopped):
+            y_speed = 0
             print('Stopp')
-            motor.stop()
+            # motor.stop()
             going_forward = False
             stopped = True
+            # direction = 0
+        print(value, y_speed)
 
     def on_L3_down(self, value):
-        global stopped, going_backwards, y_speed
+        global stopped, going_backwards, y_speed, direction
         if value> 4000:
             y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
+            # direction = 2
             # print(f'Afturábak {y_speed}')
-            motor.backwards(y_speed, curve, direction)
+            # motor.backwards(y_speed, curve, direction)
             going_backwards =True
             stopped = False
 
         elif value< 2000 and not(stopped):
             print('Stopp')
+            y_speed = 0
+            # direction = 0
             going_backwards = False
             stopped = True
+        print(value, y_speed)
 
     def on_L3_left(self, value):
         global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction
@@ -256,27 +264,28 @@ class MyController(SilencedPyPS4Controller):
             x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             curve =1- (x_speed/255)
             turning_left = True
-            direction = 2
+            # direction = 2
 
         elif value> -2000 and not(stopped):
             curve = 0
-            direction = 0
+            # direction = 0
             turning_left = False
-        print(value, curve)
+        print(value, x_speed)
 
     def on_L3_right(self, value):
         global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction
-        if going_forward:
-            if value> 2000:
-                x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
-                curve =1 - (x_speed/255)
-                turning_right = True
-                direction = 1
+        # if going_forward:
+        if value> 2000:
+            x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
+            curve =1 - (x_speed/255)
+            turning_right = True
+            # direction = 1
 
-            elif value< 2000 and not(stopped):
-                curve = 0
-                direction = 0
-                turning_right = False
+        elif value< 2000 and not(stopped):
+            curve = 0
+            # direction = 0
+            turning_right = False
+        print(value, x_speed)
 
     def on_R3_press(self):
         print(f'ÝTA')
@@ -287,11 +296,11 @@ class MyController(SilencedPyPS4Controller):
 def keyrsla():
     controller.listen()
 
-# controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
-# # you can start listening before controller is paired, as long as you pair it within the timeout window
-# controll = threading.Thread(target=keyrsla, daemon=True)
-# # controller.listen(timeout=60)
-# controll.start()
+controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
+# you can start listening before controller is paired, as long as you pair it within the timeout window
+controll = threading.Thread(target=keyrsla, daemon=True)
+# controller.listen(timeout=60)
+controll.start()
 
 while True:
-    test()
+    pass
