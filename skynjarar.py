@@ -62,6 +62,23 @@ def searching(): #Leitar af hindrun
 
     return hindrun_vinstri, hindrun_midja, hindrun_haegri, current_value1, current_value3
 
+def snuningur(att):
+    while True:
+        hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri = searching()
+
+        if hindrun_midja == 0 and hindrun_vinstri == 0 and hindrun_haegri == 0:
+            m.stop()
+            break
+
+        if att == 'haegri':
+            m.rotate_by_CW(20)
+        else:
+            m.rotate_by_CCW(20)
+
+        time.sleep(0.01)
+
+
+
 
 def skynja():
     while True:
@@ -72,22 +89,23 @@ def skynja():
             time.sleep(0.01)
             e.not_important()
             if vinstri <= haegri:
-                m.rotate_by_CW(60)
+                snuningur('haegri')
             else:
-                m.rotate_by_CCW(60)
+                snuningur('vinstri')
+
             time.sleep(0.1)
     
         elif hindrun_vinstri == 1:
             m.stop()
             time.sleep(0.01)
             e.not_important()
-            m.rotate_by_CW(60)
+            snuningur('haegri')
             time.sleep(0.1)
         elif hindrun_haegri == 1:
             m.stop()
             time.sleep(0.01)
             e.not_important()
-            m.rotate_by_CCW(60)
+            snuningur('vinstri')
             time.sleep(0.1)
         else:
             m.forwards(150)
