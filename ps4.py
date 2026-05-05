@@ -279,7 +279,7 @@ class MyController(SilencedPyPS4Controller):
             y_speed = -int(numpy.interp(value, [-27000, 32767], [0,250]))
             going_backwards = True
             print('HALLÓ??? BAKKA!!!!!')
-        else: 
+        else:
             y_speed = 0
             going_backwards = False
 def keyrsla():
@@ -293,3 +293,4 @@ controll.start()
 
 while True:
     motor.drive(y_speed, x_speed)
+    print(f'Hraði: {y_speed}, Áfram? {going_forward}, Afturábak? {gaaoing_backwards}')
