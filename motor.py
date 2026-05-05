@@ -101,10 +101,8 @@ def drive(y_speed, x_speed):
     else: turn = 0
     if y_speed>0:
         forwards(y_speed, curve, turn)
-        # print(f'Áfram {y_speed}, beygja {curve}, í {turn}')
     elif y_speed<0:
         backwards(abs(y_speed), curve, turn)
-        # print(f'Áfram {y_speed}, beygja {curve}, í {turn}')
     elif x_speed!=0:
         if turn == 2:
             rotate_CCW(abs(x_speed))
@@ -112,7 +110,6 @@ def drive(y_speed, x_speed):
             rotate_CW(x_speed)
     else: 
         stop()
-        # print('stopp')
     
 
 def dance():
