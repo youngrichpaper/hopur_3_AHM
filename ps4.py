@@ -228,7 +228,7 @@ class MyController(SilencedPyPS4Controller):
     def on_L3_left(self, value):
         global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction, turning, turning_right, turn
         if value< -2000:
-            x_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,250]))
+            x_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,255]))
             curve =1- (x_speed/255)
             turning_left = True
             turning = True
@@ -249,7 +249,7 @@ class MyController(SilencedPyPS4Controller):
         global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction, turning, turning_left, turn
         # if going_forward:
         if value> 2000:
-            x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,250]))
+            x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,255]))
             curve =1 - (x_speed/255)
             turning_right = True
             turning = True
@@ -267,7 +267,7 @@ class MyController(SilencedPyPS4Controller):
     def on_R2_press(self, value):
         global y_speed, driving, going_backwards, going_forward
         if value > -25000 and not(going_backwards):
-            y_speed = int(numpy.interp(value, [-27000, 32767], [0,250]))
+            y_speed = int(numpy.interp(value, [-25000, 32767], [0,255]))
             going_forward = True
         else: 
             y_speed = 0
@@ -277,7 +277,7 @@ class MyController(SilencedPyPS4Controller):
     def on_L2_press(self, value):
         global y_speed, driving, going_backwards, going_forward
         if value > -25000 and not(going_forward):
-            y_speed = -int(numpy.interp(value, [-27000, 32767], [0,250]))
+            y_speed = -int(numpy.interp(value, [-25000, 32767], [0,255]))
             going_backwards = True
             print('HALLÓ??? BAKKA!!!!!')
         else:
