@@ -3,7 +3,7 @@
 import smbus
 import motor as m
 import time
-import speaker as s
+import speaker as e
 
 
 i2c_bus = smbus.SMBus(1)
@@ -53,11 +53,13 @@ def skynja():
         if hindrun_vinstri == 1:
             m.stop()
             time.sleep(0.01)
+            e.baby()
             m.rotate_by_CW(60)
             time.sleep(0.1)
         elif hindrun_haegri == 1:
             m.stop()
             time.sleep(0.01)
+            e.ruski()
             m.rotate_by_CCW(60)
             time.sleep(0.1)
         else:
