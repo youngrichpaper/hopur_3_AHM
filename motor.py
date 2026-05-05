@@ -87,8 +87,10 @@ def drive(y_speed, x_speed):
     else: turn = 0
     if y_speed>0:
         forwards(y_speed, curve, turn)
+        print(f'Áfram {y_speed}, beygja {curve}, í {turn}')
     elif y_speed<0:
         backwards(abs(y_speed), curve, turn)
+        print(f'Áfram {y_speed}, beygja {curve}, í {turn}')
     
 
 def dance():
