@@ -154,6 +154,12 @@ class MyController(SilencedPyPS4Controller):
 
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
+        self.y_speed = 0
+        self.x_speed= 0
+        self.turning = False
+        self.driving = False
+        self.going_forward = False
+        self.going_backwards = False
         
 
     def on_up_arrow_press(self):
@@ -204,47 +210,41 @@ class MyController(SilencedPyPS4Controller):
 
     
     def on_L3_left(self, value):
-        global x_speed, turning
         if value< -2000:
-            x_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,255]))
-            turning = True
+            self.x_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,255]))
+            self.turning = True
 
-        elif value> -2000 and turning:
-            x_speed = 0
-            turning = False
+        elif value> -2000 and self.turning:
+            self.x_speed = 0
+            self.turning = False
 
     def on_L3_right(self, value):
-        global x_speed, turning
         if value> 2000:
             x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,255]))
 
-        elif value< 2000 and turning:
-            x_speed = 0
-            turning = False
+        elif value< 2000 and self.turning:
+            self.x_speed = 0
+            self.turning = False
 
     def on_R2_press(self, value):
-        global y_speed, driving, going_backwards, going_forward
         if value > -25000 and not(going_backwards):
             y_speed = int(numpy.interp(value, [-25000, 32767], [0,255]))
             going_forward = True
 
     def on_R2_release(self):
-        global y_speed, going_forward
-        if going_forward:
-            y_speed = 0
-            going_forward = False
+        if self.going_forward:
+            self.y_speed = 0
+            self.going_forward = False
 
     def on_L2_press(self, value):
-        global y_speed, driving, going_backwards, going_forward
-        if value > -25000 and not(going_forward):
-            y_speed = -int(numpy.interp(value, [-25000, 32767], [0,255]))
-            going_backwards = True
+        if value > -25000 and not(self.going_forward):
+            self.y_speed = -int(numpy.interp(value, [-25000, 32767], [0,255]))
+            self.going_backwards = True
     
     def on_L2_release(self):
-        global y_speed, going_backwards
-        if going_backwards:
-            y_speed = 0
-            going_backwards = False
+        if self.going_backwards:
+            self.y_speed = 0
+            self.going_backwards = False
 
 # controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
 # # you can start listening before controller is paired, as long as you pair it within the timeout window
