@@ -71,9 +71,9 @@ def snuningur(att):
             break
 
         if att == 'haegri':
-            m.rotate_by_CW(20)
+            m.rotate_CW(100)
         else:
-            m.rotate_by_CCW(20)
+            m.rotate_CCW(100)
 
         time.sleep(0.01)
 
