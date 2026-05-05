@@ -5,6 +5,7 @@ import motor as m
 import time
 import speaker as e
 
+auto_kveikt = False
 
 i2c_bus = smbus.SMBus(1)
 
@@ -80,9 +81,11 @@ def snuningur(att):
 
 
 
-def skynja(auto_event):
+def skynja():
+    global auto_kveikt
+
     while True:
-        if not auto_event.is_set():
+        if not auto_kveikt:
                 time.sleep(0.1)
                 continue
         
