@@ -4,6 +4,8 @@ import motor
 import numpy
 import time
 import pygame
+import skynjarar as s
+
 
 pygame.init()
 controller1 =  pygame.joystick.Joystick(0)
@@ -229,22 +231,21 @@ class MyController(SilencedPyPS4Controller):
         print('STOP!!!!!')
 
     def on_x_press(self):
-        global auto_mode
+        
+        s.auto_kveikt = not s.auto_kveikt
 
-        auto_mode = not auto_mode
-
-        if auto_mode:
-            print('Auto kveikt')
+        if s.auto_kveikt:
+            motor.stop()
+            print("AUTO KVEIKT")
         else:
             motor.stop()
-            print('Auto Slökkt')
+            print("AUTO SLÖKKT")
+
     
     def on_circle_release(self):
-        global auto_mode, stop_program
-
-        auto_mode = False
-        stop_program = True
-        print('Stopp')
+        s.auto_kveikt = False
+        motor.stop()
+        print("STOPP")
 
     
     def on_L3_left(self, value):
