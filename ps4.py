@@ -266,6 +266,7 @@ class MyController(SilencedPyPS4Controller):
             curve =1- (x_speed/255)
             turning_left = True
             turning = True
+            turning_right = False
             # direction = 2
 
         elif value> -2000 and turning:
@@ -284,6 +285,7 @@ class MyController(SilencedPyPS4Controller):
             curve =1 - (x_speed/255)
             turning_right = True
             turning = True
+            turning_left =False
             # direction = 1
 
         elif value< 2000 and turning:
