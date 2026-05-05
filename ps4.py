@@ -29,7 +29,7 @@ def getJS(name=''):
             for x, (key, val) in enumerate(buttons.items()):
                 if x<10:
                     if event.button == x:buttons[key]=0
-    buttons['axis1'],buttons['axis2'],buttons['axis3'],buttons['axis4'],buttons['axis5'],buttons['axis6'],buttons['axis7'],buttons['axis8'] = axiss
+    buttons['axis1'],buttons['axis2'],buttons['axis3'],buttons['axis4'] = [axiss[0], axiss[1], axiss[3], axiss[4]]
     if name == '':
         return buttons
     else:
