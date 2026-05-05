@@ -49,6 +49,7 @@ y_speed = 0
 x_speed = 0
 curve = 0
 direction = 0
+turn = 0
 turning = False
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
@@ -260,7 +261,7 @@ class MyController(SilencedPyPS4Controller):
         # print(value, y_speed)
 
     def on_L3_left(self, value):
-        global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction, turning, turning_right
+        global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction, turning, turning_right, turn
         # if going_forward:
         if value< -2000:
             x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,250]))
@@ -268,11 +269,13 @@ class MyController(SilencedPyPS4Controller):
             turning_left = True
             turning = True
             turning_right = False
+            turn = 1
             # direction = 2
 
         elif value> -2000 and turning:
             curve = 0
             x_speed = 0
+            turn = 0
             # direction = 0
             turning_left = False
             turning = False
@@ -280,7 +283,7 @@ class MyController(SilencedPyPS4Controller):
         # print(value, x_speed)
 
     def on_L3_right(self, value):
-        global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction, turning, turning_left
+        global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction, turning, turning_left, turn
         # if going_forward:
         if value> 2000:
             x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
@@ -288,6 +291,7 @@ class MyController(SilencedPyPS4Controller):
             turning_right = True
             turning = True
             turning_left =False
+            turn = 2
             # direction = 1
 
         elif value< 2000 and turning:
@@ -296,6 +300,7 @@ class MyController(SilencedPyPS4Controller):
             # direction = 0
             turning_right = False
             turning = False
+            turn = 0
         # print(value, x_speed)
 
     def on_R3_press(self):
@@ -316,9 +321,10 @@ controll.start()
 while True:
     print(y_speed,x_speed, end='')
     if direction == 1: 
-        motor.forwards(y_speed)
+        
+        motor.forwards(y_speed,curve, turn)
     elif direction == 2:
-        motor.backwards(y_speed)
+        motor.backwards(y_speed,curve, turn)
     else:
         motor.stop()
     if turning_left: print('Vinstri', end='')
