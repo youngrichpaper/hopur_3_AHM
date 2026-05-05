@@ -229,14 +229,14 @@ class MyController(SilencedPyPS4Controller):
             y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             # print(f'Áfram {y_speed}')
             # motor.forwards(y_speed, curve, direction)
-            going_forward = True
+            # going_forward = True
             stopped = False
             direction = 1
 
         elif value> -2000 and not(stopped):
             y_speed = 0
             # motor.stop()
-            going_forward = False
+            # going_forward = False
             stopped = True
             direction = 0
         # print(value, y_speed)
@@ -248,14 +248,14 @@ class MyController(SilencedPyPS4Controller):
             direction = 2
             # print(f'Afturábak {y_speed}')
             # motor.backwards(y_speed, curve, direction)
-            going_backwards =True
+            # going_backwards =True
             stopped = False
 
         elif value< 2000 and not(stopped):
             direction = 0
             # y_speed = 0
             # direction = 0
-            going_backwards = False
+            # going_backwards = False
             stopped = True
         # print(value, y_speed)
 
