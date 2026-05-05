@@ -319,6 +319,8 @@ while True:
         motor.forwards(y_speed)
     elif direction == 2:
         motor.backwards(y_speed)
+    else:
+        motor.stop()
     if turning_left: print('Vinstri', end='')
     if turning_right: print('Hægri', end='')
     print('')
