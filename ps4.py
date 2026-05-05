@@ -316,8 +316,9 @@ controll.start()
 while True:
     print(y_speed,x_speed, end='')
     if direction == 1: 
-        print('Áfram', end='')
-    elif direction == 2: print('Bakka', end='')
+        motor.forwards(y_speed)
+    elif direction == 2:
+        motor.backwards(y_speed)
     if turning_left: print('Vinstri', end='')
     if turning_right: print('Hægri', end='')
     print('')
