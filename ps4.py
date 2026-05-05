@@ -49,6 +49,7 @@ y_speed = 0
 x_speed = 0
 curve = 0
 direction = 0
+turning = False
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
@@ -264,12 +265,15 @@ class MyController(SilencedPyPS4Controller):
             x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             curve =1- (x_speed/255)
             turning_left = True
+            turning = True
             # direction = 2
 
-        elif value> -2000 and not(stopped):
+        elif value> -2000 and turning:
             curve = 0
             # direction = 0
             turning_left = False
+            turning = False
+
         # print(value, x_speed)
 
     def on_L3_right(self, value):
@@ -279,12 +283,14 @@ class MyController(SilencedPyPS4Controller):
             x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
             curve =1 - (x_speed/255)
             turning_right = True
+            turning = True
             # direction = 1
 
-        elif value< 2000 and not(stopped):
+        elif value< 2000 and turning:
             curve = 0
             # direction = 0
             turning_right = False
+            turning = False
         # print(value, x_speed)
 
     def on_R3_press(self):
