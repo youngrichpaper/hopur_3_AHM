@@ -271,7 +271,7 @@ class MyController(SilencedPyPS4Controller):
         else: 
             y_speed = 0
             going_forward = False
-            
+        time.sleep(0.001)    
 
     def on_L2_press(self, value):
         global y_speed, driving, going_backwards, going_forward
@@ -282,6 +282,7 @@ class MyController(SilencedPyPS4Controller):
         else:
             y_speed = 0
             going_backwards = False
+        time.sleep(0.001)
 def keyrsla():
     controller.listen()
 
