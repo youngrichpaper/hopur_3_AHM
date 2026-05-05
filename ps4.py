@@ -52,6 +52,10 @@ direction = 0
 turn = 0
 turning = False
 driving= False
+
+auto_mode = False
+stop_program = False
+
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
@@ -225,10 +229,23 @@ class MyController(SilencedPyPS4Controller):
         print('STOP!!!!!')
 
     def on_x_press(self):
-        return True
+        global auto_mode
+
+        auto_mode = not auto_mode
+
+        if auto_mode:
+            print('Auto kveikt')
+        else:
+            motor.stop()
+            print('Auto Slökkt')
     
     def on_circle_release(self):
-        return True
+        global auto_mode, stop_program
+
+        auto_mode = False
+        stop_program = True
+        print('Stopp')
+
     
     def on_L3_left(self, value):
         global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction, turning, turning_right, turn

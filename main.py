@@ -15,8 +15,6 @@ from ps4 import MyController
 
 # skanna = threading.Thread(target=v.servo_rotate, daemon=True)
 
-x_press = MyController.on_x_press
-c_press = MyController.on_circle_press
 
 auto = threading.Thread(target=s.skynja, daemon=True)
 
@@ -26,6 +24,7 @@ auto = threading.Thread(target=s.skynja, daemon=True)
 try:
      while True:
           if x_press:
+
                #skanna.start() #Fyrir servo (hreyfing)
                auto.start()
 
