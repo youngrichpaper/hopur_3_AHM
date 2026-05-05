@@ -20,10 +20,10 @@ auto = threading.Thread(target=s.skynja, daemon=True)
 ##################################
 try:
 
-     skanna.start()
+     #skanna.start()
      auto.start()
 
-     skanna.join()
+     #skanna.join()
      auto.join()
 
 except KeyboardInterrupt:
