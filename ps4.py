@@ -291,21 +291,24 @@ class MyController(SilencedPyPS4Controller):
         if value > -25000 and not(going_backwards):
             y_speed = int(numpy.interp(value, [-25000, 32767], [0,255]))
             going_forward = True
-        else: 
+
+    def on_R2_release(self):
+        global y_speed, going_forward
+        if going_forward:
             y_speed = 0
             going_forward = False
-        time.sleep(0.001)    
 
     def on_L2_press(self, value):
         global y_speed, driving, going_backwards, going_forward
         if value > -25000 and not(going_forward):
             y_speed = -int(numpy.interp(value, [-25000, 32767], [0,255]))
             going_backwards = True
-            print('HALLÓ??? BAKKA!!!!!')
-        else:
+    
+    def on_L2_release(self):
+        global y_speed, going_backwards
+        if going_backwards:
             y_speed = 0
             going_backwards = False
-        time.sleep(0.001)
 def keyrsla():
     controller.listen()
 
