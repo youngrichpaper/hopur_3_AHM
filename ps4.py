@@ -10,7 +10,8 @@ controller1 =  pygame.joystick.Joystick(0)
 controller1.init()
 buttons = {'x':0, 'o':0, 't':0, 's':0,
            'L1':0, 'L2':0, 'R1':0, 'R2':0,
-           'share':0, 'options':0,
+           'share':0, 'ps button':0, 'options':0,
+           'L3':0, 'L2':0,
            'axis1':0., 'axis2':0., 'axis3':0., 'axis4':0.,
            'axis5':0., 'axis6':0., 'axis7':0., 'axis8':0.}
 axiss = [0., 0., 0., 0., 0., 0., 0., 0.]
