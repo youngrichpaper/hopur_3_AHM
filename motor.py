@@ -105,6 +105,11 @@ def drive(y_speed, x_speed):
     elif y_speed<0:
         backwards(abs(y_speed), curve, turn)
         # print(f'Áfram {y_speed}, beygja {curve}, í {turn}')
+    elif x_speed!=0:
+        if turn == 2:
+            rotate_CCW(x_speed)
+        elif turn == 1:
+            rotate_CW(x_speed)
     else: 
         stop()
         # print('stopp')
