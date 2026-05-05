@@ -237,7 +237,7 @@ class MyController(SilencedPyPS4Controller):
             going_forward = False
             stopped = True
             # direction = 0
-        print(value, y_speed)
+        # print(value, y_speed)
 
     def on_L3_down(self, value):
         global stopped, going_backwards, y_speed, direction
@@ -255,7 +255,7 @@ class MyController(SilencedPyPS4Controller):
             # direction = 0
             going_backwards = False
             stopped = True
-        print(value, y_speed)
+        # print(value, y_speed)
 
     def on_L3_left(self, value):
         global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction
@@ -270,7 +270,7 @@ class MyController(SilencedPyPS4Controller):
             curve = 0
             # direction = 0
             turning_left = False
-        print(value, x_speed)
+        # print(value, x_speed)
 
     def on_L3_right(self, value):
         global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction
@@ -285,7 +285,7 @@ class MyController(SilencedPyPS4Controller):
             curve = 0
             # direction = 0
             turning_right = False
-        print(value, x_speed)
+        # print(value, x_speed)
 
     def on_R3_press(self):
         print(f'ÝTA')
@@ -303,4 +303,5 @@ controll = threading.Thread(target=keyrsla, daemon=True)
 controll.start()
 
 while True:
-    pass
+    print(y_speed,x_speed)
+    time.sleep(0.1)
