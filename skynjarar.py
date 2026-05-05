@@ -33,31 +33,34 @@ def searching(): #Leitar af hindrun
 
     high3 = i2c_bus.read_byte_data(i2c_address3, 2)
     low3 = i2c_bus.read_byte_data(i2c_address3, 3)
-    current_value3 = high3 * 256 * low3
+    current_value3 = high3 * 256 + low3
 
-    print(current_value1,current_value2, current_value3)
+    print('Vinstri:',current_value1,'Hægri:',current_value2,'Vinstri', current_value3)
 
     if 400 < current_value1 < 500 and 400 < current_value2 < 500:
         e.baby()
     
     if 0 < current_value3 <= 30:
         hindrun_haegri = 1
+        print('Hindrun Hægri')
     else:
         hindrun_haegri = 0
 
     if 0 < current_value1 <= 30:
         hindrun_vinstri = 1
+        print('Hindrun Miðja')
     else:
         hindrun_vinstri = 0
     
     if 0 < current_value2 <= 30:
         hindrun_midja = 1
+        print('Hindrun vinstri')
     else:
         hindrun_midja = 0
     
     time.sleep(0.1)  # Sleep for some
 
-    return hindrun_vinstri, hindrun_midja, hindrun_haegri, current_value1, current_value2, current_value3
+    return hindrun_vinstri, hindrun_midja, hindrun_haegri, current_value1, current_value3
 
 
 def skynja():
