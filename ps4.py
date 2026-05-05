@@ -3,6 +3,40 @@ import threading
 import motor
 import numpy
 import time
+import pygame
+
+pygame.init()
+controller1 =  pygame.joystick.Joystick(0)
+controller1.init()
+buttons = {'x':0, 'o':0, 't':0, 's':0,
+           'L1':0, 'L2':0, 'R1':0, 'R2':0,
+           'share':0, 'options':0,
+           'axis1':0., 'axis2':0., 'axis3':0., 'axis4':0.}
+axiss = [0., 0., 0., 0., 0., 0.]
+
+def getJS(name=''):
+
+    global buttons
+    for event in pygame.event.get():
+        if event.type == pygame.JOYAXISMOTION:
+            axiss[event.axis] = round(event.value,2)
+        elif event.type == pygame.JOYBUTTONDOWN:
+            for x, (key, val) in enumerate(buttons.items()):
+                if x<10:
+                    if controller1.get_button(x):buttons[key]=1
+        elif event.type == pygame.JOYBUTTONUP:
+            for x, (key, val) in enumerate(buttons.items()):
+                if x<10:
+                    if event.button == x:buttons[key]=0
+    buttons['axis1'],buttons['axis2'],buttons['axis3'],buttons['axis4'] = [axiss[0],axiss[1],axiss[3],axiss[4]]
+    if name == '':
+        return
+    else:
+        return buttons[name]
+
+def test():
+    print(getJS())
+    time.sleep(0.5)
 
 stopped = False
 going_forward = False
@@ -251,11 +285,11 @@ class MyController(SilencedPyPS4Controller):
 def keyrsla():
     controller.listen()
 
-controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
-# you can start listening before controller is paired, as long as you pair it within the timeout window
-controll = threading.Thread(target=keyrsla, daemon=True)
-# controller.listen(timeout=60)
-controll.start()
+# controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
+# # you can start listening before controller is paired, as long as you pair it within the timeout window
+# controll = threading.Thread(target=keyrsla, daemon=True)
+# # controller.listen(timeout=60)
+# controll.start()
 
 while True:
-    pass
+    test()
