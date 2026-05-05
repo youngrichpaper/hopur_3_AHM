@@ -51,6 +51,7 @@ curve = 0
 direction = 0
 turn = 0
 turning = False
+driving= False
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
@@ -243,7 +244,7 @@ class MyController(SilencedPyPS4Controller):
     def on_L3_down(self, value):
         global stopped, going_backwards, y_speed, direction
         if value> 4000:
-            y_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,250]))
+            # y_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,250]))
             direction = 2
             # print(f'Afturábak {y_speed}')
             # motor.backwards(y_speed, curve, direction)
@@ -252,7 +253,7 @@ class MyController(SilencedPyPS4Controller):
 
         elif value< 2000 and not(stopped):
             direction = 0
-            y_speed = 0
+            # y_speed = 0
             # direction = 0
             going_backwards = False
             stopped = True
@@ -284,7 +285,7 @@ class MyController(SilencedPyPS4Controller):
         global stopped, turning_right, going_forward, y_speed, x_speed, curve, direction, turning, turning_left, turn
         # if going_forward:
         if value> 2000:
-            x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
+            x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,250]))
             curve =1 - (x_speed/255)
             turning_right = True
             turning = True
@@ -302,10 +303,23 @@ class MyController(SilencedPyPS4Controller):
         # print(value, x_speed)
 
     def on_R2_press(self, value):
-        print(value)
+        global y_speed, driving, going_backwards, going_forward
+        if value > -27000 and not(going_backwards):
+            y_speed = int(numpy.interp(value, [-27000, 32767], [0,250]))
+            going_forward = True
+        else: 
+            y_speed = 0
+            going_forward = False
+            
 
-    def on_R3_release(self):
-        print(f'SLEPPA')
+    def on_L2_press(self, value):
+        global y_speed, driving, going_backwards, going_forward
+        if value > -27000 and not(going_forward):
+            y_speed = -int(numpy.interp(value, [-27000, 32767], [0,250]))
+            going_backwards = True
+        else: 
+            y_speed = 0
+            going_backwards = False
 
 def keyrsla():
     controller.listen()
