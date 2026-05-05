@@ -76,6 +76,8 @@ def skynja():
             else:
                 m.rotate_by_CCW(60)
             time.sleep(0.1)
+            if hindrun_midja != 1:
+                break
 
         # elif hindrun_vinstri == 1:
         #     m.stop()
