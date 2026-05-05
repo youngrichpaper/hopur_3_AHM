@@ -265,7 +265,7 @@ class MyController(SilencedPyPS4Controller):
 
     def on_R2_press(self, value):
         global y_speed, driving, going_backwards, going_forward
-        if value > -27000 and not(going_backwards):
+        if value > -25000 and not(going_backwards):
             y_speed = int(numpy.interp(value, [-27000, 32767], [0,250]))
             going_forward = True
         else: 
@@ -275,7 +275,7 @@ class MyController(SilencedPyPS4Controller):
 
     def on_L2_press(self, value):
         global y_speed, driving, going_backwards, going_forward
-        if value > -27000 and not(going_forward):
+        if value > -25000 and not(going_forward):
             y_speed = -int(numpy.interp(value, [-27000, 32767], [0,250]))
             going_backwards = True
             print('HALLÓ??? BAKKA!!!!!')
