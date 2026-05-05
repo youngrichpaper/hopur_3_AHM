@@ -19,6 +19,7 @@ auto_event = threading.Event()
 
 auto = threading.Thread(target=s.skynja, args=(auto_event,), daemon=True)
 
+controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False, auto_event=auto_event)
 
 #--------------------------------------------
 #Autonomous keyrsla
@@ -28,7 +29,9 @@ try:
      auto.start()
 
      #skanna.join()
-     auto.join()
+     #auto.join()
+
+     controller.listen(timeout=60)
 
 except KeyboardInterrupt:
      print('Stoppar keyrslu')
