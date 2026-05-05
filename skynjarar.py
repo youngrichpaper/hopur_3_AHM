@@ -80,10 +80,15 @@ def snuningur(att):
 
 
 
-def skynja():
+def skynja(auto_event):
     while True:
+        if not auto_event.is_set():
+                time.sleep(0.1)
+                continue
+        
         hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri = searching()
         time.sleep(0.1)
+
         if hindrun_midja == 1:
             m.stop()
             time.sleep(0.01)

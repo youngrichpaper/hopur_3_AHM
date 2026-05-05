@@ -13,8 +13,11 @@ from ps4 import MyController
 # # you can start listening before controller is paired, as long as you pair it within the timeout window
 # controller.listen(timeout=60)
 
-skanna = threading.Thread(target=v.servo_rotate, daemon=True)
-auto = threading.Thread(target=s.skynja, daemon=True)
+# skanna = threading.Thread(target=v.servo_rotate, daemon=True)
+
+auto_event = threading.Event()
+
+auto = threading.Thread(target=s.skynja, args=(auto_event,), daemon=True)
 
 
 #--------------------------------------------
