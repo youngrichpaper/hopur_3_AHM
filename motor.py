@@ -107,7 +107,7 @@ def drive(y_speed, x_speed):
         # print(f'Áfram {y_speed}, beygja {curve}, í {turn}')
     elif x_speed!=0:
         if turn == 2:
-            rotate_CCW(x_speed)
+            rotate_CCW(abs(x_speed))
         elif turn == 1:
             rotate_CW(x_speed)
     else: 
