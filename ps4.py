@@ -278,7 +278,7 @@ class MyController(SilencedPyPS4Controller):
         if value > -27000 and not(going_forward):
             y_speed = -int(numpy.interp(value, [-27000, 32767], [0,250]))
             going_backwards = True
-            print('HALLÓ BAKKA')
+            print('HALLÓ??? BAKKA!!!!!')
         else: 
             y_speed = 0
             going_backwards = False
