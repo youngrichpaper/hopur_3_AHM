@@ -229,7 +229,7 @@ class MyController(SilencedPyPS4Controller):
             # motor.forwards(y_speed, curve, direction)
             going_forward = True
             stopped = False
-            # direction = 1
+            direction = 1
 
         elif value> -2000 and not(stopped):
             y_speed = 0
@@ -237,14 +237,14 @@ class MyController(SilencedPyPS4Controller):
             # motor.stop()
             going_forward = False
             stopped = True
-            # direction = 0
+            direction = 0
         # print(value, y_speed)
 
     def on_L3_down(self, value):
         global stopped, going_backwards, y_speed, direction
         if value> 4000:
-            y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
-            # direction = 2
+            y_speed = int(numpy.interp(abs(value), [8000, 32767], [0,250]))
+            direction = 2
             # print(f'Afturábak {y_speed}')
             # motor.backwards(y_speed, curve, direction)
             going_backwards =True
@@ -252,6 +252,7 @@ class MyController(SilencedPyPS4Controller):
 
         elif value< 2000 and not(stopped):
             print('Stopp')
+            direction = 0
             y_speed = 0
             # direction = 0
             going_backwards = False
@@ -262,7 +263,7 @@ class MyController(SilencedPyPS4Controller):
         global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction, turning, turning_right
         # if going_forward:
         if value< -2000:
-            x_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
+            x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,250]))
             curve =1- (x_speed/255)
             turning_left = True
             turning = True
@@ -271,6 +272,7 @@ class MyController(SilencedPyPS4Controller):
 
         elif value> -2000 and turning:
             curve = 0
+            x_speed = 0
             # direction = 0
             turning_left = False
             turning = False
@@ -290,6 +292,7 @@ class MyController(SilencedPyPS4Controller):
 
         elif value< 2000 and turning:
             curve = 0
+            x_speed = 0
             # direction = 0
             turning_right = False
             turning = False
@@ -312,8 +315,9 @@ controll.start()
 
 while True:
     print(y_speed,x_speed, end='')
-    if going_forward: print('Áfram', end='')
-    if going_backwards: print('Bakka', end='')
+    if direction == 1: 
+        print('Áfram', end='')
+    elif direction == 2: print('Bakka', end='')
     if turning_left: print('Vinstri', end='')
     if turning_right: print('Hægri', end='')
     print('')
