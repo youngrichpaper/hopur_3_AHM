@@ -11,8 +11,9 @@ controller1.init()
 buttons = {'x':0, 'o':0, 't':0, 's':0,
            'L1':0, 'L2':0, 'R1':0, 'R2':0,
            'share':0, 'options':0,
-           'axis1':0., 'axis2':0., 'axis3':0., 'axis4':0.}
-axiss = [0., 0., 0., 0., 0., 0.]
+           'axis1':0., 'axis2':0., 'axis3':0., 'axis4':0.,
+           'axis5':0., 'axis6':0., 'axis7':0., 'axis8':0.}
+axiss = [0., 0., 0., 0., 0., 0.,0.,0.]
 
 def getJS(name=''):
 
@@ -28,7 +29,7 @@ def getJS(name=''):
             for x, (key, val) in enumerate(buttons.items()):
                 if x<10:
                     if event.button == x:buttons[key]=0
-    buttons['axis1'],buttons['axis2'],buttons['axis3'],buttons['axis4'] = [axiss[0],axiss[1],axiss[3],axiss[4]]
+    buttons['axis1'],buttons['axis2'],buttons['axis3'],buttons['axis4'],buttons['axis5'],buttons['axis6'],buttons['axis7'],buttons['axis8'] = axiss
     if name == '':
         return buttons
     else:
