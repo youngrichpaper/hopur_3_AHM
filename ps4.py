@@ -227,9 +227,9 @@ class MyController(SilencedPyPS4Controller):
             self.turning = False
 
     def on_R2_press(self, value):
-        if value > -25000 and not(going_backwards):
-            y_speed = int(numpy.interp(value, [-25000, 32767], [0,255]))
-            going_forward = True
+        if value > -25000 and not(self.going_backwards):
+            self.y_speed = int(numpy.interp(value, [-25000, 32767], [0,255]))
+            self.going_forward = True
 
     def on_R2_release(self):
         if self.going_forward:
