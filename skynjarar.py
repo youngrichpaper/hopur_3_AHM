@@ -59,7 +59,7 @@ def skynja():
         elif hindrun_haegri == 1:
             m.stop()
             time.sleep(0.01)
-            e.ruski()
+            e.baby()
             m.rotate_by_CCW(60)
             time.sleep(0.1)
         else:
