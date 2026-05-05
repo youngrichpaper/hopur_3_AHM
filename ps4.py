@@ -293,4 +293,4 @@ controll.start()
 
 while True:
     motor.drive(y_speed, x_speed)
-    print(f'Hraði: {y_speed}, Áfram? {going_forward}, Afturábak? {gaaoing_backwards}')
+    print(f'Hraði: {y_speed}, Áfram? {going_forward}, Afturábak? {going_backwards}')
