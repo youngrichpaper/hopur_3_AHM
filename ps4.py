@@ -303,8 +303,8 @@ class MyController(SilencedPyPS4Controller):
             turn = 0
         # print(value, x_speed)
 
-    def on_R3_press(self):
-        print(f'ÝTA')
+    def on_R2_press(self, value):
+        print(value)
 
     def on_R3_release(self):
         print(f'SLEPPA')
