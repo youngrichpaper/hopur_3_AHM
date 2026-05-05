@@ -234,7 +234,6 @@ class MyController(SilencedPyPS4Controller):
 
         elif value> -2000 and not(stopped):
             y_speed = 0
-            print('Stopp')
             # motor.stop()
             going_forward = False
             stopped = True
@@ -252,7 +251,6 @@ class MyController(SilencedPyPS4Controller):
             stopped = False
 
         elif value< 2000 and not(stopped):
-            print('Stopp')
             direction = 0
             y_speed = 0
             # direction = 0
