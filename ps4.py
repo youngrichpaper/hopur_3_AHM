@@ -51,6 +51,7 @@ curve = 0
 direction = 0
 turn = 0
 turning = False
+driving= False
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
@@ -302,13 +303,23 @@ class MyController(SilencedPyPS4Controller):
         # print(value, x_speed)
 
     def on_R2_press(self, value):
-        global y_speed
-        if value > -27000:
+        global y_speed, driving, going_backwards, going_forward
+        if value > -27000 and not(going_backwards):
             y_speed = int(numpy.interp(value, [-27000, 32767], [0,250]))
-        else: y_speed = 0
+            going_forward = True
+        else: 
+            y_speed = 0
+            going_forward = False
+            
 
-    def on_R3_release(self):
-        print(f'SLEPPA')
+    def on_L2_press(self, value):
+        global y_speed, driving, going_backwards, going_forward
+        if value > -27000 and not(going_forward):
+            y_speed = -int(numpy.interp(value, [-27000, 32767], [0,250]))
+            going_backwards = True
+        else: 
+            y_speed = 0
+            going_backwards = False
 
 def keyrsla():
     controller.listen()
