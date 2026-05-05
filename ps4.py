@@ -3,53 +3,11 @@ import threading
 import motor
 import numpy
 import time
-import pygame
 import skynjarar as s
 
 
-pygame.init()
-controller1 =  pygame.joystick.Joystick(0)
-controller1.init()
-buttons = {'x':0, 'o':0, 't':0, 's':0,
-           'L1':0, 'R1':0, 'L2':0, 'R2':0,
-           'share':0, 'ps':0, 'options':0,
-           'up':0, 'down':0, 'left':0, 'right':0, 'touchpad':0,
-           'axis1':0., 'axis2':0., 'axis3':0., 'axis4':0.,
-           'axis5':0., 'axis6':0., 'axis7':0., 'axis8':0.}
-axiss = [0., 0., 0., 0., 0., 0., 0., 0.]
-
-def getJS(name=''):
-
-    global buttons
-    for event in pygame.event.get():
-        if event.type == pygame.JOYAXISMOTION:
-            axiss[event.axis] = round(event.value,2)
-        elif event.type == pygame.JOYBUTTONDOWN:
-            for x, (key, val) in enumerate(buttons.items()):
-                if x<10:
-                    if controller1.get_button(x):buttons[key]=1
-        elif event.type == pygame.JOYBUTTONUP:
-            for x, (key, val) in enumerate(buttons.items()):
-                if x<10:
-                    if event.button == x:buttons[key]=0
-    buttons['axis1'],buttons['axis2'],buttons['axis3'],buttons['axis4'],buttons['axis5'],buttons['axis6'],buttons['axis7'],buttons['axis8'] = axiss
-    if name == '':
-        return buttons
-    else:
-        return buttons[name]
-
-def test():
-    print(getJS())
-    time.sleep(0.5)
-
-going_forward = False
-going_backwards = False
-turning_left = False
 y_speed = 0
 x_speed = 0
-curve = 0
-direction = 0
-turn = 0
 turning = False
 driving= False
 
@@ -246,39 +204,23 @@ class MyController(SilencedPyPS4Controller):
 
     
     def on_L3_left(self, value):
-        global turning_left, y_speed, x_speed, curve, direction, turning, turn
+        global x_speed, turning
         if value< -2000:
             x_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,255]))
-            curve =1- (x_speed/255)
-            turning_left = True
             turning = True
-            turn = 2
-            # direction = 2
 
         elif value> -2000 and turning:
-            curve = 0
             x_speed = 0
-            # direction = 0
-            turning_left = False
             turning = False
-
-        # print(value, x_speed)
 
     def on_L3_right(self, value):
-        global y_speed, x_speed, curve, direction, turning, turning_left, turn
+        global x_speed, turning
         if value> 2000:
             x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,255]))
-            curve =1 - (x_speed/255)
-            turning = True
-            # direction = 1
 
         elif value< 2000 and turning:
-            curve = 0
             x_speed = 0
-            # direction = 0
             turning = False
-            turn = 0
-        # print(value, x_speed)
 
     def on_R2_press(self, value):
         global y_speed, driving, going_backwards, going_forward
