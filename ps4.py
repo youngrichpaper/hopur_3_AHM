@@ -191,9 +191,9 @@ class SilencedPyPS4Controller(Controller):
 
 class MyController(SilencedPyPS4Controller):
 
-    def __init__(self, auto_event, **kwargs):
+    def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
-        self.auto_event = auto_event
+        
 
     def on_up_arrow_press(self):
         motor.forwards(230)
@@ -224,15 +224,6 @@ class MyController(SilencedPyPS4Controller):
         motor.stop()
         print('STOP!!!!!')
     
-    def on_x_press(self):
-        if self.auto_event.is_set():
-            self.auto_event.clear()
-            motor.stop()
-            print('Auto Slökkt!')
-        else:
-            self.auto_event.set()
-            motor.stop()
-            print('Auto kveikt!')
     
     def on_L3_left(self, value):
         global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction, turning, turning_right, turn
