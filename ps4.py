@@ -223,45 +223,9 @@ class MyController(SilencedPyPS4Controller):
         motor.stop()
         print('STOP!!!!!')
 
-    def on_L3_up(self, value):
-        global stopped, going_forward, y_speed, direction
-        if value< -4000:
-            y_speed = int(numpy.interp(abs(value), [8000, 32767], [1,250]))
-            # print(f'Áfram {y_speed}')
-            # motor.forwards(y_speed, curve, direction)
-            # going_forward = True
-            stopped = False
-            direction = 1
-
-        elif value> -2000 and not(stopped):
-            y_speed = 0
-            # motor.stop()
-            # going_forward = False
-            stopped = True
-            direction = 0
-        # print(value, y_speed)
-
-    def on_L3_down(self, value):
-        global stopped, going_backwards, y_speed, direction
-        if value> 4000:
-            # y_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,250]))
-            direction = 2
-            # print(f'Afturábak {y_speed}')
-            # motor.backwards(y_speed, curve, direction)
-            # going_backwards =True
-            stopped = False
-
-        elif value< 2000 and not(stopped):
-            direction = 0
-            # y_speed = 0
-            # direction = 0
-            # going_backwards = False
-            stopped = True
-        # print(value, y_speed)
-
+    
     def on_L3_left(self, value):
         global stopped, turning_left, going_forward, y_speed, x_speed, curve, direction, turning, turning_right, turn
-        # if going_forward:
         if value< -2000:
             x_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,250]))
             curve =1- (x_speed/255)
@@ -274,7 +238,6 @@ class MyController(SilencedPyPS4Controller):
         elif value> -2000 and turning:
             curve = 0
             x_speed = 0
-            turn = 0
             # direction = 0
             turning_left = False
             turning = False
@@ -289,8 +252,6 @@ class MyController(SilencedPyPS4Controller):
             curve =1 - (x_speed/255)
             turning_right = True
             turning = True
-            turning_left =False
-            turn = 1
             # direction = 1
 
         elif value< 2000 and turning:
