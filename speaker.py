@@ -8,4 +8,4 @@ def baby():
     os.system('mpg123 yhbaby.mp3')
 
 def not_important():
-    os.system('mpg 123 not-important.mp3')
+    os.system('mpg123 not-important.mp3')
