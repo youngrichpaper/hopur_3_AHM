@@ -17,7 +17,6 @@ from ps4 import MyController
 # auto = threading.Thread(target=s.skynja, daemon=True)
 
 controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
-
 auto = threading.Thread(target=s.skynja, daemon=True)
 
 def keyra_controller():
@@ -35,9 +34,10 @@ try:
     controller_thread.start()
 
     while True:
-          if not s.auto_kveikt:
-               m.drive(controller.y_speed, controller.x_speed)
-          time.sleep(0.05)
+        if not s.auto_kveikt:
+            m.drive(controller.y_speed, controller.x_speed)
+        
+        time.sleep(0.05)
 
 
 except KeyboardInterrupt:
