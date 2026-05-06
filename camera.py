@@ -52,8 +52,8 @@ def home():
             <title>Robot Camera</title>
         </head>
         <body>
-            <h1>Live myndavel</h1>
-            <img src="/video_feed" width="640">
+            <h1>Live Myndavél</h1>
+            <img src="/video_feed" width="840">
         </body>
     </html>
     """
