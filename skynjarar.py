@@ -119,3 +119,10 @@ def skynja():
             m.forwards(150)
             time.sleep(0.1)
 
+try:
+    skynja()
+except KeyboardInterrupt:
+    m.stop()
+    print('Stoppar keyrslu')
+    
+
