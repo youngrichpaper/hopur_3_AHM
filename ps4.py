@@ -201,6 +201,7 @@ class MyController(SilencedPyPS4Controller):
         else:
             motor.stop()
             print("AUTO SLÖKKT")
+        self.stop = True
 
     
     def on_circle_release(self):
@@ -245,6 +246,14 @@ class MyController(SilencedPyPS4Controller):
         if self.going_backwards:
             self.y_speed = 0
             self.going_backwards = False
+
+
+class AutonomousController(SilencedPyPS4Controller):
+    def __init__(self, **kwargs):
+        Controller.__init__(self, **kwargs)
+
+    def on_x_press(self):
+        s.auto_kveikt = not s.auto_kveikt
 
 # controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
 # # you can start listening before controller is paired, as long as you pair it within the timeout window
