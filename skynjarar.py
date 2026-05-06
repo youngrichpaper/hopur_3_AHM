@@ -82,12 +82,12 @@ def snuningur(att):
 
 
 def skynja():
-    # global auto_kveikt
+    global auto_kveikt
 
     while True:
-    #     if not auto_kveikt:
-    #             time.sleep(0.1)
-    #             continue
+        if not auto_kveikt:
+                time.sleep(0.1)
+                continue
         
         hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri = searching()
         time.sleep(0.1)
