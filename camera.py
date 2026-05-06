@@ -3,7 +3,7 @@
 import io
 # import picamera
 from flask import Flask, Response
-from picemera2 import Picamera2
+from picamera2 import Picamera2
 
 app = Flask(__name__)
 picam2 = Picamera2()
