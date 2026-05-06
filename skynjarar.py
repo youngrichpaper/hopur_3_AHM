@@ -42,22 +42,22 @@ def searching(): #Leitar af hindrun
         e.baby()
     
     if 0 < current_value3 <= 30:
-        hindrun_haegri = 1
+        hindrun_haegri = True
         print('Hindrun Hægri')
     else:
-        hindrun_haegri = 0
+        hindrun_haegri = False
 
     if 0 < current_value1 <= 30:
-        hindrun_vinstri = 1
+        hindrun_vinstri = True
         print('Hindrun Miðja')
     else:
-        hindrun_vinstri = 0
+        hindrun_vinstri = False
     
     if 0 < current_value2 <= 30:
-        hindrun_midja = 1
+        hindrun_midja = True
         print('Hindrun vinstri')
     else:
-        hindrun_midja = 0
+        hindrun_midja = False
     
     time.sleep(0.1)  # Sleep for some
 
@@ -67,7 +67,7 @@ def snuningur(att):
     while True:
         hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri = searching()
 
-        if hindrun_midja == 0 and hindrun_vinstri == 0 and hindrun_haegri == 0:
+        if hindrun_midja == False and hindrun_vinstri == False and hindrun_haegri == False:
             m.stop()
             break
 
@@ -92,7 +92,7 @@ def skynja():
         hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri = searching()
         time.sleep(0.1)
 
-        if hindrun_midja == 1:
+        if hindrun_midja:
             m.stop()
             time.sleep(0.01)
             e.not_important()
@@ -103,13 +103,13 @@ def skynja():
 
             time.sleep(0.1)
     
-        elif hindrun_vinstri == 1:
+        elif hindrun_vinstri:
             m.stop()
             time.sleep(0.01)
             e.not_important()
             snuningur('haegri')
             time.sleep(0.1)
-        elif hindrun_haegri == 1:
+        elif hindrun_haegri:
             m.stop()
             time.sleep(0.01)
             e.not_important()
