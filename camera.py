@@ -37,6 +37,8 @@ import time
 # if __name__ == '__main__':
 #     app.run(host= '0.0.0.0', port=5000) # , threaded=True)
 
+
+
 app = Flask(__name__)
 
 picam2 = Picamera2()
@@ -44,16 +46,15 @@ picam2 = Picamera2()
 
 def start_camera():
     config = picam2.create_video_configuration(
-        main={"size": (640, 480), "format": "RGB888"}
+        main={
+            "size": (640, 480),
+            "format": "RGB888"
+        }
     )
+
     picam2.configure(config)
     picam2.start()
     time.sleep(1)
-
-    print("Opnaðu þetta í Chrome:")
-    print("http://10.98.208.37:5000")
-
-    app.run(host="0.0.0.0", port=5000, debug=False, threaded=True)
 
 
 def generate_frames():
@@ -74,9 +75,13 @@ def generate_frames():
 
 
 @app.route("/")
-def index():
+def home():
     return """
+    <!DOCTYPE html>
     <html>
+        <head>
+            <title>Robot Camera</title>
+        </head>
         <body>
             <h1>Live myndavel</h1>
             <img src="/video_feed" width="640">
@@ -94,4 +99,22 @@ def video_feed():
 
 
 if __name__ == "__main__":
-    start_camera()
+    try:
+        start_camera()
+
+        print("Opnaðu þetta í Chrome:")
+        print("http://10.98.208.37:5000")
+
+        app.run(
+            host="0.0.0.0",
+            port=5000,
+            debug=False,
+            threaded=True
+        )
+
+    except KeyboardInterrupt:
+        print("Stoppa myndavel")
+
+    finally:
+        picam2.stop()
+        picam2.close()
