@@ -215,7 +215,7 @@ class MyController(SilencedPyPS4Controller):
     def on_L3_right(self, value):
         if not s.auto_kveikt:
             if value> 2000:
-                x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,255]))
+                self.x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,255]))
 
             elif value< 2000 and self.turning:
                 self.x_speed = 0
