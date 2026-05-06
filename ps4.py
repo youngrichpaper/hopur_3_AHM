@@ -5,14 +5,6 @@ import numpy
 import time
 import skynjarar as s
 
-
-y_speed = 0
-x_speed = 0
-turning = False
-driving= False
-
-
-
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
