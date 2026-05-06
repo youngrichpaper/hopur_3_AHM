@@ -9,3 +9,8 @@ def baby():
 
 def not_important():
     os.system('mpg123 not-important.mp3')
+
+try:
+    baby()
+except KeyboardInterrupt:
+    pass
