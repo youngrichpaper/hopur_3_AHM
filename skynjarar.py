@@ -9,9 +9,9 @@ auto_kveikt = False
 
 i2c_bus = smbus.SMBus(1)
 
-i2c_address1 = 0x71
-i2c_address2 = 0x70
-i2c_address3 = 0x72
+i2c_address1 = 0x71 #Vinstri skynjari (Svartur)
+i2c_address2 = 0x70 #Miðju skynjari (Grár)
+i2c_address3 = 0x72 #Hægri skynjari (Rauður)
 
 
 def searching(): #Leitar af hindrun
@@ -36,7 +36,7 @@ def searching(): #Leitar af hindrun
     low3 = i2c_bus.read_byte_data(i2c_address3, 3)
     current_value3 = high3 * 256 + low3
 
-    print('Vinstri:',current_value1,'Hægri:',current_value2,'Vinstri', current_value3)
+    print('Vinstri:',current_value1,'Midja:',current_value2,'Haegri', current_value3)
 
     if 400 < current_value1 < 500 and 400 < current_value2 < 500:
         e.baby()
@@ -47,13 +47,13 @@ def searching(): #Leitar af hindrun
     else:
         hindrun_haegri = 0
 
-    if 0 < current_value1 <= 30:
+    if 0 < current_value2 <= 30:
         hindrun_vinstri = 1
         print('Hindrun Miðja')
     else:
         hindrun_vinstri = 0
     
-    if 0 < current_value2 <= 30:
+    if 0 < current_value1 <= 30:
         hindrun_midja = 1
         print('Hindrun vinstri')
     else:
