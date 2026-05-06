@@ -23,6 +23,7 @@ def generate_frames():
     #         yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + stream.read() +b'\r\n'
     #         stream.seek(0)
     #         stream.truncate()
+        yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
         pass
 
 @app.route('/video_feed')
