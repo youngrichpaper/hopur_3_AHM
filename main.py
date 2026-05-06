@@ -16,7 +16,7 @@ import camera
 
 controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
 auto = threading.Thread(target=s.skynja, daemon=True)
-mynd = threading.Thread(target=camera, daemon=True)
+mynd = threading.Thread(target=camera.live_feed, daemon=True)
 
 def keyra_controller():
     controller.listen(timeout=60)
