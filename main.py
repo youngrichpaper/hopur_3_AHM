@@ -34,10 +34,11 @@ try:
     auto.start()
     controller_thread.start()
 
-
     while True:
-        m.drive(controller.y_speed, controller.x_speed)
-        time.sleep(0.1)
+          if not s.auto_kveikt:
+               m.drive(controller.y_speed, controller.x_speed)
+          time.sleep(0.05)
+
 
 except KeyboardInterrupt:
     print("Stoppar keyrslu")
