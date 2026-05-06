@@ -28,6 +28,8 @@ def generate_frames():
     while True:
         frame = picam2.capture_array()
 
+        frame = cv2.flip(frame, -1)
+
         ret, buffer = cv2.imencode(".jpg", frame)
 
         if not ret:
