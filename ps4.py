@@ -4,6 +4,7 @@ import motor
 import numpy
 import time
 import skynjarar as s
+import speaker
 
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
@@ -197,6 +198,7 @@ class MyController(SilencedPyPS4Controller):
         if s.auto_kveikt:
             motor.stop()
             print("AUTO KVEIKT")
+            speaker.baby()
         else:
             motor.stop()
             print("AUTO SLÖKKT")
