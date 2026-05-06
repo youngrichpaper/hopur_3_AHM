@@ -234,7 +234,7 @@ class MyController(SilencedPyPS4Controller):
             self.going_forward = False
 
     def on_L2_press(self, value):
-        if s.auto_kveikt:
+        if not s.auto_kveikt:
 
             if value > -25000 and not(self.going_forward):
                 self.y_speed = -int(numpy.interp(value, [-25000, 32767], [0,255]))
