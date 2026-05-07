@@ -35,7 +35,7 @@ def servo_rotate():
         rotate_s2(90)
         time.sleep(0.4)
         rotate_s1(0)
-        rotate_s2(180)
+        rotate_s2(200)
         time.sleep(0.4)
 
 try:
