@@ -35,14 +35,14 @@ def servo_rotate():
         rotate_s2(90)
         time.sleep(0.4)
         rotate_s1(0)
-        rotate_s2(200)
+        rotate_s2(180)
         time.sleep(0.4)
 
-try:
-    while True:
-        servo_rotate()
-except KeyboardInterrupt:
-    pass
+# try:
+#     while True:
+#         servo_rotate()
+# except KeyboardInterrupt:
+#     pass
 
 
 
