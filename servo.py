@@ -38,11 +38,11 @@ def servo_rotate():
         rotate_s2(180)
         time.sleep(0.4)
 
-try:
-    while True:
-        servo_rotate()
-except KeyboardInterrupt:
-    pass
+# try:
+#     while True:
+#         servo_rotate()
+# except KeyboardInterrupt:
+#     pass
 
 
 

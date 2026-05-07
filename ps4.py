@@ -249,7 +249,7 @@ class MyController(SilencedPyPS4Controller):
                     self.servo_angle = 180
 
                 v.rotate_s1(self.servo_angle)
-                v.rotate_s2(self.servo_angle)
+                # v.rotate_s2(self.servo_angle)
 
             time.sleep(self.servo_delay)
 
@@ -290,4 +290,4 @@ class MyController(SilencedPyPS4Controller):
         if not s.auto_kveikt:
             self.y_speed = 0
             self.going_backwards = False
-            speaker.reverse_stop()
+            speaker.stop()
