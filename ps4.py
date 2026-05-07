@@ -227,6 +227,7 @@ class MyController(SilencedPyPS4Controller):
             elif value> -2000:
                 self.x_speed = 0
                 self.turning = False
+            print(self.x_speed)
 
     def on_L3_right(self, value):
         if not s.auto_kveikt:
@@ -236,7 +237,8 @@ class MyController(SilencedPyPS4Controller):
             elif value< 2000:
                 self.x_speed = 0
                 self.turning = False
-
+            print(self.x_speed)
+            
     def servo_loop(self):
         while True:
             if self.servo_direction != 0:
