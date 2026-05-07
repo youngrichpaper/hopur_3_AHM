@@ -102,7 +102,6 @@ def drive(y_speed, x_speed):
             rotate_CW(x_speed)
     else: 
         stop()
-    print(curve)
 
 def dance():
     for i in range(1,11):
