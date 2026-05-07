@@ -289,4 +289,4 @@ class MyController(SilencedPyPS4Controller):
         if not s.auto_kveikt:
             self.y_speed = 0
             self.going_backwards = False
-            speaker.reverse_stop()
+            speaker.stop()

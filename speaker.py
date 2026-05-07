@@ -1,23 +1,23 @@
 #speaker
-import os
-from subprocess import Popen
+import pygame
+
+pygame.mixer.init()
 
 def ruski():
-    os.system('mpg123 ussr_anthem.mp3')
+    pygame.mixer.load('ussr_anthem.mp3')
+    pygame.mixer.play()
 
 def baby():
-    os.system('mpg123 yhbaby.mp3')
+    pygame.mixer.load('yhbaby.mp3')
+    pygame.mixer.play()
 
 def not_important():
-    os.system('mpg123 not-important.mp3')
+    pygame.mixer.load('not-important.mp3')
+    pygame.mixer.play()
 
 def reverse():
-    global bakk
-    bakk = Popen(["mpg123", "/home/hopur_3/reverse.mp3"])
-    return bakk
+    pygame.mixer.load('reverse.mp3')
+    pygame.mixer.play()
 
-def reverse_stop():
-    global bakk
-
-    if bakk:
-        bakk.terminate()
+def stop():
+    pygame.mixer.stop()
