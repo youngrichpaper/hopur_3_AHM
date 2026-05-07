@@ -15,12 +15,10 @@ i2c_address3 = 0x72 #Hægri skynjari (Rauður)
 
 
 def searching(): #Leitar af hindrun
-    try:
-        i2c_bus.write_byte_data(i2c_address1, 0, 0x51)
-        i2c_bus.write_byte_data(i2c_address2, 0, 0x51)  # Tell sensor to scan in mm
-        i2c_bus.write_byte_data(i2c_address3, 0, 0x51)
-    except OSError:
-        pass
+    i2c_bus.write_byte_data(i2c_address1, 0, 0x51)
+    i2c_bus.write_byte_data(i2c_address2, 0, 0x51)  # Tell sensor to scan in mm
+    i2c_bus.write_byte_data(i2c_address3, 0, 0x51)
+
     time.sleep(0.01)
 
     high1 = i2c_bus.read_byte_data(i2c_address1, 2)  # Read the high byte of the value
@@ -35,7 +33,7 @@ def searching(): #Leitar af hindrun
 
     high3 = i2c_bus.read_byte_data(i2c_address3, 2)
     low3 = i2c_bus.read_byte_data(i2c_address3, 3)
-    haegri = high3 * 256 + low3
+    current_value3 = high3 * 256 + low3
 
     print('Vinstri:',vinstri,'Midja:',midja,'Haegri', haegri)
 
@@ -66,7 +64,7 @@ def searching(): #Leitar af hindrun
 
 def snuningur(att):
     while True:
-        hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri = searching()
+        hindrun_vinstri, hindrun_midja, hindrun_haegri = searching()
 
         if hindrun_midja == 0 and hindrun_vinstri == 0 and hindrun_haegri == 0:
             m.stop()
