@@ -1,5 +1,6 @@
 #speaker
 import os
+from subprocess import call
 
 def ruski():
     os.system('mpg123 ussr_anthem.mp3')
@@ -11,4 +12,4 @@ def not_important():
     os.system('mpg123 not-important.mp3')
 
 def reverse():
-    os.system('aplay reverse.mp3&')
+    bakk = call(["aplay", "/home/reverse.mp3"])
