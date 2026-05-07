@@ -1,11 +1,13 @@
 from pyPS4Controller.controller import Controller
+# from gpiozero import AngularServo
 import threading
 import motor
 import numpy
 import time
 import skynjarar as s
 import speaker
-import os
+import servo as v
+
 
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
@@ -154,6 +156,17 @@ class MyController(SilencedPyPS4Controller):
         self.driving = False
         self.going_forward = False
         self.going_backwards = False
+
+        # Servo stillingar
+        self.servo_angle = 90
+        v.rotate_s1(self.servo_angle)
+
+        self.servo_direction = 0
+        self.servo_step = 2
+        self.servo_delay = 0.03
+
+        self.servo_thread = threading.Thread(target=self.servo_loop, daemon=True)
+        self.servo_thread.start()
         
 
     def on_up_arrow_press(self):
@@ -223,6 +236,33 @@ class MyController(SilencedPyPS4Controller):
             elif value< 2000:
                 self.x_speed = 0
                 self.turning = False
+
+    def servo_loop(self):
+        while True:
+            if self.servo_direction != 0:
+                self.servo_angle += self.servo_direction * self.servo_step
+
+                if self.servo_angle < 0:
+                    self.servo_angle = 0
+
+                elif self.servo_angle > 180:
+                    self.servo_angle = 180
+
+                v.rotate_s1(self.servo_angle)
+
+            time.sleep(self.servo_delay)
+
+    def on_R3_left(self, value):
+        if value < -2000:
+            self.servo_direction = -1
+        else:
+            self.servo_direction = 0
+
+    def on_R3_right(self, value):
+        if value > 2000:
+            self.servo_direction = 1
+        else:
+            self.servo_direction = 0
 
     def on_R2_press(self, value):
         if not s.auto_kveikt:
