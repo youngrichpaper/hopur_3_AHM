@@ -6,6 +6,8 @@ import numpy
 import time
 import skynjarar as s
 import speaker
+import servo as v
+
 
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):

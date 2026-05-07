@@ -76,7 +76,7 @@ def live_feed():
 
         app.run(
             host="0.0.0.0",
-     1       port=5000,
+            port=5000,
             debug=False,
             threaded=True
         )
