@@ -248,8 +248,8 @@ class MyController(SilencedPyPS4Controller):
                 elif self.servo_angle > 180:
                     self.servo_angle = 180
 
-                v.rotate_s1(self.servo_angle)
-                # v.rotate_s2(self.servo_angle)
+                v.rotate_s1(self.servo_angle) 
+                # v.rotate_s2(self.servo_angle) #Til að snúa servo 2
 
             time.sleep(self.servo_delay)
 
