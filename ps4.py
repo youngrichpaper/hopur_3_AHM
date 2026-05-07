@@ -156,6 +156,8 @@ class MyController(SilencedPyPS4Controller):
         self.driving = False
         self.going_forward = False
         self.going_backwards = False
+        self.auto_speed = 100
+        self.pressed = False
 
         # Servo stillingar
         self.servo_angle = 90
@@ -170,36 +172,20 @@ class MyController(SilencedPyPS4Controller):
         
 
     def on_up_arrow_press(self):
-        if not s.auto_kveikt:
-            motor.forwards(230)
-            print('Út fyrir endamörk alheimsins!')
-
+        if s.auto_kveikt:
+            while self.pressed and self.auto_speed <=255:
+                self.auto_speed += 1
+                time.sleep(0.5)
     def on_down_arrow_press(self):
-        if not s.auto_kveikt:
-            motor.backwards(230)
-            print('Bakk bakk')
-
+        if s.auto_kveikt:
+            while self.pressed and self.auto_speed >=1:
+                self.auto_speed -= 1
+                time.sleep(0.5)
+        
     def on_up_down_arrow_release(self):
-        if not s.auto_kveikt:
-            motor.stop()
-            print('STOP!!!!!')
-
-   
-    def on_right_arrow_press(self):
-        if not s.auto_kveikt:
-            motor.rotate_CW(100)
-            print('Hægri')
-
-    def on_left_arrow_press(self):
-        if not s.auto_kveikt:
-            motor.rotate_CCW(100)
-            print('Hitt hægri')
-
-    def on_left_right_arrow_release(self):
-        if not s.auto_kveikt:
-            motor.stop()
-            print('STOP!!!!!')
-    
+        if s.auto_kveikt:
+            self.pressed = False
+            
     def on_circle_press(self):
         s.auto_kveikt = False
         motor.stop()

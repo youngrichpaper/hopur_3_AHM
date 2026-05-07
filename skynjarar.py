@@ -62,7 +62,7 @@ def searching(): #Leitar af hindrun
 
     return hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri
 
-def snuningur(att):
+def snuningur(att, speed):
     while True:
         hindrun_vinstri, hindrun_midja, hindrun_haegri, _, _ = searching()
 
@@ -71,16 +71,16 @@ def snuningur(att):
             break
 
         if att == 'haegri':
-            m.rotate_CW(100)
+            m.rotate_CW(speed)
         else:
-            m.rotate_CCW(100)
+            m.rotate_CCW(speed)
 
         time.sleep(0.01)
 
 
 
 
-def skynja():
+def skynja(speed):
     global auto_kveikt
 
     while True:
@@ -96,9 +96,9 @@ def skynja():
             time.sleep(0.01)
             e.not_important()
             if vinstri <= haegri:
-                snuningur('haegri')
+                snuningur('haegri', speed)
             else:
-                snuningur('vinstri')
+                snuningur('vinstri', speed)
 
             time.sleep(0.1)
     
@@ -106,16 +106,16 @@ def skynja():
             m.stop()
             time.sleep(0.01)
             e.not_important()
-            snuningur('haegri')
+            snuningur('haegri', speed)
             time.sleep(0.1)
         elif hindrun_haegri == 1:
             m.stop()
             time.sleep(0.01)
             e.not_important()
-            snuningur('vinstri')
+            snuningur('vinstri', speed)
             time.sleep(0.1)
         else:
-            m.forwards(150)
+            m.forwards(speed)
             time.sleep(0.1)
 
 # try:
