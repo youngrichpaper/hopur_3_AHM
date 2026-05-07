@@ -26,9 +26,9 @@ def backwards(speed, curve = 0, direction = 0):
             print('Invalid speed')
         else:
             data = [speed  , 1, int(speed*0.9), 0]
-    elif direction == 2:
-        data = [speed, 1, int(speed*curve),0]
     elif direction == 1:
+        data = [speed, 1, int(speed*curve),0]
+    elif direction == 2:
         data = [int(speed*curve), 1, speed, 0]
 
     try:
@@ -88,8 +88,8 @@ def rotate_by_CCW(theta, v=100):
 
 def drive(y_speed, x_speed):
     curve = 1 - abs(x_speed)/250
-    if x_speed<0: turn = 2
-    elif x_speed>0: turn = 1
+    if x_speed<0: turn = 1
+    elif x_speed>0: turn = 2
     else: turn = 0
     if y_speed>0:
         forwards(y_speed, curve, turn)
