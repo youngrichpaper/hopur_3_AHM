@@ -33,7 +33,7 @@ def searching(): #Leitar af hindrun
 
     high3 = i2c_bus.read_byte_data(i2c_address3, 2)
     low3 = i2c_bus.read_byte_data(i2c_address3, 3)
-    current_value3 = high3 * 256 + low3
+    haegri = high3 * 256 + low3
 
     print('Vinstri:',vinstri,'Midja:',midja,'Haegri', haegri)
 
