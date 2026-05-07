@@ -1,23 +1,29 @@
 #speaker
 import pygame
 
+pygame.init()
 pygame.mixer.init()
 
 def ruski():
-    pygame.mixer.load('ussr_anthem.mp3')
-    pygame.mixer.play()
+    pygame.mixer.music.unload()
+    pygame.mixer.music.load('ussr_anthem.mp3')
+    pygame.mixer.music.play()
 
 def baby():
-    pygame.mixer.load('yhbaby.mp3')
-    pygame.mixer.play()
+    pygame.mixer.music.unload()
+    pygame.mixer.music.load('yhbaby.mp3')
+    pygame.mixer.music.play()
 
 def not_important():
-    pygame.mixer.load('not-important.mp3')
-    pygame.mixer.play()
+    pygame.mixer.music.unload()
+    pygame.mixer.music.load('not-important.mp3')
+    pygame.mixer.music.play()
 
 def reverse():
-    pygame.mixer.load('reverse.mp3')
-    pygame.mixer.play()
+    pygame.mixer.music.unload()
+    pygame.mixer.music.load('reverse.mp3')
+    pygame.mixer.music.play()
 
 def stop():
-    pygame.mixer.stop()
+    pygame.mixer.music.unload()
+    pygame.mixer.music.stop()
