@@ -5,6 +5,7 @@ import numpy
 import time
 import skynjarar as s
 import speaker
+import os
 
 class SilencedPyPS4Controller(Controller):
     def __init__(self, **kwargs):
@@ -241,8 +242,11 @@ class MyController(SilencedPyPS4Controller):
             if value > -25000 and not(self.going_forward):
                 self.y_speed = -int(numpy.interp(value, [-25000, 32767], [0,255]))
                 self.going_backwards = True
+                speaker.reverse()
+
     
     def on_L2_release(self):
         if not s.auto_kveikt:
             self.y_speed = 0
             self.going_backwards = False
+            os.system('pkill mpg123')
