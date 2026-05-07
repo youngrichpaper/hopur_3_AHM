@@ -29,8 +29,8 @@ controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 #--------------------------------------------
 #Autonomous keyrsla
 try:
-    auto.start()
     controller_thread.start()
+    auto.start()
     mynd.start()
     while True:
         if not s.auto_kveikt:
