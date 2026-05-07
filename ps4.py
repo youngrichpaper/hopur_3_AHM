@@ -210,7 +210,7 @@ class MyController(SilencedPyPS4Controller):
                 self.x_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,255]))
                 self.turning = True
 
-            elif value> -2000 and self.turning:
+            elif value> -2000:
                 self.x_speed = 0
                 self.turning = False
 
@@ -219,7 +219,7 @@ class MyController(SilencedPyPS4Controller):
             if value> 2000:
                 self.x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,255]))
 
-            elif value< 2000 and self.turning:
+            elif value< 2000:
                 self.x_speed = 0
                 self.turning = False
 
