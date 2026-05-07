@@ -13,7 +13,7 @@ def not_important():
 
 def reverse():
     global bakk
-    bakk = Popen(["mpg123", "/home/reverse.mp3"])
+    bakk = Popen(["mpg123", "/home/hopur_3/reverse.mp3"])
     return bakk
 
 def reverse_stop():
