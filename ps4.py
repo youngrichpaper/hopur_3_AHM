@@ -249,7 +249,7 @@ class MyController(SilencedPyPS4Controller):
                     self.servo_angle = 180
 
                 v.rotate_s1(self.servo_angle)
-                v.rotate_s2(self.servo_angle)
+                # v.rotate_s2(self.servo_angle)
 
             time.sleep(self.servo_delay)
 
