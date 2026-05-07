@@ -39,5 +39,4 @@ def servo_rotate():
         time.sleep(0.4)
 
 
-rotate_s1(90)
 
