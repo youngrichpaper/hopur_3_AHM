@@ -97,9 +97,9 @@ def drive(y_speed, x_speed):
         backwards(abs(y_speed), curve, turn)
     elif x_speed!=0:
         if turn == 2:
-            rotate_CCW(abs(x_speed))
+            rotate_CCW(x_speed)
         elif turn == 1:
-            rotate_CW(x_speed)
+            rotate_CW(abs(x_speed))
     else: 
         stop()
     
