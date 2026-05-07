@@ -1,6 +1,6 @@
 #speaker
 import os
-from subprocess import call
+from subprocess import Popen
 
 def ruski():
     os.system('mpg123 ussr_anthem.mp3')
@@ -12,4 +12,12 @@ def not_important():
     os.system('mpg123 not-important.mp3')
 
 def reverse():
-    bakk = call(["aplay", "/home/reverse.mp3"])
+    global bakk
+    bakk = Popen(["mpg123", "/home/reverse.mp3"])
+    return bakk
+
+def reverse_stop():
+    global bakk
+
+    if bakk:
+        bakk.terminate()
