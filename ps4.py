@@ -245,8 +245,8 @@ class MyController(SilencedPyPS4Controller):
                 if self.servo_angle < 0:
                     self.servo_angle = 0
 
-                elif self.servo_angle > 200:
-                    self.servo_angle = 200
+                elif self.servo_angle > 180:
+                    self.servo_angle = 180
 
                 v.rotate_s1(self.servo_angle)
 
