@@ -87,7 +87,7 @@ def rotate_by_CCW(theta, v=100):
 
 
 def drive(y_speed, x_speed):
-    curve = 1 - abs(x_speed)/250
+    curve = 1 - abs(x_speed)/255
     if x_speed<0: turn = 2
     elif x_speed>0: turn = 1
     else: turn = 0
