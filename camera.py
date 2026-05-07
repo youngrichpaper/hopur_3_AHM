@@ -14,7 +14,7 @@ picam2 = Picamera2()
 def start_camera():
     config = picam2.create_video_configuration(
         main={
-            "size": (4608, 2592),
+            "size": (2304, 1296),
             "format": "RGB888"
         }
     )
