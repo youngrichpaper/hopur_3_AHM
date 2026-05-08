@@ -35,26 +35,26 @@ def searching(): #Leitar af hindrun
     low3 = i2c_bus.read_byte_data(i2c_address3, 3)
     haegri = high3 * 256 + low3
 
-    print('Vinstri:',vinstri,'Midja:',midja,'Haegri', haegri)
+    # print('Vinstri:',vinstri,'Midja:',midja,'Haegri', haegri)
 
     if 400 < vinstri < 500 and 400 < midja < 500:
         e.baby()
     
     if 0 < haegri <= 30:
         hindrun_haegri = 1
-        print('Hindrun Hægri')
+        print(f'Hindrun HÆGRI, fjarlægð er {haegri}')
     else:
         hindrun_haegri = 0
 
     if 0 < midja <= 30:
         hindrun_vinstri = 1
-        print('Hindrun Miðja')
+        print(f'Hindrun MIÐJA, fjarlægð er {midja}')
     else:
         hindrun_vinstri = 0
     
     if 0 < vinstri <= 30:
         hindrun_midja = 1
-        print('Hindrun vinstri')
+        print(f'Hindrun VINSTRI, fjarlægð er {vinstri}')
     else:
         hindrun_midja = 0
     
