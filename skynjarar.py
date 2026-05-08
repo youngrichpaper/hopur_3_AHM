@@ -26,15 +26,15 @@ def searching(): #Leitar af hindrun
     low1 = i2c_bus.read_byte_data(i2c_address1, 3)  # Read the low byte of the value
     #print(low) # print the value of low byte
     vinstri = high1 * 256 + low1
-
+    time.sleep(0.08)
     high2 = i2c_bus.read_byte_data(i2c_address2, 2)
     low2 = i2c_bus.read_byte_data(i2c_address2, 3)
     midja = high2 * 256 + low2 
-
+    time.sleep(0.08)
     high3 = i2c_bus.read_byte_data(i2c_address3, 2)
     low3 = i2c_bus.read_byte_data(i2c_address3, 3)
     haegri = high3 * 256 + low3
-
+    time.sleep(0.08)
     # print('Vinstri:',vinstri,'Midja:',midja,'Haegri', haegri)
 
     if 400 < vinstri < 500 and 400 < midja < 500:
