@@ -9,6 +9,11 @@ import servo as v
 import speaker as e
 from ps4 import MyController
 import camera
+import alsaaudio
+
+m = alsaaudio.Mixer()
+
+m.setvolume(80)
 
 
 # skanna = threading.Thread(target=v.servo_rotate, daemon=True)
