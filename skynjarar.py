@@ -42,19 +42,19 @@ def searching(): #Leitar af hindrun
     
     if 0 < haegri <= 40:
         hindrun_haegri = 1
-        print(f'Hindrun HÆGRI, fjarlægð er {haegri}')
+        # print(f'Hindrun HÆGRI, fjarlægð er {haegri}')
     else:
         hindrun_haegri = 0
 
     if 0 < midja <= 30:
         hindrun_vinstri = 1
-        print(f'Hindrun MIÐJA, fjarlægð er {midja}')
+        # print(f'Hindrun MIÐJA, fjarlægð er {midja}')
     else:
         hindrun_vinstri = 0
     
     if 0 < vinstri <= 40:
         hindrun_midja = 1
-        print(f'Hindrun VINSTRI, fjarlægð er {vinstri}')
+        # print(f'Hindrun VINSTRI, fjarlægð er {vinstri}')
     else:
         hindrun_midja = 0
     
