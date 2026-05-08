@@ -66,7 +66,7 @@ def snuningur(att):
     while True:
         hindrun_vinstri, hindrun_midja, hindrun_haegri, _, _,_ = searching()
 
-        if hindrun_midja == 0 and hindrun_vinstri == 0 and hindrun_haegri == 0:
+        if hindrun_midja == 0:
             m.stop()
             break
 
