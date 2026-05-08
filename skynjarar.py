@@ -40,7 +40,7 @@ def searching(): #Leitar af hindrun
     if 400 < vinstri < 500 and 400 < midja < 500:
         e.baby()
     
-    if 0 < haegri <= 30:
+    if 0 < haegri <= 40:
         hindrun_haegri = 1
         print(f'Hindrun HÆGRI, fjarlægð er {haegri}')
     else:
@@ -52,7 +52,7 @@ def searching(): #Leitar af hindrun
     else:
         hindrun_vinstri = 0
     
-    if 0 < vinstri <= 30:
+    if 0 < vinstri <= 40:
         hindrun_midja = 1
         print(f'Hindrun VINSTRI, fjarlægð er {vinstri}')
     else:
@@ -115,7 +115,7 @@ def skynja():
             snuningur('vinstri')
             time.sleep(0.1)
         else:
-            m.forwards(150)
+            m.forwards(100)
             time.sleep(0.1)
 
 # try:
