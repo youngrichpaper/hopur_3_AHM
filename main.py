@@ -33,12 +33,10 @@ try:
     mynd.start()
     controller_thread.start()
     auto.start()
-    # while True:
-    #     if not s.auto_kveikt:
-    #         m.drive(controller.y_speed, controller.x_speed)
-    #         _,_,_,vinstri, haegri, midja = s.searching()   
-    #         print(vinstri, midja, haegri)  
-    #     time.sleep(0.05)
+    while True:
+        if not s.auto_kveikt:
+            m.drive(controller.y_speed, controller.x_speed)        
+        time.sleep(0.05)
 
 
 except KeyboardInterrupt:
