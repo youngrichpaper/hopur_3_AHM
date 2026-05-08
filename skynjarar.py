@@ -60,7 +60,7 @@ def searching(): #Leitar af hindrun
     
     time.sleep(0.1)  # Sleep for some
 
-    return hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri
+    return hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri, midja
 
 def snuningur(att):
     while True:
@@ -88,35 +88,35 @@ def skynja():
                 time.sleep(0.1)
                 continue
         
-        hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri = searching()
+        hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri, midja = searching()
         time.sleep(0.1)
+        print(vinstri, midja, haegri)
+        # if hindrun_midja == 1:
+        #     m.stop()
+        #     time.sleep(0.01)
+        #     e.not_important()
+        #     if vinstri <= haegri:
+        #         snuningur('haegri')
+        #     else:
+        #         snuningur('vinstri')
 
-        if hindrun_midja == 1:
-            m.stop()
-            time.sleep(0.01)
-            e.not_important()
-            if vinstri <= haegri:
-                snuningur('haegri')
-            else:
-                snuningur('vinstri')
-
-            time.sleep(0.1)
+        #     time.sleep(0.1)
     
-        elif hindrun_vinstri == 1:
-            m.stop()
-            time.sleep(0.01)
-            e.not_important()
-            snuningur('haegri')
-            time.sleep(0.1)
-        elif hindrun_haegri == 1:
-            m.stop()
-            time.sleep(0.01)
-            e.not_important()
-            snuningur('vinstri')
-            time.sleep(0.1)
-        else:
-            m.forwards(100)
-            time.sleep(0.1)
+        # elif hindrun_vinstri == 1:
+        #     m.stop()
+        #     time.sleep(0.01)
+        #     e.not_important()
+        #     snuningur('haegri')
+        #     time.sleep(0.1)
+        # elif hindrun_haegri == 1:
+        #     m.stop()
+        #     time.sleep(0.01)
+        #     e.not_important()
+        #     snuningur('vinstri')
+        #     time.sleep(0.1)
+        # else:
+        #     m.forwards(100)
+        #     time.sleep(0.1)
 
 # try:
 #     skynja()
