@@ -14,6 +14,7 @@ def rotate_s2(degree=90): #Snýr servo2 um ákveðna gráðu
 
 def wave_flag(): #Snýr servo fram og til (fyrir fána)
     while True:
+        print('piss')
         if flag_on:
             rotate_s2(0)
             time.sleep(0.7)
