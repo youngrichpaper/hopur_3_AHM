@@ -158,7 +158,6 @@ class MyController(SilencedPyPS4Controller):
         self.going_backwards = False
         self.auto_speed = 100
         self.pressed = False
-        self.flag_on
 
         # Servo stillingar
         self.servo_angle = 90
