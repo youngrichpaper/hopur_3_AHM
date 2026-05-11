@@ -193,6 +193,7 @@ class MyController(SilencedPyPS4Controller):
         self.going_backwards = False
         self.going_forward = False
         motor.stop()
+        speaker.stop()
         print('STOP!!!!!')
 
     def on_x_press(self):
