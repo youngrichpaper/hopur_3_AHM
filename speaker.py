@@ -16,7 +16,7 @@ def not_important():
     pygame.mixer.music.load('not-important.mp3')
     pygame.mixer.music.play()
 
-def reverse():
+def reverse(): 
     pygame.mixer.music.load('reverse.mp3')
     pygame.mixer.music.set_volume(1.0)
     pygame.mixer.music.play()
