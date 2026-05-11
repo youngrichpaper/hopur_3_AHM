@@ -30,9 +30,10 @@ controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 #Auto eða handvirkt
 try:
     mynd.start()
+    time.sleep(0.05)
     controller_thread.start()
     # auto.start()
-    # fani.start()
+    fani.start()
     while True:
         if not s.auto_kveikt:
             m.drive(controller.y_speed, controller.x_speed) 
