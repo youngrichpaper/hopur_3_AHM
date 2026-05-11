@@ -37,22 +37,22 @@ def searching(): #Leitar af hindrun
     time.sleep(0.08)
     # print('Vinstri:',vinstri,'Midja:',midja,'Haegri', haegri)
 
-    if 400 < vinstri < 500 and 400 < midja < 500:
+    if 400 < vinstri < 500 and 400 < midja < 500: 
         e.baby()
     
-    if 0 < haegri <= 40:
+    if 0 < haegri <= 40: #Athugar fyrir hægri skynjara
         hindrun_haegri = 1
         # print(f'Hindrun HÆGRI, fjarlægð er {haegri}')
     else:
         hindrun_haegri = 0
 
-    if 0 < midja <= 30:
+    if 0 < midja <= 30: #Athugar fyrir miðju skynjara
         hindrun_vinstri = 1
         # print(f'Hindrun MIÐJA, fjarlægð er {midja}')
     else:
         hindrun_vinstri = 0
     
-    if 0 < vinstri <= 40:
+    if 0 < vinstri <= 40: #Athugar fyrir vinstri skynjara
         hindrun_midja = 1
         # print(f'Hindrun VINSTRI, fjarlægð er {vinstri}')
     else:
@@ -62,7 +62,7 @@ def searching(): #Leitar af hindrun
 
     return hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri, midja
 
-def snuningur(att):
+def snuningur(att): #Fallið snýr sér þangað til skynjarar skila 0
     while True:
         hindrun_vinstri, hindrun_midja, hindrun_haegri, _, _,_ = searching()
 
@@ -70,7 +70,7 @@ def snuningur(att):
             m.stop()
             break
 
-        if att == 'haegri':
+        if att == 'haegri': #Athugar hvort eigi að beygja til hægri eða vinstri
             m.rotate_CW(80)
         else:
             m.rotate_CCW(80)
@@ -83,7 +83,7 @@ def snuningur(att):
 def skynja():
     global auto_kveikt
 
-    while True:
+    while True: 
         if not auto_kveikt:
                 time.sleep(0.1)
                 continue
@@ -91,6 +91,7 @@ def skynja():
         hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri, midja = searching()
         time.sleep(0.1)
         
+        #Fer yfir skynjara og athugar hvort þeir skynja hindrun.
         if hindrun_midja == 1:
             m.stop()
             time.sleep(0.01)
@@ -114,7 +115,7 @@ def skynja():
             e.not_important()
             snuningur('vinstri')
             time.sleep(0.1)
-        else:
+        else: #Fer beint áfram ef allir skynjarar skila 0.
             m.forwards(100)
             time.sleep(0.1)
 
