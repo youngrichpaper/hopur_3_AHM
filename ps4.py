@@ -158,6 +158,7 @@ class MyController(SilencedPyPS4Controller):
         self.going_backwards = False
         self.auto_speed = 100
         self.pressed = False
+        self.flag_on
 
         # Servo stillingar
         self.servo_angle = 90
@@ -203,7 +204,9 @@ class MyController(SilencedPyPS4Controller):
             motor.stop()
             print("AUTO SLÖKKT")
 
-    
+    def on_triangle_press(self):
+        v.flag_on = not v.flag_on
+
     def on_L3_left(self, value):
         if not s.auto_kveikt:
             if value< -2000:

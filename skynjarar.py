@@ -118,5 +118,3 @@ def skynja():
         else: #Fer beint áfram ef allir skynjarar skila 0.
             m.forwards(100)
             time.sleep(0.1)
-
-

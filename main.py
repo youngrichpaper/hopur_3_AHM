@@ -18,7 +18,7 @@ def keyra_controller():
     controller.listen(timeout=60)
 
 #Set upp þræði
-skanna = threading.Thread(target=v.servo_rotate, daemon=True)
+fani = threading.Thread(target=v.wave_flag, daemon=True)
 auto = threading.Thread(target=s.skynja, daemon=True)
 mynd = threading.Thread(target=camera.live_feed, daemon=True)
 controller_thread = threading.Thread(target=keyra_controller, daemon=True)
@@ -32,10 +32,10 @@ try:
     mynd.start()
     controller_thread.start()
     auto.start()
-    skanna.start()
+    fani.start()
     while True:
         if not s.auto_kveikt:
-            m.drive(controller.y_speed, controller.x_speed)        
+            m.drive(controller.y_speed, controller.x_speed)  
         time.sleep(0.05)
 
 
