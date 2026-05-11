@@ -38,7 +38,6 @@ try:
             m.drive(controller.y_speed, controller.x_speed) 
         else : 
             s.skynja()
-        v.wave_flag()
         time.sleep(0.05)
 
 
