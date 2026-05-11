@@ -19,3 +19,5 @@ def wave_flag(): #Snýr servo fram og til (fyrir fána)
             time.sleep(0.7)
             rotate_s2(0)
             time.sleep(0.7)
+        else:
+            time.sleep(1)
