@@ -188,6 +188,10 @@ class MyController(SilencedPyPS4Controller):
             
     def on_circle_press(self):
         s.auto_kveikt = False
+        self.x_speed = 0
+        self.y_speed = 0
+        self.going_backwards = False
+        self.going_forward = False
         motor.stop()
         print('STOP!!!!!')
 
