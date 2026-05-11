@@ -221,6 +221,7 @@ class MyController(SilencedPyPS4Controller):
             elif value< 2000:
                 self.x_speed = 0
                 self.turning = False
+                
     def servo_loop(self):
         while True:
             if self.servo_direction != 0:
@@ -232,8 +233,7 @@ class MyController(SilencedPyPS4Controller):
                 elif self.servo_angle > 180:
                     self.servo_angle = 180
 
-                v.rotate_s1(self.servo_angle) 
-                # v.rotate_s2(self.servo_angle) #Til að snúa servo 2
+                v.rotate_s1(self.servo_angle) #Til að snúa servo1 handvirkt
 
             time.sleep(self.servo_delay)
 
