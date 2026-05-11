@@ -21,5 +21,5 @@ def reverse():
     pygame.mixer.music.set_volume(1.0)
     pygame.mixer.music.play()
 
-def stop():
+def stop(): #Til þess að stoppa spilun
     pygame.mixer.music.stop()

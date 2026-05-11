@@ -9,9 +9,9 @@ auto_kveikt = False
 
 i2c_bus = smbus.SMBus(1)
 
-i2c_address1 = 0x71 #Vinstri skynjari (Svartur)
-i2c_address2 = 0x70 #Miðju skynjari (Grár)
-i2c_address3 = 0x72 #Hægri skynjari (Rauður)
+i2c_address1 = 0x71 #Vinstri skynjari
+i2c_address2 = 0x70 #Miðju skynjari 
+i2c_address3 = 0x72 #Hægri skynjari 
 
 
 def searching(): #Leitar af hindrun
@@ -117,11 +117,5 @@ def skynja():
         else:
             m.forwards(100)
             time.sleep(0.1)
-
-# try:
-#     skynja()
-# except KeyboardInterrupt:
-#     m.stop()
-#     print('Stoppar keyrslu')
 
 

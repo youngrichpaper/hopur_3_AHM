@@ -221,29 +221,32 @@ class MyController(SilencedPyPS4Controller):
             elif value< 2000:
                 self.x_speed = 0
                 self.turning = False
-                
-    def servo_loop(self):
+
+#Færir servo1 með R3
+    def servo_loop(self): #Færir servo á meða R3 er haldið til hægri eða vinstri
         while True:
+            #Breytir horni eftir stefni pinna
             if self.servo_direction != 0:
                 self.servo_angle += self.servo_direction * self.servo_step
 
+                #Held servo innan leyfilegs bils
                 if self.servo_angle < 0:
                     self.servo_angle = 0
 
                 elif self.servo_angle > 180:
                     self.servo_angle = 180
 
-                v.rotate_s1(self.servo_angle) #Til að snúa servo1 handvirkt
+                v.rotate_s1(self.servo_angle) #Uppfæri stöðunna á servo1
 
-            time.sleep(self.servo_delay)
+            time.sleep(self.servo_delay) #Stýrir hraða á hreyfingu
 
-    def on_R3_left(self, value):
+    def on_R3_left(self, value): #Færa servo1 til vinstri
         if value < -2000:
             self.servo_direction = -1
         else:
             self.servo_direction = 0
 
-    def on_R3_right(self, value):
+    def on_R3_right(self, value): #Færa servo1 til hægri
         if value > 2000:
             self.servo_direction = 1
         else:
