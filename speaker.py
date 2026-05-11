@@ -2,7 +2,7 @@
 import pygame
 
 pygame.init()
-pygame.mixer.init()
+pygame.mixer.init(frequency=44100, size=-16, channels=2, buffer=512)
 
 def ruski():
     pygame.mixer.music.load('ussr_anthem.mp3')
