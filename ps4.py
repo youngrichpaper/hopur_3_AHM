@@ -281,7 +281,6 @@ class MyController(SilencedPyPS4Controller):
 
     
     def on_L2_release(self):
-        print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
         if not s.auto_kveikt:
             self.y_speed = 0
             self.going_backwards = False
