@@ -31,11 +31,12 @@ controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 try:
     mynd.start()
     controller_thread.start()
-    auto.start()
+    # auto.start()
     # fani.start()
     while True:
         if not s.auto_kveikt:
-            m.drive(controller.y_speed, controller.x_speed)  
+            m.drive(controller.y_speed, controller.x_speed) 
+        else : s.skynja()
         time.sleep(0.05)
 
 

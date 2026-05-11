@@ -86,7 +86,7 @@ def skynja():
     while True: 
         if not auto_kveikt:
                 time.sleep(0.1)
-                continue
+                break
         
         hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri, midja = searching()
         time.sleep(0.1)
