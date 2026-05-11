@@ -32,11 +32,13 @@ try:
     mynd.start()
     controller_thread.start()
     # auto.start()
-    fani.start()
+    # fani.start()
     while True:
         if not s.auto_kveikt:
             m.drive(controller.y_speed, controller.x_speed) 
-        else : s.skynja()
+        else : 
+            s.skynja()
+        v.wave_flag()
         time.sleep(0.05)
 
 
