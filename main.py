@@ -36,7 +36,7 @@ try:
     while True:
         if not s.auto_kveikt:
             m.drive(controller.y_speed, controller.x_speed) 
-        else : 
+        else: 
             s.skynja()
         time.sleep(0.05)
 
