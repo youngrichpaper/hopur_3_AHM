@@ -6,44 +6,18 @@ from adafruit_servokit import ServoKit
 kit = ServoKit(channels=8)
 
 
-def rotate_s1(degree=90):
+def rotate_s1(degree=90): #Snýr servo1 um ákveðna gráðu
     kit.servo[0].angle = degree
 
-def rotate_s2(degree=90):
+def rotate_s2(degree=90): #Snýr servo2 um ákveðna gráðu
     kit.servo[1].angle = degree
 
-def servo_rotate():
+def servo_rotate(): #Snýr servo fram og til (fyrir fána)
     while True:
-        rotate_s1(90)
-        rotate_s2(90)
-        time.sleep(0.4)
-        rotate_s1(0)
+        rotate_s2(0)
+        time.sleep(0.7)
         rotate_s2(180)
-        time.sleep(0.4)
-
-# rotate_s1(90) #setja í 0 til að horfa til hliðar
-# time.sleep(4)
-# rotate_s2(90) #setja í 180 til að horfa til hliðar
-
-# try:
-#     while True:
-#         if rotate_s1(90) and rotate_s2(90):
-#             rotate_s1(20) 
-#             rotate_s2(160)
-#         if rotate_s1(20) and rotate_s2(160):
-#             rotate_s1(90) 
-#             rotate_s2(90)
-
-
-# except KeyboardInterrupt:
-#     pass
-
-
-# try:
-#     while True:
-#         servo_rotate()
-# except KeyboardInterrupt:
-#     pass
+        time.sleep(0.7)
 
 
 
