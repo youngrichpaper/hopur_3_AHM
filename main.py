@@ -11,7 +11,7 @@ from ps4 import MyController
 import camera
 
 
-# skanna = threading.Thread(target=v.servo_rotate, daemon=True)
+skanna = threading.Thread(target=v.servo_rotate, daemon=True)
 # auto = threading.Thread(target=s.skynja, daemon=True)
 
 controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
@@ -33,6 +33,7 @@ try:
     mynd.start()
     controller_thread.start()
     auto.start()
+    skanna.start()
     while True:
         if not s.auto_kveikt:
             m.drive(controller.y_speed, controller.x_speed)        
