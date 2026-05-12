@@ -146,6 +146,13 @@ class SilencedPyPS4Controller(Controller):
     def on_playstation_button_release(self):
         pass
 
+def callback():
+    speaker.baby()
+
+def sequence():
+    return [
+        {"inputs": ['up', 'up', 'down', 'down'], "callback": callback}
+    ]
 
 class MyController(SilencedPyPS4Controller):
 
