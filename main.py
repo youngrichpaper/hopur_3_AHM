@@ -7,7 +7,7 @@ import motor as m
 import skynjarar as s
 import servo as v
 import speaker as e
-from ps4 import MyController, sequence
+from ps4 import MyController
 import camera
 
 
@@ -15,7 +15,7 @@ controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=Fa
 
 
 def keyra_controller():
-    controller.listen(on_sequence=sequence())
+    controller.listen(timeout=60)
 
 #Set upp þræði
 fani = threading.Thread(target=v.wave_flag, daemon=True)

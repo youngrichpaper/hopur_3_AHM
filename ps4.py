@@ -150,10 +150,6 @@ def callback():
     speaker.baby()
     print("síkvens")
 
-def sequence():
-    return [
-        {"inputs": ['up', 'up', 'down', 'down'], "callback": callback}
-    ]
 
 class MyController(SilencedPyPS4Controller):
 
