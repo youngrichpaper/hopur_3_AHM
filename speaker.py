@@ -22,5 +22,9 @@ def reverse():
         pygame.mixer.music.set_volume(1.0)
         pygame.mixer.music.play()
 
+def photo():
+    pygame.mixer.music.load('photo.mp3')
+    pygame.mixer.music.play()
+
 def stop(): #Til þess að stoppa spilun
     pygame.mixer.music.stop()
