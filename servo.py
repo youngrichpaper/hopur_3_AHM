@@ -17,12 +17,12 @@ def wave_flag(): #Snýr servo fram og til (fyrir fána)
     while True:
         if flag_on:
             if not speaker.music_channel.get_busy():
-                speaker.start_servo_music()
+                speaker.mao()
             rotate_s2(180)
             time.sleep(0.7)
             rotate_s2(0)
             time.sleep(0.7)
         else:
             if speaker.music_channel.get_busy():
-                speaker.stop_servo_music()
+                speaker.stop()
             time.sleep(1)
