@@ -273,11 +273,11 @@ class MyController(SilencedPyPS4Controller):
 
     def on_L2_press(self, value):
         if not s.auto_kveikt:
-
+            speaker.reverse()
             if value > -25000 and not(self.going_forward):
                 self.y_speed = -int(numpy.interp(value, [-25000, 32767], [0,255]))
                 self.going_backwards = True
-                speaker.reverse()
+                
 
     
     def on_L2_release(self):
