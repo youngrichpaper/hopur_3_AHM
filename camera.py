@@ -47,7 +47,7 @@ def home():
     <!DOCTYPE html>
     <html>
         <head>
-            <title>Robot Camera</title>
+            <title>Robot Camera alalalal</title>
         </head>
         <body>
             <h1>Live Myndavél</h1>
