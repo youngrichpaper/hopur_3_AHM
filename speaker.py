@@ -25,6 +25,7 @@ def reverse():
 def photo():
     pygame.mixer.music.load('photo.mp3')
     pygame.mixer.music.play()
+    print('vudd')
 
 def stop(): #Til þess að stoppa spilun
     pygame.mixer.music.stop()
