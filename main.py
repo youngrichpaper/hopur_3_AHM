@@ -37,8 +37,7 @@ try:
     fani.start()
     while True:
         if not s.auto_kveikt:
-            # m.drive(controller.y_speed, controller.x_speed)
-            m.forwards(200)
+            m.drive(controller.y_speed, controller.x_speed)
         else: 
             s.skynja()
         time.sleep(0.05)

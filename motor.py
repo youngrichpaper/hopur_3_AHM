@@ -9,7 +9,7 @@ def forwards(speed, curve = 0, direction = 0):
         if speed > 255 or speed<0:
             print('Invalid speed')
         else:
-            data = [speed  , 0, int(speed*0.92), 1]
+            data = [speed  , 0, speed, 1]
     elif direction == 1:
         data = [speed, 0, int(speed*curve),1]
     elif direction == 2:
@@ -25,7 +25,7 @@ def backwards(speed, curve = 0, direction = 0):
         if speed > 255 or speed<0:
             print('Invalid speed')
         else:
-            data = [speed  , 1, int(speed*0.92), 0]
+            data = [speed  , 1, speed, 0]
     elif direction == 1:
         data = [speed, 1, int(speed*curve),0]
     elif direction == 2:
@@ -49,7 +49,7 @@ def rotate_CW(speed):
     if speed > 255 or speed<0:
         print('Invalid speed')
     else:
-        data = [speed, 0, int(speed*0.86), 0]
+        data = [speed, 0, speed, 0]
     try:
         bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
     except OSError:
@@ -59,7 +59,7 @@ def rotate_CCW(speed):
     if speed > 255 or speed<0:
         print('Invalid speed')
     else:
-        data = [speed, 1, int(speed*0.86), 1]
+        data = [speed, 1, speed, 1]
     try:
         bus.write_i2c_block_data(I2C_ADDRESS, 0x00, data)
     except OSError:
