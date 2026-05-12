@@ -1,6 +1,6 @@
 # #Myndavél
 
-from flask import Flask, Response
+from flask import Flask, Response, send_from_directory
 from picamera2 import Picamera2
 import cv2
 import time
@@ -62,6 +62,13 @@ def video_feed():
     return Response(
         generate_frames(),
         mimetype="multipart/x-mixed-replace; boundary=frame"
+    )
+
+@app.route("/pictures/<filename>")
+def pictures(filename):
+    return send_from_directory(
+        "/home/hopur_3/Pictures",
+        filename
     )
 
 def live_feed():
