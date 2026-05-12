@@ -27,5 +27,9 @@ def photo():
     pygame.mixer.music.play()
     print('vudd')
 
+def mao():
+    pygame.mixer.music.load('mao.mp3')
+    pygame.mixer.music.play()
+    
 def stop(): #Til þess að stoppa spilun
     pygame.mixer.music.stop()
