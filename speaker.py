@@ -1,35 +1,51 @@
-#speaker
+# speaker.py
 import pygame
 
 pygame.init()
 pygame.mixer.init(frequency=44100, size=-16, channels=2, buffer=512)
 
+# Býr til mismunandi channels
+music_channel = pygame.mixer.Channel(0)
+effect_channel = pygame.mixer.Channel(1)
+voice_channel = pygame.mixer.Channel(2)
+
+# Hleður inn hljóðum sem Sound objects
+ussr_sound = pygame.mixer.Sound('ussr_anthem.mp3')
+baby_sound = pygame.mixer.Sound('yhbaby.mp3')
+not_important_sound = pygame.mixer.Sound('not-important.mp3')
+reverse_sound = pygame.mixer.Sound('reverse.mp3')
+photo_sound = pygame.mixer.Sound('photo.mp3')
+mao_sound = pygame.mixer.Sound('mao.mp3')
+
+
 def ruski():
-    pygame.mixer.music.load('ussr_anthem.mp3')
-    pygame.mixer.music.play()
+    music_channel.play(ussr_sound)
+
 
 def baby():
-    pygame.mixer.music.load('yhbaby.mp3')
-    pygame.mixer.music.play()
+    effect_channel.play(baby_sound)
+
 
 def not_important():
-    pygame.mixer.music.load('not-important.mp3')
-    pygame.mixer.music.play()
+    effect_channel.play(not_important_sound)
+
 
 def reverse():
-    if not pygame.mixer.music.get_busy():
-        pygame.mixer.music.load('reverse.mp3')
-        pygame.mixer.music.set_volume(1.0)
-        pygame.mixer.music.play()
+    if not voice_channel.get_busy():
+        voice_channel.set_volume(1.0)
+        voice_channel.play(reverse_sound)
+
 
 def photo():
-    pygame.mixer.music.load('photo.mp3')
-    pygame.mixer.music.play()
+    voice_channel.play(photo_sound)
     print('vudd')
 
+
 def mao():
-    pygame.mixer.music.load('mao.mp3')
-    pygame.mixer.music.play()
-    
-def stop(): #Til þess að stoppa spilun
-    pygame.mixer.music.stop()
+    music_channel.play(mao_sound)
+
+
+def stop():
+    music_channel.stop()
+    effect_channel.stop()
+    voice_channel.stop()
