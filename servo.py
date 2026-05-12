@@ -16,13 +16,13 @@ def rotate_s2(degree=90): #Snýr servo2 um ákveðna gráðu
 def wave_flag(): #Snýr servo fram og til (fyrir fána)
     while True:
         if flag_on:
-            if not speaker.mao():
-                speaker.mao()
+            if not speaker.music_channel.get_busy():
+                speaker.start_servo_music()
             rotate_s2(180)
             time.sleep(0.7)
             rotate_s2(0)
             time.sleep(0.7)
         else:
+            if speaker.music_channel.get_busy():
+                speaker.stop_servo_music()
             time.sleep(1)
-            if speaker.mao():
-                speaker.stop()
