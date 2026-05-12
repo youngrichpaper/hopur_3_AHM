@@ -213,6 +213,7 @@ class MyController(SilencedPyPS4Controller):
         v.flag_on = not v.flag_on
     
     def on_square_press(self):
+        speaker.photo()
         c.take_picture()
 
     def on_L3_left(self, value):
