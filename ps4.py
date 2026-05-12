@@ -7,6 +7,7 @@ import time
 import skynjarar as s
 import speaker
 import servo as v
+import camera as c
 
 
 class SilencedPyPS4Controller(Controller):
@@ -210,6 +211,9 @@ class MyController(SilencedPyPS4Controller):
 
     def on_triangle_press(self):
         v.flag_on = not v.flag_on
+    
+    def on_square_press(self):
+        c.take_picture
 
     def on_L3_left(self, value):
         if not s.auto_kveikt:
@@ -285,4 +289,3 @@ class MyController(SilencedPyPS4Controller):
             self.y_speed = 0
             self.going_backwards = False
             speaker.stop()
-            print('eki bakk')

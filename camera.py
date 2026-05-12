@@ -85,3 +85,7 @@ def live_feed():
     finally:
         picam2.stop()
         picam2.close()
+
+def take_picture():
+    file_path = "/home/hopur_3/Pictures"
+    picam2.capture_file(file_path)
