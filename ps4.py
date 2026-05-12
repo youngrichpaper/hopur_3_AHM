@@ -285,3 +285,4 @@ class MyController(SilencedPyPS4Controller):
             self.y_speed = 0
             self.going_backwards = False
             speaker.stop()
+            print('eki bakk')
