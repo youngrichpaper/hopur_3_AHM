@@ -126,12 +126,6 @@ def video_feed():
         mimetype="multipart/x-mixed-replace; boundary=frame"
     )
 
-@app.route("/pictures/<filename>")
-def pictures(filename):
-    return send_from_directory(
-        "/home/hopur_3/Pictures",
-        filename
-    )
 
 def live_feed():
     # if __name__ == "__main__":
