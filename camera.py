@@ -87,6 +87,6 @@ def live_feed():
         picam2.close()
 
 def take_picture():
-    file_path = "/home/hopur_3/Pictures"
+    file_path = "/home/hopur_3/Pictures/mynd.jpg"
     picam2.capture_file(file_path)
     print('mynd tekin')
