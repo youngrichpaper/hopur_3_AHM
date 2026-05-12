@@ -152,6 +152,7 @@ def live_feed():
 def take_picture():
     folder = "/home/hopur_3/Pictures"
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"mynd_{timestamp}.jpg"
     file_path = os.path.join(folder, filename)
     picam2.capture_file(file_path)
     print('mynd tekin')
