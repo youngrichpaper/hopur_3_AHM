@@ -51,7 +51,7 @@ def pictures(filename):
     )
 
 @app.route("/view/<filename>")
-def view_image(f  ilename):
+def view_image(filename):
 
     return f"""
     <!DOCTYPE html>
