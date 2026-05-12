@@ -51,7 +51,7 @@ def generate_frames():
 #     )
 
 # @app.route("/view/<filename>")
-# def view_image(filename):
+# def view_image(f  ilename):
 
 #     return f"""
 #     <!DOCTYPE html>
