@@ -2,6 +2,8 @@
 
 from flask import Flask, Response, send_from_directory
 from picamera2 import Picamera2
+from datetime import datetime
+import os
 import cv2
 import time
 
@@ -41,17 +43,77 @@ def generate_frames():
         )
 
 
+@app.route("/pictures/<filename>")
+def pictures(filename):
+    return send_from_directory(
+        "/home/hopur_3/Pictures",
+        filename
+    )
+
+@app.route("/view/<filename>")
+def view_image(filename):
+
+    return f"""
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>{filename}</title>
+        </head>
+
+        <body>
+
+            <h1>{filename}</h1>
+
+            <img src="/pictures/{filename}" width="1000">
+
+            <br><br>
+
+            <a href="/">Til baka</a>
+
+        </body>
+    </html>
+    """
+
 @app.route("/")
 def home():
-    return """
+
+    folder = "/home/hopur_3/Pictures"
+
+    files = sorted(
+        os.listdir(folder),
+        reverse=True
+    )
+
+    image_links = ""
+
+    for file in files:
+        image_links += f'''
+            <li>
+                <a href="/view/{file}">
+                    {file}
+                </a>
+            </li>
+        '''
+
+    return f"""
     <!DOCTYPE html>
     <html>
         <head>
             <title>Robot Camera</title>
         </head>
+
         <body>
+
             <h1>Live Myndavél</h1>
+
             <img src="/video_feed" width="840">
+
+            <h2>Vistaðar myndir</h2>
+
+            <ul>
+                {image_links}
+            </ul>
+
         </body>
     </html>
     """
@@ -94,6 +156,8 @@ def live_feed():
         picam2.close()
 
 def take_picture():
-    file_path = "/home/hopur_3/Pictures/mynd.jpg"
+    folder = "/home/hopur_3/Pictures"
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    file_path = os.path.join(folder, filename)
     picam2.capture_file(file_path)
     print('mynd tekin')
