@@ -148,6 +148,7 @@ class SilencedPyPS4Controller(Controller):
 
 def callback():
     speaker.baby()
+    print("síkvens")
 
 def sequence():
     return [
