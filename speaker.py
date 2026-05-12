@@ -17,9 +17,10 @@ def not_important():
     pygame.mixer.music.play()
 
 def reverse():
-    pygame.mixer.music.load('reverse.mp3')
-    pygame.mixer.music.set_volume(1.0)
-    pygame.mixer.music.play()
+    if not pygame.mixer.get_busy():
+        pygame.mixer.music.load('reverse.mp3')
+        pygame.mixer.music.set_volume(1.0)
+        pygame.mixer.music.play()
 
 def stop(): #Til þess að stoppa spilun
     pygame.mixer.music.stop()
