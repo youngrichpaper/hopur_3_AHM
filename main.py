@@ -2,6 +2,7 @@
 import pyPS4Controller
 import time
 import threading
+import multiprocessing
 import os
 import motor as m
 import skynjarar as s
@@ -20,7 +21,7 @@ def keyra_controller():
 #Set upp þræði
 fani = threading.Thread(target=v.wave_flag, daemon=True)
 auto = threading.Thread(target=s.skynja, daemon=True)
-mynd = threading.Thread(target=camera.live_feed, daemon=True)
+mynd = multiprocessing.Process(target=camera.live_feed, daemon=True)
 controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 
 
