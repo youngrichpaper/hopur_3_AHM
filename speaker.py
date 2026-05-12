@@ -10,16 +10,11 @@ effect_channel = pygame.mixer.Channel(1)
 voice_channel = pygame.mixer.Channel(2)
 
 # Hleður inn hljóðum sem Sound objects
-ussr_sound = pygame.mixer.Sound('ussr_anthem.mp3')
 baby_sound = pygame.mixer.Sound('yhbaby.mp3')
 not_important_sound = pygame.mixer.Sound('not-important.mp3')
 reverse_sound = pygame.mixer.Sound('reverse.mp3')
 photo_sound = pygame.mixer.Sound('photo.mp3')
 mao_sound = pygame.mixer.Sound('mao.mp3')
-
-
-def ruski():
-    music_channel.play(ussr_sound)
 
 
 def baby():
