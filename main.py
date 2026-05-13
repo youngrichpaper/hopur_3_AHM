@@ -82,11 +82,11 @@ if __name__ == "__main__":
 #         time.sleep(0.05)
 
 
-except KeyboardInterrupt:
-    print("Stoppar keyrslu")
-    s.auto_kveikt = False
-    m.stop()
-#--------------------------------------------
+# except KeyboardInterrupt:
+#     print("Stoppar keyrslu")
+#     s.auto_kveikt = False
+#     m.stop()
+# #--------------------------------------------
 
 
 
