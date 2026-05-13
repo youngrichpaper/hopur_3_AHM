@@ -45,16 +45,16 @@ def searching(): #Leitar af hindrun
         hindrun_haegri = 0
 
     if 0 < midja <= 30: #Athugar fyrir miðju skynjara
-        hindrun_vinstri = 1
+        hindrun_midja = 1
         # print(f'Hindrun MIÐJA, fjarlægð er {midja}')
     else:
-        hindrun_vinstri = 0
+        hindrun_midja = 0
     
     if 0 < vinstri <= 40: #Athugar fyrir vinstri skynjara
-        hindrun_midja = 1
+        hindrun_vinstri = 1
         # print(f'Hindrun VINSTRI, fjarlægð er {vinstri}')
     else:
-        hindrun_midja = 0
+        hindrun_vinstri = 0
     
     time.sleep(0.1)  # Sleep for some
 
