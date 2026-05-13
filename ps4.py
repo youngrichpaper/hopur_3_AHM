@@ -8,6 +8,7 @@ import skynjarar as s
 import speaker
 import servo as v
 import camera as c
+import main
 
 
 class SilencedPyPS4Controller(Controller):
@@ -214,7 +215,7 @@ class MyController(SilencedPyPS4Controller):
     
     def on_square_press(self):
         speaker.photo()
-        c.camera_queue.put("take_picture")
+        main.camera_queue.put("take_picture")
 
     def on_L3_left(self, value):
         if not s.auto_kveikt:

@@ -14,7 +14,7 @@ picam2 = None
 
 
 def start_camera():
-    camera_queue = multiprocessing.Queue()
+    
     global picam2
 
     picam2 = Picamera2()
