@@ -10,10 +10,13 @@ import time
 
 app = Flask(__name__)
 
-picam2 = Picamera2()
+picam2 = None
 
 
 def start_camera():
+    global picam2
+
+    picam2 = Picamera2()
     config = picam2.create_video_configuration(
         main={
             "size": (1152, 648),
@@ -177,6 +180,7 @@ def live_feed():
             host="0.0.0.0",
             port=5000,
             debug=False,
+            use_reloader=False,
             threaded=True
         )
 
