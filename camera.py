@@ -148,7 +148,7 @@ def home():
             }});
     }}
 
-    setInterval(refreshImages, 3000);
+    setInterval(refreshImages, 10000);
 
     </script>
 
