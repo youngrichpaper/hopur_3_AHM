@@ -73,6 +73,30 @@ def view_image(filename):
         </body>
     </html>
     """
+@app.route("/image_list")
+def image_list():
+
+    folder = "/home/hopur_3/Pictures"
+
+    files = sorted(
+        os.listdir(folder),
+        reverse=True
+    )
+
+    image_links = "<ul>"
+
+    for file in files:
+        image_links += f'''
+            <li>
+                <a href="/view/{file}">
+                    {file}
+                </a>
+            </li>
+        '''
+
+    image_links += "</ul>"
+
+    return image_links
 
 @app.route("/")
 def home():
@@ -98,23 +122,37 @@ def home():
     return f"""
     <!DOCTYPE html>
     <html>
-        <head>
-            <title>Robot Camera</title>
-        </head>
+    <head>
+        <title>Robot Camera</title>
+    </head>
 
-        <body>
+    <body>
 
-            <h1>Live Myndavél</h1>
+        <h1>Live Myndavél</h1>
 
-            <img src="/video_feed" width="840">
+        <img src="/video_feed" width="840">
 
-            <h2>Vistaðar myndir</h2>
+        <h2>Vistaðar myndir</h2>
 
-            <ul>
-                {image_links}
-            </ul>
+        <div id="image-list">
+            {image_links}
+        </div>
 
-        </body>
+    <script>
+
+    function refreshImages() {{
+        fetch('/image_list')
+            .then(response => response.text())
+            .then(data => {{
+                document.getElementById('image-list').innerHTML = data;
+            }});
+    }}
+
+    setInterval(refreshImages, 3000);
+
+    </script>
+
+    </body>
     </html>
     """
 
