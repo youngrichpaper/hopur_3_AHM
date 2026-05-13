@@ -214,7 +214,7 @@ class MyController(SilencedPyPS4Controller):
     
     def on_square_press(self):
         speaker.photo()
-        c.take_picture()
+        c.camera_queue.put("take_picture")
 
     def on_L3_left(self, value):
         if not s.auto_kveikt:

@@ -32,8 +32,12 @@ controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 if __name__ == "__main__":
 
     try:
+        
+
         mynd = multiprocessing.Process(
-            target=camera.live_feed
+            target=camera.live_feed,
+            args=(camera_queue,),
+            daemon=True
         )
 
         mynd.start()
