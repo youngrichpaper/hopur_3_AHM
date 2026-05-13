@@ -36,7 +36,7 @@ if __name__ == "__main__":
 
         mynd = multiprocessing.Process(
             target=camera.live_feed,
-            args=(camera_queue,),
+            args=(camera_queue),
             daemon=True
         )
 
