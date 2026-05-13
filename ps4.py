@@ -149,7 +149,7 @@ class SilencedPyPS4Controller(Controller):
 
 class MyController(SilencedPyPS4Controller):
 
-    def __init__(self, **kwargs):
+    def __init__(self,camera_queue, **kwargs):
         Controller.__init__(self, **kwargs)
         self.y_speed = 0
         self.x_speed= 0
@@ -159,6 +159,7 @@ class MyController(SilencedPyPS4Controller):
         self.going_backwards = False
         self.auto_speed = 100
         self.pressed = False
+        self.camera_queue = camera_queue
 
         # Servo stillingar
         self.servo_angle = 90
@@ -214,7 +215,7 @@ class MyController(SilencedPyPS4Controller):
     
     def on_square_press(self):
         speaker.photo()
-        camera_queue.put("take_picture")
+        self.camera_queue.put("take_picture")
 
     def on_L3_left(self, value):
         if not s.auto_kveikt:

@@ -11,8 +11,8 @@ import speaker as e
 from ps4 import MyController
 import camera
 
-
-controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
+camera_queue = multiprocessing.Queue()
+controller = MyController(camera_queue=camera_queue,interface="/dev/input/js0", connecting_using_ds4drv=False)
 
 
 def keyra_controller():
@@ -32,7 +32,7 @@ controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 if __name__ == "__main__":
 
     try:
-        camera_queue = multiprocessing.Queue()
+        
 
         mynd = multiprocessing.Process(
             target=camera.live_feed,
