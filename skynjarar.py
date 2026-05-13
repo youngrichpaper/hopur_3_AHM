@@ -37,8 +37,6 @@ def searching(): #Leitar af hindrun
     time.sleep(0.08)
     # print('Vinstri:',vinstri,'Midja:',midja,'Haegri', haegri)
 
-    if 400 < vinstri < 500 and 400 < midja < 500: 
-        e.baby()
     
     if 0 < haegri <= 40: #Athugar fyrir hægri skynjara
         hindrun_haegri = 1
