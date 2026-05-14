@@ -195,7 +195,7 @@ class MyController(SilencedPyPS4Controller):
         print('STOP!!!!!')
 
     def on_x_press(self):
-
+        self.auto_kveikt = not self.auto_kveikt
         
         if self.auto_kveikt:
             self.x_speed = 0
