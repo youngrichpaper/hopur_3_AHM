@@ -170,28 +170,6 @@ def video_feed():
     )
 
 
-# def live_feed(command_queue):
-#     # if __name__ == "__main__":
-#     try:
-#         start_camera()
-
-#         print("Opnaðu þetta í Chrome:")
-#         print("http://10.98.208.37:5000")
-
-#         app.run(
-#             host="0.0.0.0",
-#             port=5000,
-#             debug=False,
-#             use_reloader=False,
-#             threaded=True
-#         )
-
-#     except KeyboardInterrupt:
-#         print("Stoppa myndavel")
-
-#     finally:
-#         picam2.stop()
-#         picam2.close()
 
 def run_flask():
 

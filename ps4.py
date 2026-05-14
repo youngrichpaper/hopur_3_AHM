@@ -153,7 +153,6 @@ class MyController(SilencedPyPS4Controller):
         self.x_speed= 0
         self.going_forward = False
         self.going_backwards = False
-        self.auto_speed = 100
         self.camera_queue = camera_queue
         self.auto_kveikt = False
         self.flag_on = False
