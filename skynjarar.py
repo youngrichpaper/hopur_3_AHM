@@ -85,7 +85,7 @@ def skynja(controller):
         if controller.auto_kveikt:
             hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri, midja = searching()
             time.sleep(0.1)
-            
+            print(f'hindrun vinstri: {hindrun_vinstri} {vinstri}, hindrun miðja: {hindrun_midja} {midja}, hindrun hægri: {hindrun_haegri} {haegri}')
             #Fer yfir skynjara og athugar hvort þeir skynja hindrun.
             if hindrun_midja == 1:
                 m.stop()
