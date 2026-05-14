@@ -147,17 +147,16 @@ class SilencedPyPS4Controller(Controller):
 
 class MyController(SilencedPyPS4Controller):
 
-    def __init__(self,camera_queue, **kwargs):
+    def __init__(self,camera_queue,auto_kveikt, **kwargs):
         Controller.__init__(self, **kwargs)
         self.y_speed = 0
         self.x_speed= 0
-        self.turning = False
-        self.driving = False
         self.going_forward = False
         self.going_backwards = False
         self.auto_speed = 100
         self.pressed = False
         self.camera_queue = camera_queue
+        self.auto_kveikt = auto_kveikt
 
         # Servo stillingar
         self.servo_angle = 90
@@ -172,40 +171,41 @@ class MyController(SilencedPyPS4Controller):
         
 
     def on_up_arrow_press(self):
-        if s.auto_kveikt:
+        if self.auto_kveikt:
             while self.pressed and self.auto_speed <=255:
                 self.auto_speed += 1
                 time.sleep(0.5)
     def on_down_arrow_press(self):
-        if s.auto_kveikt:
+        if self.auto_kveikt:
             while self.pressed and self.auto_speed >=1:
                 self.auto_speed -= 1
                 time.sleep(0.5)
         
     def on_up_down_arrow_release(self):
-        if s.auto_kveikt:
+        if self.auto_kveikt:
             self.pressed = False
             
     def on_circle_press(self):
-        s.auto_kveikt = False
+        self.auto_kveikt = False
         self.x_speed = 0
         self.y_speed = 0
         self.going_backwards = False
         self.going_forward = False
-        motor.stop()
         speaker.stop()
         print('STOP!!!!!')
 
     def on_x_press(self):
         
-        s.auto_kveikt = not s.auto_kveikt
+        self.auto_kveikt = not self.auto_kveikt
 
-        if s.auto_kveikt:
-            motor.stop()
+        if self.auto_kveikt:
+            self.x_speed = 0
+            self.y_speed = 0
             print("AUTO KVEIKT")
             speaker.baby()
         else:
-            motor.stop()
+            self.x_speed = 0
+            self.y_speed = 0
             print("AUTO SLÖKKT")
 
     def on_triangle_press(self):
@@ -216,22 +216,19 @@ class MyController(SilencedPyPS4Controller):
         self.camera_queue.put("take_picture")
 
     def on_L3_left(self, value):
-        if not s.auto_kveikt:
+        if not self.auto_kveikt:
             if value< -2000:
                 self.x_speed = -int(numpy.interp(abs(value), [8000, 32767], [0,255]))
-                self.turning = True
 
             elif value> -2000:
                 self.x_speed = 0
-                self.turning = False
     def on_L3_right(self, value):
-        if not s.auto_kveikt:
+        if not self.auto_kveikt:
             if value> 2000:
                 self.x_speed = int(numpy.interp(abs(value), [8000, 32767], [0,255]))
 
             elif value< 2000:
                 self.x_speed = 0
-                self.turning = False
 
 #Færir servo1 með R3
     def servo_loop(self): #Færir servo á meða R3 er haldið til hægri eða vinstri
@@ -264,19 +261,19 @@ class MyController(SilencedPyPS4Controller):
             self.servo_direction = 0
 
     def on_R2_press(self, value):
-        if not s.auto_kveikt:
+        if not self.auto_kveikt:
 
             if value > -25000 and not(self.going_backwards):
                 self.y_speed = int(numpy.interp(value, [-25000, 32767], [0,255]))
                 self.going_forward = True
 
     def on_R2_release(self):
-        if not s.auto_kveikt:
+        if not self.auto_kveikt:
             self.y_speed = 0
             self.going_forward = False
 
     def on_L2_press(self, value):
-        if not s.auto_kveikt:
+        if not self.auto_kveikt:
             speaker.reverse()
             if value > -25000 and not(self.going_forward):
                 self.y_speed = -int(numpy.interp(value, [-25000, 32767], [0,255]))
@@ -285,7 +282,7 @@ class MyController(SilencedPyPS4Controller):
 
     
     def on_L2_release(self):
-        if not s.auto_kveikt:
+        if not self.auto_kveikt:
             self.y_speed = 0
             self.going_backwards = False
             speaker.stop()

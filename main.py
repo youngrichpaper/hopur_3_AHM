@@ -1,13 +1,10 @@
 #Konungskóðinn
-import pyPS4Controller
 import time
 import threading
 import multiprocessing
-import os
 import motor as m
 import skynjarar as s
 import servo as v
-import speaker as e
 from ps4 import MyController
 import camera
 
@@ -15,7 +12,7 @@ camera_queue = multiprocessing.Queue()
 
 controller = MyController(camera_queue=camera_queue,interface="/dev/input/js0", connecting_using_ds4drv=False)
 
-
+auto_kveikt = False
 def keyra_controller():
     controller.listen(timeout=60)
 
@@ -49,10 +46,10 @@ if __name__ == "__main__":
 
         while True:
 
-            if not s.auto_kveikt:
+            if not auto_kveikt:
                 m.drive(controller.y_speed,controller.x_speed)
             else:
-                s.skynja()
+                s.skynja(auto_kveikt)
 
             time.sleep(0.05)
 

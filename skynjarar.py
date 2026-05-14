@@ -78,9 +78,7 @@ def snuningur(att): #Fallið snýr sér þangað til skynjarar skila 0
 
 
 
-def skynja():
-    global auto_kveikt
-
+def skynja(auto_kveikt):
     while True: 
         if not auto_kveikt:
                 time.sleep(0.1)
