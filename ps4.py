@@ -147,7 +147,7 @@ class SilencedPyPS4Controller(Controller):
 
 class MyController(SilencedPyPS4Controller):
 
-    def __init__(self,camera_queue,auto_thread, **kwargs):
+    def __init__(self,camera_queue,auto_on,auto_thread, **kwargs):
         Controller.__init__(self, **kwargs)
         self.y_speed = 0
         self.x_speed= 0
@@ -156,7 +156,7 @@ class MyController(SilencedPyPS4Controller):
         self.auto_speed = 100
         self.pressed = False
         self.camera_queue = camera_queue
-        self.auto_kveikt = False
+        self.auto_kveikt = auto_on
         self.auto_thread = auto_thread
         # Servo stillingar
         self.servo_angle = 90

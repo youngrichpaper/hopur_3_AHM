@@ -9,7 +9,7 @@ from ps4 import MyController
 import camera
 
 camera_queue = multiprocessing.Queue()
-
+auto_on = False
 
 
 def keyra_controller():
@@ -17,10 +17,10 @@ def keyra_controller():
 
 #Set upp þræði
 fani = threading.Thread(target=v.wave_flag, daemon=True)
-auto = threading.Thread(target=s.skynja, daemon=True)
+auto = threading.Thread(target=s.skynja,args=(auto_on,), daemon=True)
 controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 
-controller = MyController(camera_queue=camera_queue,auto_thread=auto,interface="/dev/input/js0", connecting_using_ds4drv=False)
+controller = MyController(camera_queue=camera_queue,auto_on=auto_on,auto_thread=auto,interface="/dev/input/js0", connecting_using_ds4drv=False)
 
 #--------------------------------------------
 #Keyrsla
