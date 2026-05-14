@@ -80,8 +80,10 @@ def snuningur(att): #Fallið snýr sér þangað til skynjarar skila 0
 
 def skynja(auto_kveikt):
     print('Tesitingi')
-    while True: 
+    while True:
+        print('byrjað')
         if not auto_kveikt:
+                print('hætt')
                 time.sleep(0.1)
                 break
         
