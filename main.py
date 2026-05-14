@@ -34,13 +34,8 @@ fani.start()
 if __name__ == "__main__":
 
     try:
-
-        
-
         while True:
-
-            if not controller.auto_kveikt:
-                m.drive(controller.y_speed,controller.x_speed)
+            m.drive(controller.y_speed,controller.x_speed)
 
             time.sleep(0.05)
 
