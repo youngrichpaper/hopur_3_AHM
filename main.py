@@ -47,6 +47,7 @@ if __name__ == "__main__":
 
             if not controller.auto_kveikt:
                 m.drive(controller.y_speed,controller.x_speed)
+            else: auto_on = controller.auto_kveikt
             if auto_on:
                 print('piiiisssssssss')
                 time.sleep(2)
