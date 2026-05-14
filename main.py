@@ -9,10 +9,10 @@ from ps4 import MyController
 import camera
 
 camera_queue = multiprocessing.Queue()
-
-controller = MyController(camera_queue=camera_queue,interface="/dev/input/js0", connecting_using_ds4drv=False)
-
 auto_kveikt = False
+controller = MyController(camera_queue=camera_queue,auto_kveikt=auto_kveikt,interface="/dev/input/js0", connecting_using_ds4drv=False)
+
+
 def keyra_controller():
     controller.listen(timeout=60)
 
