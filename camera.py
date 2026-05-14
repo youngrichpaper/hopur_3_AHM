@@ -404,8 +404,7 @@ def home():
         <div class="container">
 
             <div class="header">
-                <h1>🤖 Robot Camera</h1>
-                <p>Live camera feed and robot control center</p>
+                <h1>Myndavél</h1>
             </div>
 
             <div class="video-card">
@@ -418,28 +417,9 @@ def home():
                 <div class="controls">
 
                     <a href="/gallery" class="button">
-                        📸 Open Gallery
+                        Skoða myndir
                     </a>
 
-                </div>
-
-            </div>
-
-            <div class="status-grid">
-
-                <div class="status-card">
-                    <h2>Camera</h2>
-                    <p>🟢 Online</p>
-                </div>
-
-                <div class="status-card">
-                    <h2>Streaming</h2>
-                    <p>🎥 Active</p>
-                </div>
-
-                <div class="status-card">
-                    <h2>Gallery</h2>
-                    <p>📁 Available</p>
                 </div>
 
             </div>
