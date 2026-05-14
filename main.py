@@ -35,17 +35,15 @@ if __name__ == "__main__":
 
     try:
         while True:
-            m.drive(controller.y_speed,controller.x_speed)
-
+            # Ef að sjálvirk keyrsla er ekki virk tekur forritið hraðann frá stýripinnum á fjarstýringunni og setur í drive fallið úr motor
+            if not controller.auto_kveikt:
+                m.drive(controller.y_speed,controller.x_speed)
             time.sleep(0.05)
-
+            
+    # Þegar forritið hættir keyrslu eru mótorar stoppaði og Processinn fyrir myndavélina er stöðvaður
     except KeyboardInterrupt:
 
         print("Stoppar keyrslu")
-
-
         m.stop()
-
         mynd.terminate()
-
         mynd.join()
