@@ -1,5 +1,4 @@
 from pyPS4Controller.controller import Controller
-# from gpiozero import AngularServo
 import threading
 import motor
 import numpy
@@ -7,7 +6,6 @@ import time
 import skynjarar as s
 import speaker
 import servo as v
-import camera as c
 
 
 class SilencedPyPS4Controller(Controller):

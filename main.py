@@ -12,6 +12,7 @@ from ps4 import MyController
 import camera
 
 camera_queue = multiprocessing.Queue()
+
 controller = MyController(camera_queue=camera_queue,interface="/dev/input/js0", connecting_using_ds4drv=False)
 
 
@@ -21,7 +22,6 @@ def keyra_controller():
 #Set upp þræði
 fani = threading.Thread(target=v.wave_flag, daemon=True)
 auto = threading.Thread(target=s.skynja, daemon=True)
-# mynd = threading.Thread(target=camera.live_feed, daemon=True)
 controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 
 
@@ -33,7 +33,6 @@ if __name__ == "__main__":
 
     try:
         
-
         mynd = multiprocessing.Process(
             target=camera.live_feed,
             args=(camera_queue,),
@@ -51,11 +50,7 @@ if __name__ == "__main__":
         while True:
 
             if not s.auto_kveikt:
-                m.drive(
-                    controller.y_speed,
-                    controller.x_speed
-                )
-
+                m.drive(controller.y_speed,controller.x_speed)
             else:
                 s.skynja()
 
