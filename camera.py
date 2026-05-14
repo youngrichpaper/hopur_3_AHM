@@ -1,6 +1,6 @@
 # #Myndavél
 
-from flask import Flask, Response, send_from_directory
+from flask import Flask, Response, send_from_directory, redirect
 from picamera2 import Picamera2
 from datetime import datetime
 import os
@@ -88,45 +88,167 @@ def image_list():
         reverse=True
     )
 
-    image_links = "<ul>"
+    html = ""
 
     for file in files:
-        image_links += f'''
-            <li>
-                <a href="/view/{file}">
-                    {file}
-                </a>
-            </li>
-        '''
 
-    image_links += "</ul>"
+        html += f"""
 
-    return image_links
+        <div class="tile">
+
+            <a href="/view/{file}">
+                <img
+                    src="/pictures/{file}"
+                    class="thumb"
+                >
+            </a>
+
+            <p>{file}</p>
+
+            <a href="/delete/{file}">
+                <button>Eyða</button>
+            </a>
+
+        </div>
+        """
+
+    return html
+
+@app.route("/gallery")
+def gallery():
+
+    return """
+    <!DOCTYPE html>
+
+    <html>
+
+    <head>
+
+        <title>Myndasafn</title>
+
+        <style>
+
+            body {
+                font-family: Arial;
+                background: #111;
+                color: white;
+                margin: 20px;
+            }
+
+            .grid {
+
+                display: grid;
+
+                grid-template-columns:
+                    repeat(auto-fill, minmax(250px, 1fr));
+
+                gap: 20px;
+            }
+
+            .tile {
+
+                background: #222;
+
+                padding: 10px;
+
+                border-radius: 10px;
+
+                text-align: center;
+            }
+
+            .thumb {
+
+                width: 100%;
+
+                border-radius: 10px;
+            }
+
+            button {
+
+                margin-top: 10px;
+
+                padding: 8px 14px;
+
+                border: none;
+
+                border-radius: 5px;
+
+                cursor: pointer;
+            }
+
+            a {
+                color: white;
+                text-decoration: none;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <h1>Vistaðar myndir</h1>
+
+        <a href="/">Til baka í myndavél</a>
+
+        <br><br>
+
+        <div
+            id="gallery"
+            class="grid">
+        </div>
+
+        <script>
+
+        function refreshGallery() {
+
+            fetch("/image_list")
+
+            .then(response => response.text())
+
+            .then(data => {
+
+                document.getElementById(
+                    "gallery"
+                ).innerHTML = data;
+            });
+        }
+
+        refreshGallery();
+
+        setInterval(refreshGallery, 5000);
+
+        </script>
+
+    </body>
+
+    </html>
+    """
+
+@app.route("/delete/<filename>")
+def delete_image(filename):
+
+    folder = "/home/hopur_3/Pictures"
+
+    file_path = os.path.join(folder, filename)
+
+    if os.path.exists(file_path):
+
+        os.remove(file_path)
+
+        print(f"Eyddi: {filename}")
+
+    return redirect("/gallery")
 
 @app.route("/")
 def home():
 
-    folder = "/home/hopur_3/Pictures"
+    return """
 
-    files = sorted(
-        os.listdir(folder),
-        reverse=True
-    )
-
-    image_links = ""
-
-    for file in files:
-        image_links += f'''
-            <li>
-                <a href="/view/{file}">
-                    {file}
-                </a>
-            </li>
-        '''
-
-    return f"""
     <!DOCTYPE html>
+
     <html>
+
     <head>
         <title>Robot Camera</title>
     </head>
@@ -135,29 +257,23 @@ def home():
 
         <h1>Live Myndavél</h1>
 
-        <img src="/video_feed" width="840">
+        <img
+            src="/video_feed"
+            width="840"
+        >
 
-        <h2>Vistaðar myndir</h2>
+        <br><br>
 
-        <div id="image-list">
-            {image_links}
-        </div>
+        <a href="/gallery">
 
-    <script>
+            <button>
+                Opna myndasafn
+            </button>
 
-    function refreshImages() {{
-        fetch('/image_list')
-            .then(response => response.text())
-            .then(data => {{
-                document.getElementById('image-list').innerHTML = data;
-            }});
-    }}
-
-    setInterval(refreshImages, 10000);
-
-    </script>
+        </a>
 
     </body>
+
     </html>
     """
 
