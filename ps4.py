@@ -195,7 +195,7 @@ class MyController(SilencedPyPS4Controller):
             print("AUTO SLÖKKT")
 
     def on_triangle_press(self):
-        # Þegar ýtt er á þrIhyrning er kveikt á fánanum
+        # Þegar ýtt er á þríhyrning er kveikt á fánanum
         self.flag_on = not self.flag_on
     
     def on_square_press(self):
