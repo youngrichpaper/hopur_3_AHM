@@ -90,7 +90,7 @@ def skynja(controller):
             if hindrun_midja == 1:
                 m.stop()
                 time.sleep(0.01)
-                e.not_important()
+                # e.not_important()
                 if vinstri <= haegri:
                     snuningur('haegri')
                 else:
@@ -100,7 +100,7 @@ def skynja(controller):
             elif hindrun_vinstri == 1:
                 m.stop()
                 time.sleep(0.01)
-                e.not_important()
+                # e.not_important()
                 snuningur('haegri')
                 time.sleep(0.1)
             elif hindrun_haegri == 1:

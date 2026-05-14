@@ -184,7 +184,7 @@ class MyController(SilencedPyPS4Controller):
         self.y_speed = 0
         if self.auto_kveikt:
             print("AUTO KVEIKT")
-            speaker.baby()
+            # speaker.baby()
         else:
             print("AUTO SLÖKKT")
 
