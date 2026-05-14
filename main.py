@@ -9,7 +9,6 @@ from ps4 import MyController
 import camera
 
 camera_queue = multiprocessing.Queue()
-auto_on = False
 
 
 def keyra_controller():
@@ -21,7 +20,7 @@ fani = threading.Thread(target=v.wave_flag,args=(controller,), daemon=True)
 auto = threading.Thread(target=s.skynja,args=(controller,), daemon=True)
 controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 
-
+mynd = multiprocessing.Process(target=camera.live_feed,args=(camera_queue,),daemon=True)
 
 #--------------------------------------------
 #Keyrsla
@@ -29,12 +28,11 @@ controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 if __name__ == "__main__":
 
     try:
-        
-        mynd = multiprocessing.Process(
-            target=camera.live_feed,
-            args=(camera_queue,),
-            daemon=True
-        )
+        # mynd = multiprocessing.Process(
+        #     target=camera.live_feed,
+        #     args=(camera_queue,),
+        #     daemon=True
+        # )
 
         mynd.start()
 
@@ -47,8 +45,6 @@ if __name__ == "__main__":
 
             if not controller.auto_kveikt:
                 m.drive(controller.y_speed,controller.x_speed)
-            # else:
-                # s.skynja(controller.auto_kveikt)
 
             time.sleep(0.05)
 
@@ -62,27 +58,3 @@ if __name__ == "__main__":
         mynd.terminate()
 
         mynd.join()
-# try:
-#     mynd.start()
-#     time.sleep(0.05)
-#     controller_thread.start()
-#     # auto.start()
-#     fani.start()
-#     while True:
-#         if not s.auto_kveikt:
-#             m.drive(controller.y_speed, controller.x_speed)
-#         else: 
-#             s.skynja()
-#         time.sleep(0.05)
-
-
-# except KeyboardInterrupt:
-#     print("Stoppar keyrslu")
-#     s.auto_kveikt = False
-#     m.stop()
-# #--------------------------------------------
-
-
-
-
-
