@@ -157,6 +157,7 @@ class MyController(SilencedPyPS4Controller):
         self.pressed = False
         self.camera_queue = camera_queue
         self.auto_kveikt = False
+        self.flag_on = False
         # Servo stillingar
         self.servo_angle = 90
         v.rotate_s1(self.servo_angle)
@@ -204,7 +205,7 @@ class MyController(SilencedPyPS4Controller):
             print("AUTO SLÖKKT")
 
     def on_triangle_press(self):
-        v.flag_on = not v.flag_on
+        self.flag_on = not self.flag_on
     
     def on_square_press(self):
         speaker.photo()

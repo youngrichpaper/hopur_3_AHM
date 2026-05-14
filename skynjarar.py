@@ -79,15 +79,8 @@ def snuningur(att): #Fallið snýr sér þangað til skynjarar skila 0
 #Plis
 
 def skynja(controller):
-    print('Tesitingi')
     while True:
-        print('byrjað')
         if controller.auto_kveikt:
-        # if not controller.auto_kveikt:
-        #         print('hætt')
-        #         time.sleep(0.1)
-        #         break
-        
             hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri, midja = searching()
             time.sleep(0.1)
             

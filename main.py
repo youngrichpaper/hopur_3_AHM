@@ -17,7 +17,7 @@ def keyra_controller():
 
 controller = MyController(camera_queue=camera_queue,interface="/dev/input/js0", connecting_using_ds4drv=False)
 #Set upp þræði
-fani = threading.Thread(target=v.wave_flag, daemon=True)
+fani = threading.Thread(target=v.wave_flag,args=(controller,), daemon=True)
 auto = threading.Thread(target=s.skynja,args=(controller,), daemon=True)
 controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 

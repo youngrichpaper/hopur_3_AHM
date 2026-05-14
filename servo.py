@@ -13,9 +13,9 @@ def rotate_s1(degree=90): #Snýr servo1 um ákveðna gráðu
 def rotate_s2(degree=90): #Snýr servo2 um ákveðna gráðu
     kit.servo[1].angle = degree
 
-def wave_flag(): #Snýr servo fram og til (fyrir fána)
+def wave_flag(controller): #Snýr servo fram og til (fyrir fána)
     while True:
-        if flag_on:
+        if controller.flag_on:
             if not speaker.music_channel.get_busy():
                 speaker.mao()
             rotate_s2(180)
