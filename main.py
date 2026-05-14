@@ -15,12 +15,13 @@ auto_on = False
 def keyra_controller():
     controller.listen(timeout=60)
 
+controller = MyController(camera_queue=camera_queue,interface="/dev/input/js0", connecting_using_ds4drv=False)
 #Set upp þræði
 fani = threading.Thread(target=v.wave_flag, daemon=True)
 auto = threading.Thread(target=s.skynja,args=(auto_on,), daemon=True)
-controller_thread = threading.Thread(target=keyra_controller, daemon=True)
+controller_thread = threading.Thread(target=keyra_controller,args=(controller,), daemon=True)
 
-controller = MyController(camera_queue=camera_queue,auto_on=auto_on,auto_thread=auto,interface="/dev/input/js0", connecting_using_ds4drv=False)
+
 
 #--------------------------------------------
 #Keyrsla

@@ -78,42 +78,43 @@ def snuningur(att): #Fallið snýr sér þangað til skynjarar skila 0
 
 #Plis
 
-def skynja(auto_kveikt):
+def skynja(controller):
     print('Tesitingi')
     while True:
         print('byrjað')
-        if not auto_kveikt:
-                print('hætt')
-                time.sleep(0.1)
-                break
+        if controller.auto_kveikt:
+        # if not controller.auto_kveikt:
+        #         print('hætt')
+        #         time.sleep(0.1)
+        #         break
         
-        hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri, midja = searching()
-        time.sleep(0.1)
-        
-        #Fer yfir skynjara og athugar hvort þeir skynja hindrun.
-        if hindrun_midja == 1:
-            m.stop()
-            time.sleep(0.01)
-            e.not_important()
-            if vinstri <= haegri:
-                snuningur('haegri')
-            else:
-                snuningur('vinstri')
+            hindrun_vinstri, hindrun_midja, hindrun_haegri, vinstri, haegri, midja = searching()
+            time.sleep(0.1)
+            
+            #Fer yfir skynjara og athugar hvort þeir skynja hindrun.
+            if hindrun_midja == 1:
+                m.stop()
+                time.sleep(0.01)
+                e.not_important()
+                if vinstri <= haegri:
+                    snuningur('haegri')
+                else:
+                    snuningur('vinstri')
 
-            time.sleep(0.1)
-    
-        elif hindrun_vinstri == 1:
-            m.stop()
-            time.sleep(0.01)
-            e.not_important()
-            snuningur('haegri')
-            time.sleep(0.1)
-        elif hindrun_haegri == 1:
-            m.stop()
-            time.sleep(0.01)
-            e.not_important()
-            snuningur('vinstri')
-            time.sleep(0.1)
-        else: #Fer beint áfram ef allir skynjarar skila 0.
-            m.forwards(100)
-            time.sleep(0.1)
+                time.sleep(0.1)
+        
+            elif hindrun_vinstri == 1:
+                m.stop()
+                time.sleep(0.01)
+                e.not_important()
+                snuningur('haegri')
+                time.sleep(0.1)
+            elif hindrun_haegri == 1:
+                m.stop()
+                time.sleep(0.01)
+                e.not_important()
+                snuningur('vinstri')
+                time.sleep(0.1)
+            else: #Fer beint áfram ef allir skynjarar skila 0.
+                m.forwards(100)
+                time.sleep(0.1)
