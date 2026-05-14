@@ -12,12 +12,12 @@ i2c_bus = smbus.SMBus(1)
 i2c_address1 = 0x71 #Vinstri skynjari
 i2c_address2 = 0x70 #Miðju skynjari 
 i2c_address3 = 0x72 #Hægri skynjari 
-
+i2c_bus.write_byte_data(i2c_address1, 0, 0x51)
+i2c_bus.write_byte_data(i2c_address2, 0, 0x51)  # Tell sensor to scan in cm
+i2c_bus.write_byte_data(i2c_address3, 0, 0x51)
 
 def searching(): #Leitar af hindrun
-    i2c_bus.write_byte_data(i2c_address1, 0, 0x51)
-    i2c_bus.write_byte_data(i2c_address2, 0, 0x51)  # Tell sensor to scan in cm
-    i2c_bus.write_byte_data(i2c_address3, 0, 0x51)
+    
 
     time.sleep(0.1)
 
@@ -106,7 +106,7 @@ def skynja(controller):
             elif hindrun_haegri == 1:
                 m.stop()
                 time.sleep(0.01)
-                e.not_important()
+                # e.not_important()
                 snuningur('vinstri')
                 time.sleep(0.1)
             else: #Fer beint áfram ef allir skynjarar skila 0.
