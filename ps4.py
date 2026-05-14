@@ -195,17 +195,19 @@ class MyController(SilencedPyPS4Controller):
         print('STOP!!!!!')
 
     def on_x_press(self):
+
         
-        self.auto_kveikt = not self.auto_kveikt
-        self.auto_thread.start()
         if self.auto_kveikt:
             self.x_speed = 0
             self.y_speed = 0
             print("AUTO KVEIKT")
             speaker.baby()
+            self.auto_kveikt = False
         else:
+            self.auto_kveikt = not self.auto_kveikt
             self.x_speed = 0
             self.y_speed = 0
+            self.auto_kveikt = True
             print("AUTO SLÖKKT")
 
     def on_triangle_press(self):
