@@ -9,7 +9,7 @@ from ps4 import MyController
 import camera
 
 camera_queue = multiprocessing.Queue()
-controller = MyController(camera_queue=camera_queue,interface="/dev/input/js0", connecting_using_ds4drv=False)
+
 
 
 def keyra_controller():
@@ -20,7 +20,7 @@ fani = threading.Thread(target=v.wave_flag, daemon=True)
 auto = threading.Thread(target=s.skynja, daemon=True)
 controller_thread = threading.Thread(target=keyra_controller, daemon=True)
 
-
+controller = MyController(camera_queue=camera_queue,auto_thread=auto,interface="/dev/input/js0", connecting_using_ds4drv=False)
 
 #--------------------------------------------
 #Keyrsla
@@ -47,8 +47,8 @@ if __name__ == "__main__":
 
             if not controller.auto_kveikt:
                 m.drive(controller.y_speed,controller.x_speed)
-            else:
-                s.skynja(controller.auto_kveikt)
+            # else:
+                # s.skynja(controller.auto_kveikt)
 
             time.sleep(0.05)
 

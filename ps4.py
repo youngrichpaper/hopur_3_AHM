@@ -147,7 +147,7 @@ class SilencedPyPS4Controller(Controller):
 
 class MyController(SilencedPyPS4Controller):
 
-    def __init__(self,camera_queue, **kwargs):
+    def __init__(self,camera_queue,auto_thread, **kwargs):
         Controller.__init__(self, **kwargs)
         self.y_speed = 0
         self.x_speed= 0
@@ -157,7 +157,7 @@ class MyController(SilencedPyPS4Controller):
         self.pressed = False
         self.camera_queue = camera_queue
         self.auto_kveikt = False
-
+        self.auto_thread = auto_thread
         # Servo stillingar
         self.servo_angle = 90
         v.rotate_s1(self.servo_angle)
@@ -197,7 +197,7 @@ class MyController(SilencedPyPS4Controller):
     def on_x_press(self):
         
         self.auto_kveikt = not self.auto_kveikt
-
+        self.auto_thread.start()
         if self.auto_kveikt:
             self.x_speed = 0
             self.y_speed = 0
