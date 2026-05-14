@@ -109,7 +109,7 @@ def skynja(controller):
                 # e.not_important()
                 snuningur('vinstri')
                 time.sleep(0.1)
-            elif (midja == 0 or midja > 100) and (vinstri==0 or vinstri >100) and (haegri==0 or haegri>100):S  #Fer beint áfram ef allir skynjarar skila 0.
+            elif (midja == 0 or midja > 100) and (vinstri==0 or vinstri >100) and (haegri==0 or haegri>100):  #Fer beint áfram ef allir skynjarar skila 0.
                 m.forwards(200)
                 time.sleep(0.01)
             else:
