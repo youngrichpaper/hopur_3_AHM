@@ -240,6 +240,44 @@ def delete_image(filename):
 
     return redirect("/gallery")
 
+# @app.route("/")
+# def home():
+
+#     return """
+
+#     <!DOCTYPE html>
+
+#     <html>
+
+#     <head>
+#         <title>Robot Camera</title>
+#     </head>
+
+#     <body>
+
+#         <h1>Live Myndavél</h1>
+
+#         <img
+#             src="/video_feed"
+#             width="840"
+#         >
+
+#         <br><br>
+
+#         <a href="/gallery">
+
+#             <button>
+#                 Opna myndasafn
+#             </button>
+
+#         </a>
+
+#     </body>
+
+#     </html>
+#     """
+
+
 @app.route("/")
 def home():
 
@@ -250,34 +288,172 @@ def home():
     <html>
 
     <head>
+
         <title>Robot Camera</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background: #0f172a;
+                color: white;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: auto;
+                padding: 20px;
+            }
+
+            .header {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .header h1 {
+                font-size: 3rem;
+                margin-bottom: 10px;
+            }
+
+            .header p {
+                color: #cbd5e1;
+                font-size: 1.1rem;
+            }
+
+            .video-card {
+                background: #1e293b;
+                border-radius: 20px;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            }
+
+            .video-stream {
+                width: 100%;
+                border-radius: 15px;
+                border: 4px solid #334155;
+            }
+
+            .controls {
+                margin-top: 25px;
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .button {
+                background: #2563eb;
+                color: white;
+                padding: 14px 24px;
+                border-radius: 12px;
+                text-decoration: none;
+                font-size: 1rem;
+                font-weight: bold;
+                transition: 0.2s;
+                display: inline-block;
+            }
+
+            .button:hover {
+                background: #1d4ed8;
+                transform: scale(1.03);
+            }
+
+            .status-grid {
+                margin-top: 30px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+            }
+
+            .status-card {
+                background: #1e293b;
+                padding: 20px;
+                border-radius: 18px;
+                text-align: center;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            }
+
+            .status-card h2 {
+                margin: 0;
+                font-size: 1.2rem;
+                color: #93c5fd;
+            }
+
+            .status-card p {
+                margin-top: 10px;
+                font-size: 1rem;
+                color: #e2e8f0;
+            }
+
+            .footer {
+                margin-top: 40px;
+                text-align: center;
+                color: #94a3b8;
+                font-size: 0.9rem;
+            }
+
+        </style>
+
     </head>
 
     <body>
 
-        <h1>Live Myndavél</h1>
+        <div class="container">
 
-        <img
-            src="/video_feed"
-            width="840"
-        >
+            <div class="header">
+                <h1>🤖 Robot Camera</h1>
+                <p>Live camera feed and robot control center</p>
+            </div>
 
-        <br><br>
+            <div class="video-card">
 
-        <a href="/gallery">
+                <img
+                    src="/video_feed"
+                    class="video-stream"
+                >
 
-            <button>
-                Opna myndasafn
-            </button>
+                <div class="controls">
 
-        </a>
+                    <a href="/gallery" class="button">
+                        📸 Open Gallery
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="status-grid">
+
+                <div class="status-card">
+                    <h2>Camera</h2>
+                    <p>🟢 Online</p>
+                </div>
+
+                <div class="status-card">
+                    <h2>Streaming</h2>
+                    <p>🎥 Active</p>
+                </div>
+
+                <div class="status-card">
+                    <h2>Gallery</h2>
+                    <p>📁 Available</p>
+                </div>
+
+            </div>
+
+            <div class="footer">
+                Raspberry Pi Robot System
+            </div>
+
+        </div>
 
     </body>
 
     </html>
     """
-
-
 @app.route("/video_feed")
 def video_feed():
     return Response(
