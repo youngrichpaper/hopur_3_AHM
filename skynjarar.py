@@ -12,14 +12,14 @@ i2c_bus = smbus.SMBus(1)
 i2c_address1 = 0x71 #Vinstri skynjari
 i2c_address2 = 0x70 #Miðju skynjari 
 i2c_address3 = 0x72 #Hægri skynjari 
-
+i2c_bus.write_byte_data(i2c_address1, 0, 0x51)
+i2c_bus.write_byte_data(i2c_address2, 0, 0x51)  # Tell sensor to scan in cm
+i2c_bus.write_byte_data(i2c_address3, 0, 0x51)
 
 def searching(): #Leitar af hindrun
-    i2c_bus.write_byte_data(i2c_address1, 0, 0x51)
-    i2c_bus.write_byte_data(i2c_address2, 0, 0x51)  # Tell sensor to scan in mm
-    i2c_bus.write_byte_data(i2c_address3, 0, 0x51)
+    
 
-    time.sleep(0.1)
+    time.sleep(0.01)
 
     high1 = i2c_bus.read_byte_data(i2c_address1, 2)  # Read the high byte of the value
     #print(high) # print the value of High byte
