@@ -70,10 +70,10 @@ def snuningur(att): #Fallið snýr sér þangað til skynjarar skila 0
 
         if att == 'haegri': #Athugar hvort eigi að beygja til hægri eða vinstri
             m.rotate_CW(80)
-            print('pissss')
+            print(f'hægri, {hindrun_vinstri,hindrun_midja,hindrun_haegri}')
         else:
             m.rotate_CCW(80)
-            print('pissss')
+            print(f'vinstri, {hindrun_vinstri,hindrun_midja,hindrun_haegri}')
 
         time.sleep(0.01)
 
