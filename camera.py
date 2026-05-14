@@ -424,10 +424,6 @@ def home():
 
             </div>
 
-            <div class="footer">
-                Raspberry Pi Robot System
-            </div>
-
         </div>
 
     </body>
