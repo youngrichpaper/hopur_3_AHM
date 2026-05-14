@@ -153,6 +153,7 @@ class MyController(SilencedPyPS4Controller):
         self.x_speed= 0
         self.going_forward = False
         self.going_backwards = False
+        self.auto_speed = 100
         self.camera_queue = camera_queue
         self.auto_kveikt = False
         self.flag_on = False
@@ -164,8 +165,8 @@ class MyController(SilencedPyPS4Controller):
         self.servo_step = 2
         self.servo_delay = 0.03
 
-        # self.servo_thread = threading.Thread(target=self.servo_loop, daemon=True)
-        # self.servo_thread.start()
+        self.servo_thread = threading.Thread(target=self.servo_loop, daemon=True)
+        self.servo_thread.start()
         if self.auto_kveikt:
             self.pressed = False
             
@@ -230,17 +231,15 @@ class MyController(SilencedPyPS4Controller):
 
     def on_R3_left(self, value): #Færa servo1 til vinstri
         if value < -2000:
-            if self.servo_angle > 0:
-                self.servo_angle -= 1
-                v.rotate_s1(self.servo_angle)
-                time.sleep(0.03)
+            self.servo_direction = -1
+        else:
+            self.servo_direction = 0
 
     def on_R3_right(self, value): #Færa servo1 til hægri
         if value > 2000:
-            if self.servo_angle < 180:
-                self.servo_angle += 1
-                v.rotate_s1(self.servo_angle)
-                time.sleep(0.03)
+            self.servo_direction = 1
+        else:
+            self.servo_direction = 0
 
     def on_R2_press(self, value):
         if not self.auto_kveikt:
