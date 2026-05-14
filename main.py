@@ -38,7 +38,6 @@ if __name__ == "__main__":
 
         mynd.start()
 
-        time.sleep(0.5)
 
         controller_thread.start()
         auto.start()
