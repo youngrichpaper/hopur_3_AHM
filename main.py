@@ -9,8 +9,7 @@ from ps4 import MyController
 import camera
 
 camera_queue = multiprocessing.Queue()
-auto_kveikt = False
-controller = MyController(camera_queue=camera_queue,auto_kveikt=auto_kveikt,interface="/dev/input/js0", connecting_using_ds4drv=False)
+controller = MyController(camera_queue=camera_queue,interface="/dev/input/js0", connecting_using_ds4drv=False)
 
 
 def keyra_controller():
@@ -46,10 +45,10 @@ if __name__ == "__main__":
 
         while True:
 
-            if not auto_kveikt:
+            if not controller.auto_kveikt:
                 m.drive(controller.y_speed,controller.x_speed)
             else:
-                s.skynja(auto_kveikt)
+                s.skynja(controller.auto_kveikt)
 
             time.sleep(0.05)
 
@@ -57,7 +56,6 @@ if __name__ == "__main__":
 
         print("Stoppar keyrslu")
 
-        s.auto_kveikt = False
 
         m.stop()
 
