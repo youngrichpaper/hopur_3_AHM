@@ -9,7 +9,6 @@ bus = smbus.SMBus(1)
 # ÁFRAM
 def forwards(speed, curve = 0, direction = 0):
     # Fallið tekur inn hraða og beygju og átt
-
     if direction == 0: # Ef áttin er 0 fer hann beint áfram
         data = [speed  , 0, speed, 1]
     elif direction == 1: # Ef áttin er 1 er beygt til vinstri
